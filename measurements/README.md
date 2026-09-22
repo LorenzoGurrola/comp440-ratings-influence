@@ -2,7 +2,7 @@
 
 Exploratory runs of the Spring 2024 "Simulation of Feedback Effects in Recommenders" model, made
 while planning the Sep 24 activity (`../PLAN.md`, section 12 reads these numbers). They are the
-answer key to the activity's Parts 2 to 5; the instructor decided Sep 22 that sharing it with an
+answer key to the activity's Parts 2 to 6; the instructor decided Sep 22 that sharing it with an
 activity is fine, so they live here.
 
 | File | What |
