@@ -74,7 +74,8 @@ rule to put in is the paper's idea, made specific:
 * the chance of picking an artist is `social_influence` × social + (1 − `social_influence`) × true.
 
 Tell Claude the rule in your own words. Claude writes it into `choice_weights()` and runs the
-two-artist hand check; work that case out yourself and say whether it matched. Then pick the
+two-artist hand check, which prints what your code gives for the case; work out what the rule
+gives yourself, then Claude shows the rule's numbers and you say whether all three agreed. Then pick the
 social-influence levels for `part3_influence.py` (it ships with 0, 0.25, 0.5, 0.75 and 1; keep
 them or change them), say what shape you expect, and read the two curves against the paper's
 Figures 1 and 2. One sentence each: direction, not size. Then go back to your Part 0

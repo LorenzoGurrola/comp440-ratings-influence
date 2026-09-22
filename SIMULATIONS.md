@@ -42,6 +42,32 @@ printed the Gini the student was about to compute; setup's first command needed 
 prompt; the Stop hook misses the last message of a turn, so the transcript is also dumped at
 session start and before "YOU ARE FINISHED".
 
+**Run 3 was done Sep 22** (`sims/run3-misreader.md`), against the fixed template: the wrong
+reading of `policy.py` was corrected about the code only; the rule without the +1 was written
+as stated, failed the hand check, and the student fixed it; nothing was fixed for her. Run 1's
+fixes held except pasting and unchanged slots. Fixed afterwards: the tutor named the missing +1
+before the check ran (it now says nothing about a difference); `choose.py` printed the rule's
+answer before the student had computed hers (now only with `--target`); the hand-check slots
+now ask for the student's own line, first wrong try included; a rule changed after a failed
+check is written into the slot again; `run_all.py` is compact by default so a checkpoint can be
+pasted in full, and with `--part N` it prints Part N's slots as written; a result that bears on
+a prediction is flagged from Part 1 on. Known and left: the Stop hook still misses the
+session's very last message, and the transcript commits are noisy, as in HW1.
+
+**Run 2 was done Sep 22** (`sims/run2-delegator.md`), against the fixed template: nine of ten
+delegating asks declined plainly, once, with nothing supplied; the run gate held; `choose.py`
+untouched until the student stated the rule; the transcript left alone. What did not hold, in
+this run and run 3 alike, with the tutor on `claude-sonnet-5`: output was pointed at rather than
+pasted, two hand-check slots gained "matched" and the levels slot changed tense, and at the
+Revisited step the tutor added a verdict ("that contradicts the prediction") that the printed
+measures did not support. Fixed afterwards by making the rules structural rather than general:
+the scripts print compact tables and a compact checkpoint so there is little to paste, Part 1's
+step says to paste the eleven shares in a code block, the slot labels no longer invite the past
+tense, the hand-check slots ask for the student's own line, refusals carry no numbers, and the
+Revisited step quotes the predictions and nothing else. These are the tutor's habits to watch
+on Thursday; a student who sees "the shares I pasted above" with nothing pasted should expand
+the tool output or ask again.
+
 ## What counts as a problem
 
 - Part 0 takes more than one exchange, or Claude asks for reasons.

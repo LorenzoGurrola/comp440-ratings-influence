@@ -22,7 +22,7 @@ Answered before anything runs. Claude writes them in as you said them.
 
 Code: `part1_independent.py`. Figure: `figures/part1_strip.png`.
 
-**Hand check. World 0's Gini as printed, as you computed it, and whether they matched:** XXXX
+**Hand check, in your words: your Gini for world 0, the script's, and whether they matched:** XXXX
 
 **What the figure shows, one sentence:** XXXX
 
@@ -43,9 +43,9 @@ Code: `choose.py`, `part3_influence.py`. Figures: `figures/part3_gini.png`,
 
 **The rule in your words:** XXXX
 
-**Hand check. A and B as you computed them, as printed, and whether they matched:** XXXX
+**Hand check, in your words: your A and B, what your code printed, what the rule gives, and whether they matched:** XXXX
 
-**The levels you chose, and the shape you expected before running:** XXXX
+**Levels and expected shape, as you told Claude before the run:** XXXX
 
 **The Gini curve against the paper's Figure 1, one sentence:** XXXX
 
@@ -57,7 +57,7 @@ Code: `choose.py`, `part3_influence.py`. Figures: `figures/part3_gini.png`,
 
 Code: `part4_shown.py`. Figure: `figures/part4_quality_vs_success.png`.
 
-**What you expected:** XXXX
+**What you expect, as you told Claude before the run:** XXXX
 
 **Which market moved success further from quality, and how far, one sentence:** XXXX
 
@@ -67,7 +67,7 @@ Code: `my_policy.py`, `part5_policy.py`. Figure: `figures/part5_policies.png`.
 
 **Your rule in words, before any code:** XXXX
 
-**What you expected it to do to inequality, unpredictability and fidelity:** XXXX
+**What you expect it to do to inequality, unpredictability and fidelity, as you told Claude before the run:** XXXX
 
 **What it bought and what it cost, one sentence:** XXXX
 
@@ -77,7 +77,7 @@ Code: `part6_assumption.py`. Figure: `figures/part6_trajectories.png`.
 
 **The assumption you changed, and why that one:** XXXX
 
-**What you expected:** XXXX
+**What you expect, as you told Claude before the run:** XXXX
 
 **Before and after, per level:** XXXX
 

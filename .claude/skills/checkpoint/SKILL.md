@@ -7,13 +7,16 @@ Four steps, in this order, every time. Stop at the first thing missing: that is 
 step, and the part is not done until it is filled.
 
 1. Run `uv run python run_all.py --part N`, with N the part being checked, and paste its output
-   in full. `--part N` stops after Part N, so a later part's results never appear before the
-   student has said what they expect from it. Before submission, run it with no `--part`. Do
-   not summarize the output and do not say whether the numbers look right.
-2. Read `WRITEUP.md` in full and name, one line each, every slot in **this part's section** that
-   is still `XXXX`. Name them and ask what each needs; do not suggest wording. A prediction slot
-   that a result has contradicted is not reworded; the "Revisited" slot at the end of Part 3
-   takes the later thought.
+   in full: every line, copied into your reply, including the "as written" block that shows the
+   student their words as they landed. A summary, or "see above", fails this step. `--part N`
+   stops after Part N, so a later part's results never appear before the student has said what
+   they expect from it. Before submission, run it with no `--part`. Do not say whether the
+   numbers look right.
+2. The "as written" block in that output is this part's slots with the student's words as they
+   landed. Name, one line each, every slot still `XXXX`, and ask what each needs; do not suggest
+   wording. If a slot's text is not what the student typed, say so and fix it to their words. A
+   prediction slot that a result has contradicted is not reworded; the "Revisited" slot at the
+   end of Part 3 takes the later thought.
 3. Run `uv run python dump_transcript.py` and paste its last line. It says how many sessions are
    in `TRANSCRIPT.md` and whether this session is one of them. If the script fails on their
    machine, say so and go on: it costs them nothing.
