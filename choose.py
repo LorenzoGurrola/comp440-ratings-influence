@@ -1,12 +1,17 @@
 """
 What a user picks from the artists shown.
 
-    uv run python choose.py      prints the two-artist hand check for Part 3
+    uv run python choose.py            the two-artist hand check for Part 3: the case, and
+                                       the chances choice_weights() gives for it
+    uv run python choose.py --target   the same, and the chances the README's Part 3 rule
+                                       gives: run it after you have worked them out by hand
 
 choice_weights() gives each shown artist its chance of being picked, and choose() draws one
 artist with those chances. As shipped, users ignore the download counts and pick by true
 popularity alone. Part 3 adds social influence, in the marked block.
 """
+
+import sys
 
 from artists import TRUE_POPULARITY
 
@@ -15,8 +20,6 @@ from artists import TRUE_POPULARITY
 CHECK_SHOWN = ["A", "B"]
 CHECK_COUNTS = {"A": 3, "B": 0}
 CHECK_TRUE_POPULARITY = {"A": 50, "B": 50}
-# The chances the rule in README Part 3 gives for that case at social influence 0.5.
-CHECK_TARGET = {"A": 0.6638, "B": 0.3362}
 
 
 def choice_weights(shown, counts, social_influence, position_discount=1.2, pseudo_count=1,
@@ -52,18 +55,24 @@ def choose(shown, counts, social_influence, rng, position_discount=1.2, pseudo_c
     return artists[rng.choice(len(artists), p=chances)]
 
 
-def hand_check(social_influence=0.5):
-    """Print the chances choice_weights() gives for the hand-check case, and the chances the
-    rule in README Part 3 gives for it at social influence 0.5."""
+# The chances the README's Part 3 rule gives for the hand-check case at social influence 0.5.
+# hand_check() prints them only when asked, so that the student works them out first.
+CHECK_TARGET = {"A": 0.6638, "B": 0.3362}
+
+
+def hand_check(social_influence=0.5, target=False):
+    """Print the hand-check case and the chances choice_weights() gives for it. With
+    target=True, also print the chances the README's Part 3 rule gives at social influence 0.5."""
     got = choice_weights(CHECK_SHOWN, CHECK_COUNTS, social_influence, position_discount=1.2,
                          pseudo_count=1, true_popularity=CHECK_TRUE_POPULARITY)
-    print("Hand check: two artists are shown, A at the top (position 0) and B below it")
-    print("(position 1). A has 3 downloads, B has 0, and both have true popularity 50.")
-    print("Position discount 1.2, pseudo-count 1.")
-    print(f"  choice_weights() at social influence {social_influence}:"
-          f"   A {got['A']:.4f}   B {got['B']:.4f}")
-    print(f"  the rule in README Part 3, at social influence 0.5:"
-          f"   A {CHECK_TARGET['A']:.4f}   B {CHECK_TARGET['B']:.4f}")
+    print("Hand check: A is shown at the top of the list (position 0) and B below it "
+          "(position 1),")
+    print(f"at social influence {social_influence}, position discount 1.2 and pseudo-count 1.")
+    print("A has 3 downloads, B has 0, and both have true popularity 50.")
+    print(f"  choice_weights() gives:           A {got['A']:.4f}   B {got['B']:.4f}")
+    if target:
+        print(f"  the README's Part 3 rule gives:   A {CHECK_TARGET['A']:.4f}"
+              f"   B {CHECK_TARGET['B']:.4f}   (at social influence 0.5)")
 
 
 def is_implemented():
@@ -74,4 +83,4 @@ def is_implemented():
 
 
 if __name__ == "__main__":
-    hand_check()
+    hand_check(target="--target" in sys.argv)

@@ -3,13 +3,15 @@ Part 3: social influence.
 
     uv run python part3_influence.py
 
-First checks that choose.py holds Part 3's rule. If choice_weights() does not give the hand
-check's answer yet, it prints the hand check, says so in one line, and stops.
+First checks that choose.py holds Part 3's rule. If choice_weights() does not give the README
+rule's answer for the hand check yet, it prints the hand check (without that answer), says so
+in one line, and stops.
 
-Then prints the five measures for the independent control (Part 1's run: random_five at social
-influence 0, the same worlds) and for the top_five recommender at each social-influence level in
-LEVELS, WORLDS worlds each. Saves figures/part3_gini.png and figures/part3_unpredictability.png:
-each measure against social influence, with the independent control marked.
+Then prints one table of the five measures, WORLDS worlds per row: first the independent control
+(Part 1's run: random_five at social influence 0, the same worlds), then the top_five
+recommender at each social-influence level in LEVELS. Saves figures/part3_gini.png and
+figures/part3_unpredictability.png: each measure against social influence, with the independent
+control marked.
 """
 
 import sys
@@ -29,21 +31,20 @@ FIGURES = Path(__file__).resolve().parent / "figures"
 def main():
     if not choose.is_implemented():
         choose.hand_check()
-        print("\nPart 3's rule is not in choose.py yet: choice_weights() does not give the hand "
-              "check's A 0.6638, B 0.3362.")
+        print("\nchoice_weights() does not give the README rule's answer for the hand check yet; "
+              "run `uv run python choose.py --target` after you have worked it out by hand.")
         return 1
 
-    control = measures.print_summary(
-        f"Independent control: random_five, social influence 0, {WORLDS} worlds:",
-        simulate(random_five, WORLDS, social_influence=0.0))
-
-    ginis, unpredictabilities = [], []
+    rows = [("independent control", simulate(random_five, WORLDS, social_influence=0.0))]
     for level in LEVELS:
-        print()
-        result = measures.print_summary(f"top_five, social influence {level}, {WORLDS} worlds:",
-                                        simulate(top_five, WORLDS, social_influence=level))
-        ginis.append(result["mean_gini"])
-        unpredictabilities.append(result["unpredictability"])
+        rows.append((f"social influence {level}",
+                     simulate(top_five, WORLDS, social_influence=level)))
+    print(f"The independent control (random_five, social influence 0), then top_five at each "
+          f"level; {WORLDS} worlds per row:")
+    results = measures.print_table(rows)
+    control = results[0]
+    ginis = [result["mean_gini"] for result in results[1:]]
+    unpredictabilities = [result["unpredictability"] for result in results[1:]]
 
     gini_path = plots.line_plot(
         LEVELS, [ginis], FIGURES / "part3_gini.png", "social influence",

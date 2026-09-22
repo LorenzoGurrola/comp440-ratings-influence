@@ -125,6 +125,28 @@ def print_summary(label, shares):
     return result
 
 
+# The table's columns: the header each is printed under, and its key in summary().
+COLUMNS = [("Gini", "mean_gini"), ("unpredictability", "unpredictability"),
+           ("fidelity", "fidelity"), ("true best wins", "true_best_wins"),
+           ("accidental hits", "accidental_hits")]
+
+
+def print_table(rows):
+    """Print the five measures for several sets of worlds as one table. `rows` is a list of
+    (label, shares). Prints a header line, then one line per row: its label and the five
+    measures, 3 decimals each, in aligned columns. Gini and fidelity are means over the worlds.
+    Returns the summary() of each row, in order."""
+    width = max(len(label) for label, _ in rows)
+    print(" " * width + "".join(f"  {header}" for header, _ in COLUMNS))
+    results = []
+    for label, shares in rows:
+        result = summary(shares)
+        results.append(result)
+        print(f"{label:<{width}}"
+              + "".join(f"  {result[key]:>{len(header)}.3f}" for header, key in COLUMNS))
+    return results
+
+
 def self_check():
     """Check the measures against cases worked out by hand. Returns True if all match."""
     two_worlds = np.zeros((2, 11))

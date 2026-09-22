@@ -4,10 +4,10 @@ Part 5: your policy.
     uv run python part5_policy.py
 
 Runs three policies at social influence 0.5, WORLDS worlds each: yours (my_policy in
-my_policy.py), the shipped top_five, and random_five, the control. Prints the five measures for
-each and saves figures/part5_policies.png: mean Gini, unpredictability and fidelity, one bar per
-policy. Stops with a message if my_policy is not written yet, or if Part 3's rule is not in
-choose.py.
+my_policy.py), the shipped top_five, and random_five, the control. Prints one table of the five
+measures, one row per policy, and saves figures/part5_policies.png: mean Gini, unpredictability
+and fidelity, one bar per policy. Stops with a message if my_policy is not written yet, or if
+Part 3's rule is not in choose.py.
 """
 
 import sys
@@ -38,16 +38,16 @@ def main():
               "uv run python choose.py shows the hand check.")
         return 1
 
-    results = {}
+    rows = []
     for name, policy in [("my_policy", my_policy), ("top_five", top_five),
                          ("random_five", random_five)]:
-        shares = simulate(policy, WORLDS, SOCIAL_INFLUENCE)
-        results[name] = measures.print_summary(
-            f"{name}, social influence {SOCIAL_INFLUENCE}, {WORLDS} worlds:", shares)
-        print()
+        rows.append((name, simulate(policy, WORLDS, SOCIAL_INFLUENCE)))
+    print(f"Each policy at social influence {SOCIAL_INFLUENCE}; {WORLDS} worlds per row:")
+    results = measures.print_table(rows)
 
-    path = plots.policy_bars(results, FIGURES / "part5_policies.png")
-    print(f"Saved figures/{path.name}")
+    names = [name for name, _ in rows]
+    path = plots.policy_bars(dict(zip(names, results)), FIGURES / "part5_policies.png")
+    print(f"\nSaved figures/{path.name}")
     return 0
 
 

@@ -9,7 +9,8 @@ Until you delete the line that ends "delete this line when you start", this scri
   1. Rerun Part 3's sweep, top_five at each level in LEVELS with WORLDS worlds, twice: once
      with the model as it shipped ("before") and once with the one assumption you chose
      changed ("after").
-  2. Print, for each level, the five measures before and after.
+  2. Print one table of the five measures (measures.print_table), with a "before" row and an
+     "after" row for each level.
   3. Save figures/part6_trajectories.png: plots.trajectories() on the picks that
      simulate_with_picks() returns for top_five at social influence 0.75 with 12 worlds,
      your assumption changed.
@@ -39,11 +40,12 @@ def main():
     print("Part 6 not started"); return 0  # delete this line when you start
 
     # The shape to follow, for the position discount (1.2 as shipped, 1.0 changed):
+    # rows = []
     # for level in LEVELS:
-    #     measures.print_summary(f"before, social influence {level}:",
-    #                            simulate(top_five, WORLDS, level, position_discount=1.2))
-    #     measures.print_summary(f"after, social influence {level}:",
-    #                            simulate(top_five, WORLDS, level, position_discount=1.0))
+    #     before = simulate(top_five, WORLDS, level, position_discount=1.2)
+    #     after = simulate(top_five, WORLDS, level, position_discount=1.0)
+    #     rows += [(f"before, {level}", before), (f"after, {level}", after)]
+    # measures.print_table(rows)
     # shares, picks = simulate_with_picks(top_five, 12, 0.75, position_discount=1.0)
     # plots.trajectories(picks, FIGURES / "part6_trajectories.png")
 
