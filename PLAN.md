@@ -285,17 +285,18 @@ are right (section 11), so its VERIFY item on them can be closed.
 
 ## 10. Prep, dated
 
-- [ ] Sep 22 — Instructor: the decisions in section 9, at least the first three, so the build can
-  start. No build runs before a go (lecture-deck skill, stage 0, applies to the repo too).
-- [ ] Sep 22–23 — Session, on the go: fill the `comp440-ratings-influence` repo in HW1's shape;
-  port `sim.py` with named parameters, `policy.py` short enough to read in class, `choose.py`
-  shipping without social influence and carrying the hand-check case (the Sep 22 measurement
-  scripts in `measurements/` are the reference implementation); write and test
-  `measures.py` against a hand-computed Gini; write `plots.py`;
-  `CLAUDE.md` per section 6; `WRITEUP.md` slots; `run_all.py`; the hook and allow-list; the
-  README with the six parts, the AI guidelines and the rubric. Estimate: 4–5 hours.
-- [ ] Sep 23 — Session: dry-run Parts 0 and 1 as a student, cold, in a fresh fork; time them; fix
-  what breaks. Estimate: 1 hour. Then the instructor runs Part 0 himself once.
+- [x] Sep 22 — The instructor said go at 6pm ("begin implementing the plan"). Still his: the due
+  date, the weight and category, pairs or individual (section 9); the README carries them as TBD.
+- [x] Sep 22 — Built and pushed, 8:45pm: `README.md` in HW0's shape, `CLAUDE.md`, `WRITEUP.md`,
+  the `setup` and `checkpoint` skills, `sim.py`, `artists.py`, `policy.py`, `my_policy.py`,
+  `choose.py` shipping without social influence and carrying the hand check, `measures.py`
+  (self-checked against hand-worked cases), `plots.py`, `part1` to `part6`, `run_all.py`, the
+  hooks and allow-list, `pyproject.toml` and `uv.lock`. The mechanics were checked against the
+  S24 notebook's code and against `measurements/results.json`: Parts 1 to 3 reproduce the
+  measured Gini and unpredictability to two decimals. `SIMULATIONS.md` is the light plan for
+  simulated students; its run 1 is in progress.
+- [ ] Sep 22–23 — Session: the three simulated-student runs in `SIMULATIONS.md`, notes in
+  `sims/`; fix what they find. Then the instructor runs Part 0 himself once.
 - [ ] Sep 23 — Session, with the instructor's go: add the launch slides to the Sep 24 deck (the
   copied S24 deck, untouched since Sep 13): the model slide is its slide 19 already; add "What
   Claude does, what you do", "Fork, clone, /setup", "Four predictions", "Match or diverge", "Ours
