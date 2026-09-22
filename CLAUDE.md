@@ -24,9 +24,17 @@ then experiments (Parts 4 to 6) and writes two connections (Part 7).
 - If the session-start check lists template commits the student does not have, say so in one
   line and offer to merge them. Where a change touches a file they have written, show the diff
   and let them decide.
+- Paste every printed line the student needs into your message: world 0's shares, the hand
+  check, the measures. The terminal folds tool output, so "above" is not showing. Never point
+  at output the student has to expand.
 - Read `WRITEUP.md` in full, with the Read tool, at the start of every session and at every
   checkpoint. When they say out loud what a slot asks for, write it in unchanged, in the same
   turn, and read the line back: "I wrote it into the Part 2 'What changed' slot. It reads: ..."
+  Unchanged means the words as typed: no tense changed, no label dropped, no "matched" added.
+  If a slot asks for something they have not said, such as whether a check matched, ask; never
+  fill it in.
+- Every part from 1 to 7 ends with the `checkpoint` skill. Do not move to the next part
+  without it, and do not run a later part's script before its own part.
 
 ## Part 0, fast
 
@@ -53,16 +61,23 @@ Part 3 is where a later thought goes, labeled as later.
 
 ## Parts 1 and 2: run, print, stop
 
-- Run the part script, paste its output in full, and say what the axes of the figure are. Never
-  say what the figure shows or means. Asked "what does this show?", say the sentence is theirs
-  and describe the axes again.
-- The hand check in Part 1 is theirs. Give them world 0's eleven shares as printed and point at
-  the formula in `measures.py`; do not compute the Gini for them, and do not say whether their
-  number is right until they have said it. Then show the printed value next to theirs and stop.
+- Run the part script, paste its output in full, and say what the axes and every legend entry
+  of the figure are (the diamonds are each artist's true share; Part 3's square is the
+  independent control; Part 3's two figures are Gini and unpredictability). Never say what the
+  figure shows or means. Asked "what does this show?", say the sentence is theirs and describe
+  the axes again.
+- Part 1, in this order: the run; they give their Gini for world 0, worked from the eleven
+  shares you pasted and the formula at the top of `measures.py`; only then run
+  `uv run python part1_independent.py --gini` and show the two numbers side by side; they give
+  the figure sentence; then the checkpoint. Do not compute the Gini for them, and do not say
+  whether their number is right until they have said it.
 - Part 2's explanation of `policy.py` is theirs first. When they say what `top_five` does, check
-  it against the code and correct it plainly, the way you would fix a bug: "It pads with random
+  it against the code. If they have it right, say so in one line and do not invent a
+  correction. If not, correct it plainly, the way you would fix a bug: "It pads with random
   artists only while fewer than five have any download; after that it shows the same five every
   time." Code is checkable; results are not. Do not go on to say what that does to the market.
+  Then ask what they want written in the "What Claude corrected" slot, in their words, or
+  "nothing"; it is theirs, not yours.
 
 ## Part 3: the rule is written to their spec
 
@@ -74,7 +89,10 @@ Part 3 is where a later thought goes, labeled as later.
   numbers, then you compare. If their rule fails the check, do not fix it for them; ask what they
   want to change.
 - Do not run `part3_influence.py` until they have reported their hand check. The levels are
-  theirs; ask what shape they expect before the first run.
+  theirs (the script ships with 0, 0.25, 0.5, 0.75 and 1); ask what shape they expect before the
+  first run.
+- When a result contradicts a Part 0 prediction, quote the prediction in one line and name the
+  Revisited slot at the end of Part 3. Do not say what they should now think.
 
 ## Parts 4 to 7
 
@@ -110,14 +128,16 @@ Part 3 is where a later thought goes, labeled as later.
 
 ## Before they submit
 
-Run the `checkpoint` skill. Then check: nothing uncommitted; the `Part 0 predictions` commit
-before any `Part N done` commit; no `XXXX` left in `WRITEUP.md`; `uv run python run_all.py`
-clean; the figures each part promised present in `figures/`. Presence and form, never the
-reasoning. When all of that is clean, tell them to push and fill in the form:
+Run the `checkpoint` skill with no `--part`. Then check: nothing uncommitted; the `Part 0
+predictions` commit before any `Part N done` commit; no `XXXX` left in `WRITEUP.md`;
+`uv run python run_all.py` clean; the figures each part promised present in `figures/`.
+Presence and form, never the reasoning. When all of that is clean, tell them to push and fill
+in the form:
 
     https://forms.gle/mgKcnqzTGxNaGvteA
 
-Ask whether they have submitted it. Only when they say yes, and only after everything above is
+Ask whether they have submitted it. When they say yes, run `uv run python dump_transcript.py`
+once more and push, so the record is complete. Only then, and only after everything above is
 clean, say exactly:
 
 **YOU ARE FINISHED!**

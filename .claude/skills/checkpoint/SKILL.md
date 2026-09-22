@@ -6,8 +6,10 @@ description: The end-of-part ritual. Run it at the end of every part and before 
 Four steps, in this order, every time. Stop at the first thing missing: that is the current
 step, and the part is not done until it is filled.
 
-1. Run `uv run python run_all.py` and paste its output in full. Do not summarize it and do not
-   say whether the numbers look right.
+1. Run `uv run python run_all.py --part N`, with N the part being checked, and paste its output
+   in full. `--part N` stops after Part N, so a later part's results never appear before the
+   student has said what they expect from it. Before submission, run it with no `--part`. Do
+   not summarize the output and do not say whether the numbers look right.
 2. Read `WRITEUP.md` in full and name, one line each, every slot in **this part's section** that
    is still `XXXX`. Name them and ask what each needs; do not suggest wording. A prediction slot
    that a result has contradicted is not reworded; the "Revisited" slot at the end of Part 3

@@ -6,10 +6,9 @@ description: First-time setup, run once after cloning the fork. Adds the upstrea
 Do these in order and show what you ran. Skip what is already done. If something fails, say in
 plain words what it means and what to change, and stop there.
 
-1. Add the `upstream` remote if it is missing:
-   `git remote add upstream "${RI_UPSTREAM:-https://github.com/shilad/comp440-ratings-influence}"`
-   It is there in case a fix to the template has to go out mid-activity. `RI_UPSTREAM` is
-   normally unset, and then the address shown above is the one used.
+1. Add the `upstream` remote if it is missing, with the address typed out, no variables:
+   `git remote add upstream https://github.com/shilad/comp440-ratings-influence`
+   It is there in case a fix to the template has to go out mid-activity.
 2. `uv sync`, then `uv run python measures.py` and `uv run python choose.py`. The first prints
    five "ok" lines; the second prints the hand check with A 0.5 and B 0.5. That proves the
    install without running the market: nothing runs before the Part 0 commit, not even

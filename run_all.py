@@ -1,10 +1,12 @@
 """
 Run every part, start to finish, and say what is still missing.
 
-    uv run python run_all.py
+    uv run python run_all.py            everything, before you submit
+    uv run python run_all.py --part 3   Parts 1 to 3 only: the end-of-part checkpoint
 
 Runs measures.py's self-check, then Parts 1 to 5, then Part 6 once the line ending "delete this
-line when you start" is gone from part6_assumption.py. A part that stops, because it failed or
+line when you start" is gone from part6_assumption.py. With --part N it stops after Part N, so
+that a later part's results never appear before you have said what you expect from it. A part that stops, because it failed or
 because what it needs is not done yet (Part 3's rule in choose.py, your policy in my_policy.py),
 does not stop the others.
 
@@ -84,10 +86,21 @@ def blank_slots():
     return slots
 
 
+def through_part(argv):
+    """The last part to run: 6, or N from "--part N"."""
+    if "--part" in argv:
+        return int(argv[argv.index("--part") + 1])
+    return 6
+
+
 def main():
+    through = through_part(sys.argv)
     self_check, _ = run("measures.py")
     finished, stopped = set(), {}   # parts that ran to the end; part -> why one did not
     for part, (script, _) in PARTS.items():
+        if part > through:
+            stopped[part] = f"not run, after --part {through}"
+            continue
         if part == 6 and SENTINEL in (REPO / script).read_text(encoding="utf-8"):
             print(f"\n== {script} ==\nnot started: it still has the line ending "
                   f"\"{SENTINEL}\".")
@@ -132,7 +145,7 @@ def main():
             print(f"  {name}: still XXXX: {label}")
             missing += 1
     if not missing:
-        print("  nothing.")
+        print("  nothing, in the parts that count so far.")
     print(f"\n{missing} missing in the parts that count so far.")
     return 1 if missing else 0
 

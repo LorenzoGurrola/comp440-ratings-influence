@@ -35,6 +35,7 @@ The model ships with users who ignore the download counts. You add the social in
    says what a figure means.
 3. You check one of Claude's numbers by hand in Part 1, and one number from your own rule by hand
    in Part 3.
+4. Each part ends with `/checkpoint`, which lists what is still blank and commits the part.
 
 Claude records the transcript of your sessions to share with Shilad.
 
@@ -56,7 +57,8 @@ matched. Then one sentence: what does the figure show?
 ### Part 2. The recommender (in class)
 
 Open `policy.py`. It is short. Tell Claude, in your own words, what `top_five` shows each user and
-what it can never show. Claude corrects you if you have the code wrong. Then have Claude run
+what it can never show. Claude corrects you if you have the code wrong, and you write down what
+it corrected. Then have Claude run
 `part2_policy.py`: the same users, still ignoring the counts, now see the five most downloaded
 artists. What changed against Part 1, in one sentence?
 
@@ -73,8 +75,10 @@ rule to put in is the paper's idea, made specific:
 
 Tell Claude the rule in your own words. Claude writes it into `choice_weights()` and runs the
 two-artist hand check; work that case out yourself and say whether it matched. Then pick the
-social-influence levels for `part3_influence.py`, say what shape you expect, and read the two
-curves against the paper's Figures 1 and 2. One sentence each: direction, not size.
+social-influence levels for `part3_influence.py` (it ships with 0, 0.25, 0.5, 0.75 and 1; keep
+them or change them), say what shape you expect, and read the two curves against the paper's
+Figures 1 and 2. One sentence each: direction, not size. Then go back to your Part 0
+predictions: the last slot in Part 3 asks which were wrong.
 
 ### Part 4. What is shown
 

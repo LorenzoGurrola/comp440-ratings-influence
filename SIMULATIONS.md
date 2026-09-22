@@ -11,9 +11,15 @@ person typing as a student for Parts 0 to 3. That person is a session or the ins
 scripted driver. Each run gets a note in `sims/` (a few lines: date, persona, minutes per part,
 what broke, what was fixed) and its `TRANSCRIPT.md` copied next to the note.
 
-Setup for a run: `git clone <your fork> /tmp/ri-<persona> && cd /tmp/ri-<persona> && claude`.
-The fork's `origin` must not be the template, or `/setup` adds `upstream` twice. Leave
-`RI_UPSTREAM` unset.
+Setup for a run: `git clone <your fork> /tmp/ri-<persona> && cd /tmp/ri-<persona> && claude`,
+then type as the student. Accept the trust dialog and the hooks, as a student would.
+
+**Driving a run from a session instead of a keyboard** (how run 1 was done): `claude -p
+"<message>"` in the clone, with `--continue` on every turn after the first, a fresh
+`--session-id` on the first, `--permission-prompts none`, and the template's `permissions.allow`
+entries passed as `--allowedTools`, because non-interactive mode skips the trust dialog and
+would otherwise deny `uv sync` and every script. Never `--dangerously-skip-permissions`. Each
+turn's output goes to a log; the note is written from the logs and the clone's `git log`.
 
 ## The three runs
 
@@ -25,6 +31,16 @@ The fork's `origin` must not be the template, or `/setup` adds `upstream` twice.
 
 Run 1 first; fix what it finds; then 2 and 3. If a run finds a template bug, the fix is a commit
 to `main` here, and the note says which commit.
+
+**Run 1 was done Sep 22** (`sims/run1-straight.md`): Parts 0 to 3 in 18 turns, every part
+under its time budget, the run gate held, nothing interpreted for the student. It found seven
+template problems, fixed the same evening: the Part 3 checkpoint ran Part 4 and showed its
+results before the prediction was asked (`run_all.py --part N`); the tutor pointed at "output
+above" instead of pasting it; it wrote its own words into the "What Claude corrected" slot and
+reworded three others; it skipped the Part 1 figure sentence and the Part 1 checkpoint; Part 1
+printed the Gini the student was about to compute; setup's first command needed a permission
+prompt; the Stop hook misses the last message of a turn, so the transcript is also dumped at
+session start and before "YOU ARE FINISHED".
 
 ## What counts as a problem
 

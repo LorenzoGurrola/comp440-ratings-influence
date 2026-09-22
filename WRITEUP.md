@@ -32,7 +32,7 @@ Code: `part2_policy.py`. Figure: `figures/part2_strip.png`.
 
 **`top_five` in your words: what it shows each user, and what it can never show:** XXXX
 
-**What Claude corrected, or "nothing":** XXXX
+**What Claude corrected in your reading, in your words, or "nothing":** XXXX
 
 **What changed against Part 1, one sentence:** XXXX
 

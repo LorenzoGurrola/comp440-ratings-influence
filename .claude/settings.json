@@ -11,10 +11,10 @@
       "Bash(git push:*)",
       "Bash(ls:*)",
       "Bash(uv sync)",
-      "Bash(uv run python run_all.py)",
+      "Bash(uv run python run_all.py:*)",
       "Bash(uv run python measures.py)",
       "Bash(uv run python choose.py)",
-      "Bash(uv run python part1_independent.py)",
+      "Bash(uv run python part1_independent.py:*)",
       "Bash(uv run python part2_policy.py)",
       "Bash(uv run python part3_influence.py)",
       "Bash(uv run python part4_shown.py)",
@@ -29,7 +29,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "git fetch upstream --quiet 2>/dev/null; git log --oneline HEAD..upstream/main 2>/dev/null",
+            "command": "git fetch upstream --quiet 2>/dev/null; git log --oneline HEAD..upstream/main 2>/dev/null; uv run python dump_transcript.py >/dev/null 2>&1; exit 0",
             "timeout": 30
           }
         ]
