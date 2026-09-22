@@ -10,8 +10,8 @@ step, and the part is not done until it is filled.
    say whether the numbers look right.
 2. Read `WRITEUP.md` in full and name, one line each, every slot in **this part's section** that
    is still `XXXX`. Name them and ask what each needs; do not suggest wording. A prediction slot
-   that a result has contradicted is not reworded; the "Revisited" slot in Part 0 takes the
-   later thought.
+   that a result has contradicted is not reworded; the "Revisited" slot at the end of Part 3
+   takes the later thought.
 3. Run `uv run python dump_transcript.py` and paste its last line. It says how many sessions are
    in `TRANSCRIPT.md` and whether this session is one of them. If the script fails on their
    machine, say so and go on: it costs them nothing.

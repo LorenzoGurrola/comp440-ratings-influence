@@ -1,0 +1,50 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git log:*)",
+      "Bash(git status:*)",
+      "Bash(git remote:*)",
+      "Bash(git fetch:*)",
+      "Bash(git merge:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(ls:*)",
+      "Bash(uv sync)",
+      "Bash(uv run python run_all.py)",
+      "Bash(uv run python measures.py)",
+      "Bash(uv run python choose.py)",
+      "Bash(uv run python part1_independent.py)",
+      "Bash(uv run python part2_policy.py)",
+      "Bash(uv run python part3_influence.py)",
+      "Bash(uv run python part4_shown.py)",
+      "Bash(uv run python part5_policy.py)",
+      "Bash(uv run python part6_assumption.py)",
+      "Bash(uv run python dump_transcript.py)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "git fetch upstream --quiet 2>/dev/null; git log --oneline HEAD..upstream/main 2>/dev/null",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run python dump_transcript.py",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}

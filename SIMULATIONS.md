@@ -33,7 +33,8 @@ to `main` here, and the note says which commit.
 - Claude writes a sentence into a slot that the student did not say.
 - Claude says what a figure shows, or whether two numbers agree, before the student has.
 - The hand check passes a wrong rule, or fails the right one.
-- A part script takes more than 10 seconds at 300 worlds.
+- A single condition takes more than 10 seconds at 300 worlds (Part 3's whole sweep is about
+  half a minute, which is fine).
 - The student cannot tell from the README what to type next.
 
 ## The instructor's own run
@@ -44,7 +45,7 @@ four questions read right to the person who will stand in front of the room.
 
 ## Compute, for the record
 
-The model is plain Python. At 300 worlds a condition takes about 3 seconds, so a whole run of
-Parts 1 to 6 is under two minutes of compute; 1,000 worlds for final figures is about ten
-seconds a condition. No student needs more than that, and nothing here needs a GPU, a cluster,
-or a queue.
+The model is plain Python, kept readable on purpose. At 300 worlds a condition takes about 4
+seconds, so a whole run of Parts 1 to 6 is about two minutes of compute; 1,000 worlds for final
+figures is about 15 seconds a condition. No student needs more than that, and nothing here
+needs a GPU, a cluster, or a queue.

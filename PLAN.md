@@ -91,7 +91,7 @@ algorithm that is better in some way to you"; the measures make "better" answera
 | Conditions | One: counts shown, sorted | Three: independent; counts visible in random order (the paper's experiment 1); sorted by count (experiment 2) | Outcome 2, the presentation-order result |
 | Experiments | Two, open-ended | Seven parts, each predict, run, verify, one sentence | Outcome 6 |
 | Figures | One | Six, listed in section 5 | The instructor asked for visualizations; each figure answers one question |
-| Scale | 1000 worlds × 1000 users, pure Python, about 10 seconds a run | Vectorized, under a second a run; Gini and unpredictability are stable at 100 worlds, the win-rate measures need 1000 | A six-point sweep takes seconds, so students can afford to try things |
+| Scale | 1000 worlds × 1000 users, pure Python, about 10 seconds a run | Plain Python kept readable on purpose, about 4 seconds a condition at 300 worlds and 15 at 1,000; Gini and unpredictability are stable at 100 worlds, the win-rate measures need 1,000 | A five-level sweep is half a minute, so students can afford to try things |
 | Grading | Take-home, weight not recorded here | Slots in `WRITEUP.md` plus figures; weight and category TBD (section 9) | |
 | Time | About 2–3 hours, estimated | About 5–6 hours over twelve days | The instructor's ask: quite a bit more |
 
@@ -167,8 +167,8 @@ senior analyst.
   student states it back in their own words; Claude writes it and prints the hand-check case.
   Claude does not write it first, and does not run the sweep until the hand check is reported.
 - **Not edited by anyone:** `TRANSCRIPT.md`, `run_all.py`, `measures.py`, `load_data.py` if there
-  is one. `choose.py` is the student's in Part 3 and `sim.py`'s constants are theirs in Part 6,
-  which is the point.
+  is one. `choose.py` is the student's in Part 3; Part 6's change is made inside
+  `part6_assumption.py`, so the files Parts 1 to 5 ran stay as they were.
 
 The class's own AI agreements (v1, Sep 10: transparency about AI use, keep your own agency, know
 what AI is doing to your product and your learning) are consistent with this and can be cited on
@@ -184,7 +184,8 @@ this plan and the Sep 22 measurements, and nothing student-facing yet. Ships:
 
 | File | What | Written by |
 |---|---|---|
-| `sim.py` | The loop: worlds, arriving users, the counts; calls `policy.py` for what is shown and `choose.py` for what is picked; every constant a named parameter with the S24 default | ships; the student changes one constant in Part 6 |
+| `artists.py` | The eleven artists and their hidden true popularity | ships, not edited |
+| `sim.py` | The loop: worlds, arriving users, the counts; calls `policy.py` for what is shown and `choose.py` for what is picked; every constant a named parameter with the S24 default | ships, not edited; Part 6 passes its changed value in from `part6_assumption.py` |
 | `policy.py` | The shipped recommender: top five by count, padded at random, about a dozen lines written to be read | ships; the student explains it in Part 2, and their own policy in Part 5 goes next to it |
 | `choose.py` | The user's choice among the five shown. Ships ignoring the counts (true preference only), with the social-influence function marked for Part 3 and a printed two-artist hand-check case | ships independent; the student specifies the rule, Claude writes it |
 | `measures.py` | Gini, unpredictability, fidelity, accidental-hit rate, tested | ships, not edited |

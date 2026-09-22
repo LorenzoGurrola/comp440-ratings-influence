@@ -18,8 +18,6 @@ Answered before anything runs. Claude writes them in as you said them.
 
 **4. Can a recommender lower inequality without lowering fidelity to true taste?** XXXX
 
-**Revisited, after Part 3: which predictions were wrong, and what you now think:** XXXX
-
 ## Part 1. Users on their own
 
 Code: `part1_independent.py`. Figure: `figures/part1_strip.png`.
@@ -52,6 +50,8 @@ Code: `choose.py`, `part3_influence.py`. Figures: `figures/part3_gini.png`,
 **The Gini curve against the paper's Figure 1, one sentence:** XXXX
 
 **The unpredictability curve against the paper's Figure 2, one sentence:** XXXX
+
+**Revisited: which of your Part 0 predictions were wrong, and what you now think:** XXXX
 
 ## Part 4. What is shown
 

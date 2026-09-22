@@ -95,9 +95,10 @@ One sentence: what your rule buys and what it costs.
 
 Pick one thing the model assumes: the 1.2 position discount, the +1 pseudo-count, that counts
 enter the choice linearly, that the recommender only ever shows artists that already have a
-download, or 1,000 users per world. Say what you expect, change it, and rerun Part 3's sweep.
-Did the conclusion survive? `part6_assumption.py` also draws twelve worlds unfolding user by
-user. Two sentences.
+download, or 1,000 users per world. Say what you expect. Claude makes the change inside
+`part6_assumption.py`, so the files Parts 1 to 5 ran stay as they were, and reruns Part 3's
+sweep before and after. Did the conclusion survive? The script also draws twelve worlds
+unfolding user by user. Two sentences.
 
 ### Part 7. Connections, and working with Claude
 
@@ -116,8 +117,8 @@ Tell Claude when you have. It will say **YOU ARE FINISHED!** Due **[TBD]**.
 you chose something; the rule in Part 3 and the policy in Part 5 as you describe them. Claude
 writes down what you said, word for word.
 
-**Never edited by anyone**: `TRANSCRIPT.md`, `run_all.py`, `measures.py`, `policy.py`, and
-`sim.py` except the one constant you change in Part 6.
+**Never edited by anyone**: `TRANSCRIPT.md`, `run_all.py`, `measures.py`, `policy.py`,
+`sim.py` and `artists.py`; and `choose.py` once its hand check has passed.
 
 **AI encouraged**: all the code, the figures, the hand-check arithmetic once you have done it
 yourself, and any extra experiment you want to run.

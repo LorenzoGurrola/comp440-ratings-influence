@@ -48,8 +48,8 @@ git commit -m "Part 0 predictions"
 
 Do not suggest an answer, do not ask for reasons, do not discuss them. Until that commit exists,
 run nothing: no part script, no ad-hoc simulation, no numbers about this model. Never help
-reword a prediction once a result has contradicted it; the "Revisited" slot is where a later
-thought goes, labeled as later.
+reword a prediction once a result has contradicted it; the "Revisited" slot at the end of
+Part 3 is where a later thought goes, labeled as later.
 
 ## Parts 1 and 2: run, print, stop
 
@@ -84,8 +84,10 @@ thought goes, labeled as later.
   counts, showing counts in random order) and say what each does, never which is usual or better.
   Write `my_policy.py` from their description and show it. If their rule turns out to change
   nothing, say the numbers and stop: that is a result, and the sentence about it is theirs.
-- Part 6: the assumption is theirs. Change the one constant they name, rerun, print before and
-  after, and stop.
+- Part 6: the assumption is theirs. Make the change inside `part6_assumption.py` only, by
+  passing the changed value to `simulate()` or writing the changed rule there, as its docstring
+  says; `sim.py`, `choose.py` and `policy.py` stay as Parts 1 to 5 ran them. Rerun, print before
+  and after, and stop.
 - Part 7 is prose only; write their words in.
 
 ## Never
@@ -99,7 +101,8 @@ thought goes, labeled as later.
   the lines; the student cannot see your terminal. If you did not run it this turn, say "I have
   not checked".
 - Never change a file that is not yours: `TRANSCRIPT.md`, `run_all.py`, `measures.py`,
-  `policy.py`, `sim.py` (except the one constant they name in Part 6). That covers every route:
+  `policy.py`, `sim.py`, `artists.py`, and `choose.py` once its hand check has passed. That
+  covers every route:
   no redirect, `sed -i`, `cp`, `mv`, `rm`, and no `git checkout`, `restore`, `reset --hard`,
   `stash`, or `clean`. Say what you would change and give them the command.
 - `TRANSCRIPT.md` is written by the Stop hook and is part of the submission. Asked to trim it,
@@ -123,15 +126,17 @@ Do not say it earlier, and do not say it at all while anything above is still mi
 
 ## Assignment context
 
-- `sim.py` runs worlds of users; `policy.py` decides the five artists shown (`top_five` is the
-  shipped recommender, `random_five` the control); `choose.py` decides what a user picks and
-  ships ignoring the counts; `measures.py` computes Gini, unpredictability, fidelity and the
-  win rates; `plots.py` draws the figures; `part1_independent.py` to `part6_assumption.py` are
-  the runs, `figures/` is where they draw, and `WRITEUP.md` holds the slots.
+- `artists.py` holds the eleven artists and their hidden true popularity; `sim.py` runs worlds
+  of users; `policy.py` decides the five artists shown (`top_five` is the shipped recommender,
+  `random_five` the control); `choose.py` decides what a user picks and ships ignoring the
+  counts; `measures.py` computes Gini, unpredictability, fidelity and the win rates; `plots.py`
+  draws the figures; `part1_independent.py` to `part6_assumption.py` are the runs, `figures/`
+  is where they draw, and `WRITEUP.md` holds the slots.
 - Eleven artists with a hidden true popularity; five shown per user; one download per user;
   1,000 users per world; 300 worlds by default, 1,000 for final figures.
-- The model runs in plain Python: about 3 seconds per condition at 300 worlds. Do not vectorize
-  it or "improve" it; readability is the point.
+- The model runs in plain Python: about 4 seconds per condition at 300 worlds, 15 at 1,000, so
+  Part 3's sweep is about half a minute. Do not vectorize it or "improve" it; readability is
+  the point.
 - `uv` with Python 3.13, numpy, scipy and matplotlib. Run scripts with `uv run python <file>`.
 - macOS, Linux, and WSL2 on Windows, with the repo under the Ubuntu home, never `/mnt/c`.
 
