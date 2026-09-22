@@ -2,7 +2,8 @@
 
 **Draft, Sep 22.** A plan for the instructor to react to, not a build. It was written in
 `comp440-main/docs/` and moved here the same day at the instructor's ask; this file is the copy to
-edit. The repo holds nothing else yet, the module plan in `comp440-main` is untouched, and the
+edit. The repo holds this plan and the Sep 22 measurements (section 12) and nothing else yet, the
+module plan in `comp440-main` is untouched, and the
 Sep 24 deck is still the unedited copy of the S24 Feedback Effects deck. Section 9 lists the decisions the build needs; section 10 is the
 work, dated.
 
@@ -154,8 +155,8 @@ for code and figures and no-AI for the sentences.
 ## 7. Delivery
 
 **Recommended: a template repo in HW1's shape**, `shilad/comp440-ratings-influence`, public,
-forked by each student, run with Claude Code. The instructor created the repo Sep 22; this plan
-is its first commit and nothing else is in it yet. Ships:
+forked by each student, run with Claude Code. The instructor created the repo Sep 22; it holds
+this plan and the Sep 22 measurements, and nothing student-facing yet. Ships:
 
 | File | What | Written by |
 |---|---|---|
@@ -250,11 +251,9 @@ are right (section 11), so its VERIFY item on them can be closed.
 
 - [ ] Sep 22 — Instructor: the decisions in section 9, at least the first three, so the build can
   start. No build runs before a go (lecture-deck skill, stage 0, applies to the repo too).
-- [ ] Sep 22–23 — Session, on the go: fill the empty `comp440-ratings-influence` repo in HW1's
-  shape; port `sim.py` with named
-  parameters (the Sep 22 measurement scripts in `comp440-main`, under
-  `docs/influence-simulation/measurements/`, are the reference implementation; this repo ships the
-  code, never the results); write and test
+- [ ] Sep 22–23 — Session, on the go: fill the `comp440-ratings-influence` repo in HW1's shape;
+  port `sim.py` with named parameters (the Sep 22 measurement scripts in `measurements/` are the
+  reference implementation); write and test
   `measures.py` against a hand-computed Gini; write `plots.py`;
   `CLAUDE.md` per section 6; `WRITEUP.md` slots; `run_all.py`; the hook and allow-list; the
   README with the six parts, the AI guidelines and the rubric. Estimate: 4–5 hours.
@@ -303,12 +302,10 @@ are right (section 11), so its VERIFY item on them can be closed.
 ## 12. The model at the defaults, measured Sep 22
 
 The S24 notebook's mechanics were ported, unchanged, to a vectorized script and run at 1000
-worlds × 1000 users with a fixed seed. The scripts, the raw numbers and six draft figures stay in
-`comp440-main`, under `docs/influence-simulation/measurements/` (from this file,
-`../docs/influence-simulation/measurements/` when this repo is mounted there as the
-`ratings-influence/` submodule). They are answer-key material and this repo is public, so they
-are not moved here: the shipped repo carries the code and never these results. Every condition below ran in about one second, so the sweeps the
-activity asks for are cheap.
+worlds × 1000 users with a fixed seed. The scripts, the raw numbers, the report and six draft
+figures are in `measurements/` in this repo. They are the answer key to Parts 2 to 5; the
+instructor decided Sep 22 that sharing it with an activity is fine, so it ships with the repo.
+Every condition below ran in about one second, so the sweeps the activity asks for are cheap.
 
 **The social-influence sweep**, top-5 policy, position discount 1.2, pseudo-count 1:
 
@@ -380,4 +377,4 @@ so where it asks for them.
 shows artists that already have a download; the position discount; counts entering the choice
 linearly; the pseudo-count; one download per user; true popularity normalized over only the five
 shown; one scalar for everyone's social influence; independent worlds with sequential arrival.
-Part 5 draws from the first five. The full report is `REPORT.md` in that folder.
+Part 5 draws from the first five. The full report is `measurements/REPORT.md`.
