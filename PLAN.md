@@ -263,7 +263,7 @@ are right (section 11), so its VERIFY item on them can be closed.
 - [x] **Repo name and visibility.** Settled Sep 22: `shilad/comp440-ratings-influence`, public,
   created empty by the instructor.
 - [ ] **The 1.2 position discount, the +1 pseudo-count and one download per user** stay the
-  defaults, so that Part 5 has something to change. If the instructor wants different defaults,
+  defaults, so that Part 6 has something to change. If the instructor wants different defaults,
   say so before the build, not after students have forked.
 - [ ] **Exposure lock-in: keep it or fix it.** In the S24 model a user can only choose among the
   five artists shown, so the top-5 policy locks every world into whichever five got the first
