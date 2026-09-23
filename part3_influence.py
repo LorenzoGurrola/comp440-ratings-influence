@@ -24,7 +24,7 @@ from my_choice import my_choice
 from recommender import random_five, top_five
 from sim import simulate
 
-WORLDS = 300   # enough to see the pattern; use 1000 for your final figures
+WORLDS = 300   # enough to see the pattern; use 1000 for steadier numbers
 LEVELS = [0.0, 0.25, 0.5, 0.75, 1.0]   # social-influence levels, each from 0 to 1; yours to choose
 FIGURES = Path(__file__).resolve().parent / "figures"
 

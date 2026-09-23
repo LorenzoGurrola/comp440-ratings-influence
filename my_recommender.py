@@ -1,7 +1,7 @@
 """
-Your recommender, for Part 5.
+Your recommender, for Part 4.
 
-Describe your rule to Claude in words first. Claude writes it here, and part5_recommender.py
+Describe your rule to Claude in words first. Claude writes it here, and part4_recommender.py
 compares it with top_five and random_five from recommender.py, which are written the same way.
 """
 
@@ -21,4 +21,4 @@ def my_recommender(counts, rng):
     A recommender may use the counts and the list of artists (sim.ARTISTS). It must never use
     TRUE_POPULARITY: a real recommender cannot see how much users truly like each artist.
     """
-    raise NotImplementedError("Part 5: describe your rule to Claude first")
+    raise NotImplementedError("Part 4: describe your rule to Claude first")

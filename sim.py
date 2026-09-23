@@ -18,27 +18,28 @@ Each part passes the recommender and the choice rule it needs, so no part change
 part ran.
 
 A market share is an artist's downloads divided by the world's downloads. NUM_SHOWN and USERS
-below are two of the model's assumptions, and Part 6 asks you to change one assumption. For users
-per world, pass users= to simulate() in part6_assumption.py, which changes Part 6 alone; editing
-a value here would change every part the next time it runs, including the Part 3 figures you have
-already written about. The assumptions inside the choice, the 1.2 position discount and the +1
-among them, live in your own rule in my_choice.py, and Part 6 changes one of those by copying
-my_choice() into part6_assumption.py and making the change in the copy.
+below are two of the model's assumptions, and the optional follow-up asks you to change one
+assumption. For users per world, pass users= to simulate() in followup_assumption.py, which
+changes that follow-up alone; editing a value here would change every part the next time it
+runs, including the Part 3 figures you have already written about. The assumptions inside the
+choice, the 1.2 position discount and the +1 among them, live in your own rule in my_choice.py,
+and the follow-up changes one of those by copying my_choice() into followup_assumption.py and
+making the change in the copy.
 """
 
 import numpy as np
 
 # The eleven artists, most popular first, and their hidden true popularity. They are defined
 # in artists.py so that choose.py can read them without importing this file.
-# Assumption (Part 6): which artists there are, and how much users like each.
+# Assumption (the follow-up): which artists there are, and how much users like each.
 from artists import ARTISTS, TRUE_POPULARITY
 
 # How many artists each user is shown. The recommenders in recommender.py show this many.
-# Assumption (Part 6): the paper's participants saw all 48 songs; here a user sees five.
+# Assumption (the follow-up): the paper's participants saw all 48 songs; here a user sees five.
 NUM_SHOWN = 5
 
 # Users per world. Each user downloads exactly one artist.
-# Assumption (Part 6): a classroom-sized market, 12 people choosing 3 times, is 36 users.
+# Assumption (the follow-up): a classroom-sized market, 12 people choosing 3 times, is 36 users.
 USERS = 1000
 
 

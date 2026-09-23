@@ -33,6 +33,18 @@ counts and have the student implement social influence: Parts 1 to 3 are now in 
 model ships without social influence, and the exposure lock-in decision in section 9 is proposed
 closed by that order rather than by a new parameter.
 
+**Cut to one class period, Sep 22 (the instructor's ask).** "Good learning outcomes in 60-90
+minutes, with opportunities for follow ups, and grading for completion only." The core activity is
+now six parts that fit one class period: Part 0 predictions, Part 1 users on their own, Part 2 the
+recommender, Part 3 social influence, Part 4 the student's own recommender, Part 5 a two-sentence
+reflection; about 70 minutes together, graded for completion, with a commit at the end of each part
+and one checkpoint at the end instead of one per part. The old Part 4 (what is shown, the paper's
+experiments 1 and 2) is now the optional follow-up `followup_shown.py`, and the old Part 6 (one
+assumption) the optional follow-up `followup_assumption.py`; neither is graded, and `run_all.py`
+never counts their slots as missing. The old Part 5 became Part 4, and the old Part 7 became Part 5.
+The tables and times in sections 1, 4, 5 and 8 below still describe the five-to-six-hour version and
+have not been rewritten.
+
 ## 1. Learning outcomes
 
 Each outcome names the evidence in the student's submission that shows it. The module's third
@@ -307,6 +319,23 @@ are right (section 11), so its VERIFY item on them can be closed.
   renamed `recommender` throughout (`my_recommender.py`, `part2_recommender.py`,
   `part5_recommender.py`). Part 4 now compares the top five shown in random order with the top
   five sorted by count, which is what the paper's experiment 1 did.
+- [x] Sep 22 — Recut to 60–90 minutes and to completion grading, at the instructor's ask, in two
+  commits. First: a recommender now returns two things, the artists shown and the download counts
+  shown with them, and `sim.py` passes those shown counts to the choice rule, so a user's choice
+  depends only on what that user saw. Hiding or shrinking the counts is therefore something a
+  student's Part 4 recommender can really do, and it moves the numbers (over 50 worlds at social
+  influence 0.5, hiding them takes Gini from 0.680 to 0.627 and fidelity from 0.313 to 0.343;
+  dividing every shown count by ten takes fidelity to 0.400, where the Sep 22 measurements found
+  damping did nothing). Every shipped number is unchanged: the old Parts 1 to 5 print byte-identical
+  tables before and after. Second: the core is six parts; `part5_recommender.py` became
+  `part4_recommender.py`, `part4_shown.py` became `followup_shown.py`, `part6_assumption.py` became
+  `followup_assumption.py`, and their figures were renamed to match; `run_all.py` counts the four
+  core scripts and Part 5's slots and reports the follow-ups without ever counting them; the
+  README's rubric is completion-based; `CLAUDE.md` replaced the per-part checkpoint with a per-part
+  commit plus one checkpoint at the end, and offers the follow-ups once, at the end. Outcome 3 in
+  section 1 now rests on Part 5's reflection and outcome 5 on an optional follow-up, so the
+  activity no longer guarantees either. Still the instructor's: the due date, the weight and
+  category, pairs or individual (section 9).
 - [ ] Sep 22–23 — Session: the three simulated-student runs in `SIMULATIONS.md`, notes in
   `sims/`; fix what they find. Then the instructor runs Part 0 himself once.
 - [ ] Sep 23 — Session, with the instructor's go: add the launch slides to the Sep 24 deck (the

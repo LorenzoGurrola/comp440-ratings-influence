@@ -21,7 +21,7 @@ from choose import independent_choice
 from recommender import random_five
 from sim import ARTISTS, simulate
 
-WORLDS = 300   # enough to see the pattern in a few seconds; use 1000 for your final figures
+WORLDS = 300   # enough to see the pattern in a few seconds; use 1000 for steadier numbers
 FIGURES = Path(__file__).resolve().parent / "figures"
 
 

@@ -1,15 +1,15 @@
 """
 Run the parts, start to finish, and say what is still missing.
 
-    uv run python run_all.py              every part: before you submit
-    uv run python run_all.py --part 3     Parts 1 to 3 only: the end-of-part checkpoint
-    uv run python run_all.py --verbose    every script's full output as well
+    uv run python run_all.py              every part and every follow-up: before you submit
+    uv run python run_all.py --part 3      Parts 1 to 3 only
+    uv run python run_all.py --verbose     every script's full output as well
 
-Runs measures.py's self-check, then Parts 1 to 5, then Part 6 once the line ending "delete this
-line when you start" is gone from part6_assumption.py. With --part N it stops after Part N, so
-that a later part's results never appear before you have said what you expect from it. A part
-that stops, because it failed or because what it needs is not done yet (Part 3's rule in
-my_choice.py, your recommender in my_recommender.py), does not stop the others.
+Runs measures.py's self-check, then the core Parts 1 to 4, then the optional follow-ups. Part 5
+is the reflection: it has slots and no script. With --part N it stops after Part N and skips the
+follow-ups, so that a later part's results never appear before you have said what you expect from
+it. A part that stops, because it failed or because what it needs is not done yet (Part 3's rule
+in my_choice.py, your recommender in my_recommender.py), does not stop the others.
 
 Each part gets one line: "ran" and how long it took; "stopped:" and the last line its script
 printed, which says why; "not started"; or "not run" after --part N. The scripts' own output is
@@ -19,8 +19,9 @@ script, or add --verbose to print every script's output in full above its line.
 Then it lists what is missing: the slots in WRITEUP.md still holding XXXX, under each part's
 "## Part N" heading, and the figures a part promises that are not in figures/. A part counts
 once it, or any later part, has run to the end; the name and date and Part 0 always count, and
-Part 7 counts once Part 6 has run. A part that does not count yet is listed but never held
-against you, so this is safe to run from the first day. With --part N it ends with every slot
+Part 5 counts once Part 4 has run. A part that does not count yet is listed but never held
+against you, so this is safe to run from the first day. The follow-ups and their slots are
+reported and never counted as missing: they are optional. With --part N it ends with every slot
 under "## Part N" as it now reads, each answer cut at 120 characters, to check that your words
 landed as you said them. The exit code is 0 when nothing that counts is missing, and 1
 otherwise. Presence and form only: nothing here says whether an answer is right.
@@ -38,15 +39,24 @@ WRITEUP = REPO / "WRITEUP.md"
 FIGURES = REPO / "figures"
 SENTINEL = "# delete this line when you start"
 
-# part number -> (its script, the figures its docstring promises)
+# The core parts, graded for completion. part number -> (its script, the figures its docstring
+# promises). Part 5, the reflection, has slots and no script.
 PARTS = {
     1: ("part1_independent.py", ["part1_strip.png"]),
     2: ("part2_recommender.py", ["part2_strip.png"]),
     3: ("part3_influence.py", ["part3_gini.png", "part3_unpredictability.png"]),
-    4: ("part4_shown.py", ["part4_quality_vs_success.png"]),
-    5: ("part5_recommender.py", ["part5_recommenders.png"]),
-    6: ("part6_assumption.py", ["part6_trajectories.png"]),
+    4: ("part4_recommender.py", ["part4_recommenders.png"]),
 }
+LAST_PART = 5
+
+# The optional follow-ups. name -> (its script, the figures it promises). Nothing here is graded
+# and nothing here is ever counted as missing.
+FOLLOWUPS = {
+    "what is shown": ("followup_shown.py", ["followup_quality_vs_success.png"]),
+    "one assumption": ("followup_assumption.py", ["followup_trajectories.png"]),
+}
+# The key `slots()` gives every WRITEUP.md slot under the "## Follow-ups" heading.
+FOLLOWUPS_KEY = "followups"
 
 # A slot in WRITEUP.md: a bold label ending in ":" or "?", then the answer: "**Label:** answer".
 LABEL = re.compile(r"\*\*(.+?[:?])\s*\*\*(.*)")
@@ -71,15 +81,17 @@ def run(script, verbose):
 
 def slots():
     """Every slot in WRITEUP.md, in order, as [part, label, answer]. Part None is the lines above
-    the first "## Part" heading. The answer is the rest of the label's line and the lines under
-    it, up to a blank line; when nothing follows the label, the next paragraph. A label may wrap
-    over lines."""
+    the first heading; part FOLLOWUPS_KEY is the lines under "## Follow-ups". The answer is the
+    rest of the label's line and the lines under it, up to a blank line; when nothing follows the
+    label, the next paragraph. A label may wrap over lines."""
     found, part, pending, reading = [], None, "", False
     for line in WRITEUP.read_text(encoding="utf-8").splitlines():
         if line.startswith("#"):
             heading = re.match(r"##\s+Part\s+(\d+)", line)
             if heading:
                 part = int(heading.group(1))
+            elif re.match(r"##\s+Follow-ups", line):
+                part = FOLLOWUPS_KEY
             pending, reading = "", False
             continue
         if not line.strip():
@@ -125,10 +137,10 @@ def print_as_written(part):
 
 
 def through_part(argv):
-    """The last part to run: 6, or N from "--part N"."""
+    """The last part to run: LAST_PART, or N from "--part N"."""
     if "--part" in argv:
         return int(argv[argv.index("--part") + 1])
-    return 6
+    return LAST_PART
 
 
 def main():
@@ -139,8 +151,6 @@ def main():
     for part, (script, _) in PARTS.items():
         if part > through:
             status[part] = f"not run, after --part {through}"
-        elif part == 6 and SENTINEL in (REPO / script).read_text(encoding="utf-8"):
-            status[part] = "not started"
         else:
             code, last, seconds = run(script, verbose)
             if code == 0:
@@ -150,11 +160,23 @@ def main():
                 status[part] = f"stopped: {last.rstrip('.') or f'exit code {code}'}"
         print(f"part {part}: {status[part]}", flush=True)
 
+    follow_status = {}
+    for name, (script, _) in FOLLOWUPS.items():
+        if through < LAST_PART:
+            follow_status[name] = f"not run, after --part {through}"
+        elif SENTINEL in (REPO / script).read_text(encoding="utf-8"):
+            follow_status[name] = "not started"
+        else:
+            code, last, seconds = run(script, verbose)
+            follow_status[name] = (f"ran, {seconds:.1f} s" if code == 0
+                                   else f"stopped: {last.rstrip('.') or f'exit code {code}'}")
+        print(f"follow-up, {name}: {follow_status[name]}   (optional)", flush=True)
+
     counted = {None, *range(max(finished, default=0) + 1)}
-    if 6 in finished:
-        counted.add(7)
+    if max(PARTS) in finished:
+        counted.add(LAST_PART)
     else:
-        status[7] = "it counts once Part 6 has run"
+        status[LAST_PART] = f"it counts once Part {max(PARTS)} has run"
     blank = blank_slots() if WRITEUP.exists() else {}
     missing = 0
 
@@ -165,15 +187,15 @@ def main():
     if not WRITEUP.exists():
         print("  WRITEUP.md is missing, so its slots were not checked.")
         missing += 1
-    for part in [None, *range(8)]:
+    for part in [None, *range(LAST_PART + 1)]:
         name = "name and date" if part is None else f"part {part}"
         labels = blank.get(part, [])
         if part not in counted:
-            why = status.get(part, "not reached").split(":")[0]   # "stopped", "not started", ...
+            why = status.get(part, "not reached").split(":")[0]   # "stopped", "not run", ...
             count = f"{len(labels)} slot{'' if len(labels) == 1 else 's'} still XXXX"
             print(f"  {name}: does not count yet ({why}); {count}.")
             continue
-        if part in status and part not in finished:   # it counts, but did not run to the end
+        if part in status and part not in finished and part in PARTS:   # counts, did not finish
             print(f"  {name}: {status[part]}.")
             missing += 1
         for figure in PARTS.get(part, ("", []))[1]:
@@ -183,6 +205,8 @@ def main():
         for label in labels:
             print(f"  {name}: still XXXX: {label}")
             missing += 1
+    for label in blank.get(FOLLOWUPS_KEY, []):
+        print(f"  follow-up slot, not counted: {label}")
     if not missing:
         print("  nothing, in the parts that count so far.")
     print(f"\n{missing} missing in the parts that count so far.")

@@ -41,9 +41,9 @@ Code: `my_choice.py`, `hand_check.py`, `part3_influence.py`. Figures: `figures/p
 
 **The rule in your words:** XXXX
 
-**Hand check, in your words: your A and B, what your code printed, what the rule gives, and whether they matched:** XXXX
+**Hand check, in your words: your numbers for Bruno Mars and Justin Bieber, what your code printed, what the rule gives, and whether they matched:** XXXX
 
-**Levels and expected shape, as you told Claude before the run:** XXXX
+**The shape you expect the two curves to have, as you told Claude before the run:** XXXX
 
 **The Gini curve against the paper's Figure 1, one sentence:** XXXX
 
@@ -51,17 +51,9 @@ Code: `my_choice.py`, `hand_check.py`, `part3_influence.py`. Figures: `figures/p
 
 **Revisited: which of your Part 0 predictions were wrong, and what you now think:** XXXX
 
-## Part 4. What is shown
+## Part 4. Your recommender
 
-Code: `part4_shown.py`. Figure: `figures/part4_quality_vs_success.png`.
-
-**What you expect, as you told Claude before the run:** XXXX
-
-**Which market moved success further from quality, and how far, one sentence:** XXXX
-
-## Part 5. Your recommender
-
-Code: `my_recommender.py`, `part5_recommender.py`. Figure: `figures/part5_recommenders.png`.
+Code: `my_recommender.py`, `part4_recommender.py`. Figure: `figures/part4_recommenders.png`.
 
 **Your rule in words, before any code:** XXXX
 
@@ -69,25 +61,19 @@ Code: `my_recommender.py`, `part5_recommender.py`. Figure: `figures/part5_recomm
 
 **What it bought and what it cost, one sentence:** XXXX
 
-## Part 6. One assumption
+## Part 5. Reflection
 
-Code: `part6_assumption.py`. Figure: `figures/part6_trajectories.png`.
+**Where this shows up in data you have already handled, or in an interface you use, one sentence:** XXXX
 
-**The assumption you changed, and why that one:** XXXX
+**One sentence on working with Claude: a moment it was wrong or overconfident, or a judgment you kept for yourself:** XXXX
 
-**What you expect, as you told Claude before the run:** XXXX
+## Follow-ups
 
-**Before and after, per level:** XXXX
+Optional, and not graded. Nothing under this heading is ever counted as missing: leave a slot as
+`XXXX` if you did not do that follow-up.
 
-**Did the Part 3 conclusion survive? One sentence:** XXXX
+**What is shown (`followup_shown.py`): which market moved success further from quality, and how far:** XXXX
 
-## Part 7. Connections, and working with Claude
+**One assumption (`followup_assumption.py`): the assumption you changed, and whether the Part 3 conclusion survived:** XXXX
 
-**Where this shows up in data you have already handled, one sentence:** XXXX
-
-**Where it shows up in an interface, one sentence:** XXXX
-
-**A moment Claude was wrong or overconfident, how you caught it, and the session it happened
-in (the `## Session` header in `TRANSCRIPT.md`):** XXXX
-
-**Would asking Claude "what does this show?" have produced your sentence? Why or why not:** XXXX
+**Anything else you tried, and what it showed:** XXXX

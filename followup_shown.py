@@ -1,7 +1,7 @@
 """
-Part 4: what is shown.
+Follow-up: what is shown. Optional, not graded.
 
-    uv run python part4_shown.py
+    uv run python followup_shown.py
 
 Two markets at social influence 0.5. Both show the five most downloaded artists (top_five in
 recommender.py) and both use your Part 3 rule, as in the paper's two experiments:
@@ -13,8 +13,8 @@ recommender.py) and both use your Part 3 rule, as in the paper's two experiments
 Needs Part 3's rule in my_choice.py; without it, it says so and stops. Prints one table of the five
 measures, WORLDS worlds per row: the independent condition (Part 1's run: random_five with the
 shipped choice rule at social influence 0, the same worlds), then each market. Saves
-figures/part4_quality_vs_success.png, the paper's Figure 3 for each market: an artist's share, and
-its rank, in the independent condition against the same in each world of the market.
+figures/followup_quality_vs_success.png, the paper's Figure 3 for each market: an artist's share,
+and its rank, in the independent condition against the same in each world of the market.
 """
 
 import sys
@@ -28,7 +28,7 @@ from my_choice import my_choice
 from recommender import random_five, top_five
 from sim import simulate
 
-WORLDS = 300   # enough to see the pattern; use 1000 for your final figures
+WORLDS = 300   # enough to see the pattern; use 1000 if you want steadier numbers
 SOCIAL_INFLUENCE = 0.5
 FIGURES = Path(__file__).resolve().parent / "figures"
 
@@ -45,8 +45,8 @@ CONDITIONS = {"random order": shuffled_top_five, "sorted by count": top_five}
 
 def main():
     if not hand_check.passes():
-        print("Part 4 needs Part 3's rule in my_choice.py, and the hand check does not pass yet; "
-              "uv run python hand_check.py shows the case.")
+        print("This follow-up needs Part 3's rule in my_choice.py, and the hand check does not "
+              "pass yet; uv run python hand_check.py shows the case.")
         return 1
 
     independent = simulate(random_five, independent_choice, WORLDS, social_influence=0.0)
@@ -59,7 +59,7 @@ def main():
     measures.print_table(rows)
 
     path = plots.quality_vs_success(independent, shares_by_condition,
-                                    FIGURES / "part4_quality_vs_success.png")
+                                    FIGURES / "followup_quality_vs_success.png")
     print(f"\nSaved figures/{path.name}")
     return 0
 
