@@ -8,34 +8,27 @@ hours. Questions go to `#comp440-f26`.
 
 ## Goals
 
-* To turn the paper's two claims, inequality and unpredictability, into numbers you compute.
-* To see what a recommender does to a market on its own, before anyone copies anyone.
-* To put social influence into a model yourself and watch what it changes.
-* To say what a simulation is and is not evidence for, by changing one assumption.
-* To direct Claude through an experiment while every prediction and every reading stays yours.
+* To have you compute numbers behind the paper's two claims: inequality and unpredictability.
+* To incorporate social influence into a model yourself and watch what it changes.
+* To understand the possibilities and limitations of simulations, and see how they shift by changing assumptions.
 
 ## Overview
 
 Salganik, Dodds and Watts built an artificial music market: 14,341 people downloaded songs by
 unknown bands, in eight separate worlds where they could see each song's download count and one
-world where they could not. The same song was a hit in one world and a flop in another.
+world where they could not. A song could be a hit in one world and a flop in another.
 
-You will run a small version of that market hundreds of times. Eleven artists have a hidden true
-popularity. Each simulated user is shown five artists by a recommender and picks one. A world is
+You will run a small version of that market hundreds of times. Eleven artists have a hidden **true
+popularity**. Each simulated user is shown five artists by a recommender and picks one. A world is
 1,000 users in a row; you run hundreds of worlds from the same start and measure how unequal each
 world ends up and how much the worlds differ from each other.
 
-The model ships with users who ignore the download counts. You add the social influence.
+The model ships with users who ignore the download counts (the independent world). You will add social influence.
 
 ## How this activity works
 
-1. Claude does the mechanical work: it runs the model, computes the measures, draws the figures,
-   and writes your words into `WRITEUP.md`.
-2. Before every run you say what you expect. After every run you say what it shows. Claude never
-   says what a figure means.
-3. You check one of Claude's numbers by hand in Part 1, and one number from your own rule by hand
-   in Part 3.
-4. Each part ends with `/checkpoint`, which lists what is still blank and commits the part.
+1. Claude codes, runs the simulation, computes the measures and draws the figures.
+2. You determine approaches and strategies, hypothesize about what will happen, and interpret the results.
 
 Claude records the transcript of your sessions to share with Shilad.
 
@@ -43,22 +36,23 @@ Claude records the transcript of your sessions to share with Shilad.
 
 ### Part 0. Predictions (in class)
 
-Fork this repo, clone your fork, start `claude`, approve the hooks, and type `/setup`. Claude
+Fork this repo, clone your fork, start `claude`, and type `/setup`. Claude
 asks your name, then four questions. Answer each in a word or a line. Claude commits your answers
 before anything runs; that is what they are for.
 
 ### Part 1. Users on their own (in class)
 
 `part1_independent.py` runs the market as it ships: each user sees five random artists and picks
-by taste alone. Claude runs it, prints one world's shares, and draws the strip plot. Recompute
-that world's Gini by hand (the formula is at the top of `measures.py`) and tell Claude whether it
-matched. Then one sentence: what does the figure show?
+by taste with no social influence. Claude runs it, prints one world's shares, and draws the strip plot. 
+Type one sentence: what does the figure show?
 
 ### Part 2. The recommender (in class)
 
 Open `policy.py`. It is short. Tell Claude, in your own words, what `top_five` shows each user and
 what it can never show. Claude corrects you if you have the code wrong, and you write down what
-it corrected. Then have Claude run
+it corrected. 
+
+Then have Claude run
 `part2_policy.py`: the same users, still ignoring the counts, now see the five most downloaded
 artists. What changed against Part 1, in one sentence?
 
