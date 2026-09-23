@@ -110,8 +110,9 @@ There is no single right rule. Some things to consider as you design your rule:
    user picks, how `social_influence`, from 0 to 1, should set the mix between the counts and a
    user's own taste, and whether an artist's place on the list should matter. Claude writes the
    rule into `my_choice.py` from your answers and shows you the code.
-2. The hand check. Claude runs `hand_check.py`, which prints a two-artist case and each step of
-   your rule computed on it, and asks whether each step does what you meant. If one does not,
+2. The hand check. Claude shows you a two-artist case and asks which artist your rule should
+   favor, and by a little or a lot. Then it runs `hand_check.py`, which prints each step of your
+   rule computed on that case, and asks whether the result matches what you said. If it does not,
    Claude asks what you want to change.
 3. Claude asks what shape you expect the curves to have, then runs `part3_influence.py` at
    social-influence levels 0, 0.25, 0.5, 0.75 and 1. You may ask for other levels, but you do
@@ -195,7 +196,7 @@ nothing is missing, the activity is complete.
 | 0. Predictions | Four predictions committed before anything runs |
 | 1. Users on their own | `part1_independent.py` has run; what the two measures show and what the figure shows, in your words |
 | 2. The recommender | `part2_recommender.py` has run; `top_five` in your words, what Claude corrected, what changed |
-| 3. Social influence | Your rule in your words and in `my_choice.py`, the hand check reported, `part3_influence.py` has run, what the curves show, and the revisited predictions |
+| 3. Social influence | Your rule in your words and in `my_choice.py`, your two hand-check answers, the shape you expected, what you changed, `part3_influence.py` has run, what the curves show, and the revisited predictions |
 | 4. Your recommender | Your rule described before any code, what you expected, `part4_recommender.py` has run, the tradeoff sentence |
 | 5. Reflection | Both sentences |
 | Follow-ups | Optional. Not graded, and never counted as missing |

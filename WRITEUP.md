@@ -44,11 +44,13 @@ Code: `my_choice.py`, `hand_check.py`, `part3_influence.py`. Figures: `figures/p
 
 **Your rule in your words:** XXXX
 
-**Hand check: whether each step matched what you meant, and anything you changed:** XXXX
+**Hand check, before the table: which artist your rule should favor, and by a little or a lot:** XXXX
+
+**Hand check: whether the table matched what you said:** XXXX
 
 **The shape you expect the two curves to have, as you told Claude before the run:** XXXX
 
-**What you changed in your rule after Claude's questions, or "nothing":** XXXX
+**What you changed in your rule, at the hand check or after the run, or "nothing":** XXXX
 
 **What the two curves show against the paper's Figures 1 and 2, in one or two sentences:** XXXX
 
@@ -75,8 +77,12 @@ Code: `my_recommender.py`, `part4_recommender.py`. Figure: `figures/part4_recomm
 Optional, and not graded. Nothing under this heading is ever counted as missing: leave a slot as
 `XXXX` if you did not do that follow-up.
 
-**What is shown (`followup_shown.py`): which market moved success further from quality, and how far:** XXXX
+**What is shown (`followup_shown.py`): which market moved success further from quality:** XXXX
 
-**One assumption (`followup_assumption.py`): the assumption you changed, and whether the Part 3 conclusion survived:** XXXX
+**One assumption (`followup_assumption.py`): the assumption you changed:** XXXX
 
-**Anything else you tried, and what it showed:** XXXX
+**One assumption: whether the Part 3 conclusion survived:** XXXX
+
+**Anything else you tried:** XXXX
+
+**Anything else: what it showed:** XXXX

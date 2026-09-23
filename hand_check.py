@@ -1,12 +1,15 @@
 """
 The two-artist hand check for Part 3.
 
-    uv run python hand_check.py
+    uv run python hand_check.py --case    the case alone, before you say what your rule should do
+    uv run python hand_check.py           the case, then each step of your rule on it
 
 Prints the case, then each step of your rule computed on it, one row per step, with the label
-the rule gave that step (step() in choose.py), and last the chances my_choice() returns. You
-read the rows and say whether each step does what you meant. There is no single right answer
-and nothing to work out by hand: the check is whether the code does what you meant.
+the rule gave that step (step() in choose.py), and last the chances my_choice() returns. With
+--case it prints the case and nothing else, so that you can say first which artist your rule
+should favor, and by how much. Then you read the rows and say whether they match what you said.
+There is no single right answer and nothing to work out by hand: the check is whether the code
+does what you meant.
 
 passes() is the gate for Parts 3 and 4: my_choice is written, runs on the case, and returns two
 chances that are zero or more and sum to 1. problem() says in plain words why it does not pass.
@@ -14,6 +17,7 @@ Nothing in this file changes.
 """
 
 import math
+import sys
 
 import choose
 from artists import TRUE_POPULARITY
@@ -101,14 +105,19 @@ def row(label, values):
     return f"  {label:<{LABEL_WIDTH}}{numbers}"
 
 
-def hand_check():
-    """Print the case, each labeled step of my_choice on it, and the chances it returns."""
+def print_case():
+    """Print the two-artist case: who is shown where, with how many downloads, and the level."""
     top, below = CHECK_SHOWN
     print(f"Hand check, at social influence {CHECK_SOCIAL_INFLUENCE}:")
     print(f"  {top:<14} at the top of the list (position 0), {CHECK_COUNTS.get(top, 0)} downloads, "
           f"true popularity {TRUE_POPULARITY[top]}")
     print(f"  {below:<14} below it (position 1), no downloads, "
           f"true popularity {TRUE_POPULARITY[below]}")
+
+
+def hand_check():
+    """Print the case, each labeled step of my_choice on it, and the chances it returns."""
+    print_case()
     steps, got, error = recorded_steps()
     if isinstance(error, NotImplementedError):
         print(NOT_WRITTEN)
@@ -127,4 +136,7 @@ def hand_check():
 
 
 if __name__ == "__main__":
-    hand_check()
+    if "--case" in sys.argv:
+        print_case()
+    else:
+        hand_check()
