@@ -58,6 +58,8 @@ exact formulas.
 3. Claude leads each step by asking you a question. You answer in a word or a sentence, and
    Claude writes your answer into `WRITEUP.md` exactly as you said it. To have anything run,
    shown or changed, ask Claude; you do not need to edit any file yourself.
+4. If you are stuck, ask Claude for a hint. It will give as many as you need, starting small,
+   without giving you the answer.
 
 Claude records the transcript of your sessions to share with Shilad.
 
@@ -213,5 +215,5 @@ nothing is missing, the activity is complete.
 `#comp440-f26` or email me. An outage of more than about half a day extends the deadline by 48
 hours.
 
-**Claude refuses to predict, to pick your rule, or to say what a figure shows.** Working as
-intended; those are the assignment.
+**Claude will not make your predictions, pick your rule, or say what a figure shows.** Working as
+intended; those are the assignment. It will give you hints toward any of them; ask for one.
