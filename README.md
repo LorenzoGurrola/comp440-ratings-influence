@@ -96,15 +96,18 @@ The simulation's choice rule decides what song a user picks from the five shown 
 recommender. The one originally in this repo, `independent_choice` in `choose.py`, ignores the
 counts. You will design a choice rule, and Claude will implement it in `my_choice.py`.
 
-One answer, for reference, is the rule this course has used since Spring 2024. It is our version
-of the paper's idea; the paper itself ran an experiment with people and has no such rule. You may
-use it, change it, or write your own:
+There is no single right rule; the paper ran an experiment with people and does not give one.
+Some things to decide, in any combination:
 
-* each artist shown gets a social weight of (its downloads + 1) × 1.2^−position, where the top
-  of the list is position 0;
-* normalize the social weights over the five shown, and the true popularities over the five
-  shown, so each set sums to 1 (`normalize()` in `choose.py` does this);
-* the chance of picking an artist is `social_influence` × social + (1 − `social_influence`) × true.
+* **How the counts pull.** A user might favor artists in proportion to their downloads, or to
+  some other function of them, such as the square root or the rank.
+* **Artists with no downloads yet.** Whether they can still be picked, and how.
+* **Place on the list.** Whether artists nearer the top are more likely to be picked, and by how
+  much.
+* **Taste.** How a user's own taste, the artist's true popularity, combines with the counts, and
+  how `social_influence`, from 0 to 1, sets the mix.
+* **Chances.** The chances over the five shown must be zero or more and sum to 1. `normalize()`
+  in `choose.py` scales a list of weights so they do.
 
 1. Claude asks you a few questions to pin down your rule: how the counts should change what a
    user picks, how `social_influence`, from 0 to 1, should set the mix between the counts and a
@@ -154,10 +157,10 @@ none and you have still finished the activity. Their slots are at the end of `WR
   experiments 1 and 2. It draws the paper's Figure 3 for each: an artist's share when nobody saw
   counts (its quality) against its share in each world (its success). Which market moved success
   further from quality?
-* **One assumption.** `followup_assumption.py`: pick one thing the model assumes — the 1.2
-  position discount, the +1 added to every count, that an artist's social weight grows in
-  proportion to its downloads, that the recommender only ever shows artists that already have a
-  download, or 1,000 users per world. Claude makes the change there, so the files Parts 1 to 4
+* **One assumption.** `followup_assumption.py`: pick one thing your rule or the model
+  assumes — how your rule treats list position or artists with no downloads, how fast the counts
+  pull, that the recommender only ever shows artists that already have a download, or 1,000 users
+  per world. Claude makes the change there, so the files Parts 1 to 4
   used stay as they were, and reruns Part 3's levels without and with the change. Did the
   conclusion survive?
 * **More recommenders.** Ask Claude for a second and a third rule in Part 4's shape, and compare
