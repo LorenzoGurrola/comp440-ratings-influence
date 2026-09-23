@@ -22,13 +22,11 @@ Answered before anything runs. Claude writes them in as you said them.
 
 Code: `part1_independent.py`. Figure: `figures/part1_strip.png`.
 
-**Hand check, in your words: your Gini for world 0, the script's, and whether they matched:** XXXX
-
 **What the figure shows, one sentence:** XXXX
 
 ## Part 2. The recommender
 
-Code: `part2_policy.py`. Figure: `figures/part2_strip.png`.
+Code: `part2_recommender.py`. Figure: `figures/part2_strip.png`.
 
 **`top_five` in your words: what it shows each user, and what it can never show:** XXXX
 
@@ -38,7 +36,7 @@ Code: `part2_policy.py`. Figure: `figures/part2_strip.png`.
 
 ## Part 3. Social influence
 
-Code: `choose.py`, `part3_influence.py`. Figures: `figures/part3_gini.png`,
+Code: `my_choice.py`, `hand_check.py`, `part3_influence.py`. Figures: `figures/part3_gini.png`,
 `figures/part3_unpredictability.png`.
 
 **The rule in your words:** XXXX
@@ -61,9 +59,9 @@ Code: `part4_shown.py`. Figure: `figures/part4_quality_vs_success.png`.
 
 **Which market moved success further from quality, and how far, one sentence:** XXXX
 
-## Part 5. Your policy
+## Part 5. Your recommender
 
-Code: `my_policy.py`, `part5_policy.py`. Figure: `figures/part5_policies.png`.
+Code: `my_recommender.py`, `part5_recommender.py`. Figure: `figures/part5_recommenders.png`.
 
 **Your rule in words, before any code:** XXXX
 

@@ -9,7 +9,7 @@ sim.TRUE_POPULARITY too.
 # Hidden true popularity: how much users like each artist when nobody sees any counts. These
 # are the Spring 2024 notebook's numbers, loosely based on Billboard's greatest artists.
 # Assumption (Part 6): a student may change these numbers.
-# A policy must never read them: a real recommender cannot see true popularity.
+# A recommender must never read them: a real recommender cannot see true popularity.
 TRUE_POPULARITY = {
     "Beatles": 100,
     "Taylor Swift": 90,
@@ -25,6 +25,6 @@ TRUE_POPULARITY = {
 }
 
 # The artists, most popular first. Every array of shares in this repo has one column per
-# artist, in this order. A policy may use this list.
+# artist, in this order. A recommender may use this list.
 # Assumption (Part 6): which artists exist, and how many.
 ARTISTS = list(TRUE_POPULARITY)

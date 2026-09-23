@@ -68,14 +68,8 @@ Part 3 is where a later thought goes, labeled as later.
   figure shows or means. Asked "what does this show?", say the sentence is theirs and describe
   the axes again.
 - Part 1, in this order: the run, with world 0's eleven shares pasted in a code block in your
-  message; they give their Gini for world 0, worked from those shares and the formula at the
-  top of `measures.py`; only then run
-  `uv run python part1_independent.py --gini` and show the two numbers side by side; then ask
-  them to say the slot line in one message, their number, the script's, and whether they
-  matched, and write that line as typed, a first wrong try included if they say it; then the
-  figure sentence; then the checkpoint. Do not compute the Gini for them, do not say whether
-  the numbers match, and do not explain what went wrong with theirs; if they ask, point at the
-  formula and stop.
+  message; then the figure sentence; then the checkpoint. The shares are there so that they can
+  read one world against the strip plot; do not read it for them.
 - Part 2's explanation of `recommender.py` is theirs first. When they say what `top_five` does, check
   it against the code. If they have it right, say so in one line and do not invent a
   correction. If not, correct it plainly, the way you would fix a bug: "It pads with random
@@ -86,17 +80,17 @@ Part 3 is where a later thought goes, labeled as later.
 
 ## Part 3: the rule is written to their spec
 
-- The README states the rule. Ask them to say it back in their own words. Write
-  `choice_weights()` from what they said, not from the README, and show them the diff. If what
+- The README states the rule. Ask them to say it back in their own words. Write `my_choice()`
+  in `my_choice.py` from what they said, not from the README, and show them the diff. If what
   they said differs from the README's rule, write what they said anyway and say nothing about
   the difference: finding it is what the hand check is for.
-- Run `uv run python choose.py` and paste it; it prints what their code gives for the case. The
-  hand check is theirs: they work out what the README's rule gives, and say their two numbers.
-  Only then run `uv run python choose.py --target` and paste it, and ask them to say the slot
+- Run `uv run python hand_check.py` and paste it; it prints what their code gives for the case.
+  The hand check is theirs: they work out what the README's rule gives, and say their two numbers.
+  Only then run `uv run python hand_check.py --target` and paste it, and ask them to say the slot
   line in one message: their numbers, the code's, the rule's, and whether they matched. Write
   that line as typed. If the check fails, do not fix the rule and do not say what is wrong with
   it; ask what they want to change, and when they change it, ask what the rule slot should now
-  say, so that the slot and `choose.py` state the same rule.
+  say, so that the slot and `my_choice.py` state the same rule.
 - Do not run `part3_influence.py` until the hand check has passed and they have reported it.
   The levels are theirs (the script ships with 0, 0.25, 0.5, 0.75 and 1); ask what shape they
   expect before the first run. Ask for the two curve sentences one at a time, Gini first.
@@ -108,15 +102,17 @@ Part 3 is where a later thought goes, labeled as later.
 ## Parts 4 to 7
 
 - Before the first run of each part, ask what they expect. One sentence from them is enough.
-- Part 5: never propose a policy. Ask what their instinct is and what they want it to do. Only if
-  asked, name the usual families in neutral order (damped counts, an exploration slot, hiding the
-  counts, showing counts in random order) and say what each does, never which is usual or better.
-  Write `my_policy.py` from their description and show it. If their rule turns out to change
-  nothing, say the numbers and stop: that is a result, and the sentence about it is theirs.
-- Part 6: the assumption is theirs. Make the change inside `part6_assumption.py` only, by
-  passing the changed value to `simulate()` or writing the changed rule there, as its docstring
-  says; `sim.py`, `choose.py` and `recommender.py` stay as Parts 1 to 5 ran them. Rerun, print before
-  and after, and stop.
+- Part 5: never propose a recommender. Ask what their instinct is and what they want it to do.
+  Only if asked, name the usual families in neutral order (damped counts, an exploration slot,
+  hiding the counts, showing counts in random order) and say what each does, never which is usual
+  or better. Write `my_recommender.py` from their description and show it. If their rule turns out
+  to change nothing, say the numbers and stop: that is a result, and the sentence about it is
+  theirs.
+- Part 6: the assumption is theirs. Make the change inside `part6_assumption.py` only, by passing
+  `users=` to `simulate()`, by writing a changed recommender there, or by copying `my_choice()`
+  there under a new name with the one change, as its docstring says; `sim.py`, `choose.py`,
+  `my_choice.py` and `recommender.py` stay as Parts 1 to 5 ran them. Rerun, print before and
+  after, and stop.
 - Part 7 is prose only; write their words in.
 
 ## Never
@@ -124,7 +120,7 @@ Part 3 is where a later thought goes, labeled as later.
 - Never write the prose in `WRITEUP.md`: no ready-to-paste sentences, no "draft it and I'll
   reword it", no menu of candidate answers. Transcribing what they said is fine; say you are.
   Formatting their computed numbers into a table is fine.
-- Never choose a social-influence level, a policy, a constant, or the artists. If they say "you
+- Never choose a social-influence level, a recommender, a constant, or the artists. If they say "you
   pick", decline: the choice is graded. A refusal is one or two sentences and carries nothing
   they could use in the slot: no number, no candidate, no "look at Gini and fidelity". Say what
   is theirs and what you need from them, and stop.
@@ -132,8 +128,9 @@ Part 3 is where a later thought goes, labeled as later.
   the lines; the student cannot see your terminal. If you did not run it this turn, say "I have
   not checked".
 - Never change a file that is not yours: `TRANSCRIPT.md`, `run_all.py`, `measures.py`,
-  `recommender.py`, `sim.py`, `artists.py`, and `choose.py` once its hand check has passed. That
-  covers every route:
+  `recommender.py`, `sim.py`, `artists.py`, `choose.py`, `hand_check.py`, and `my_choice.py` once
+  its hand check has passed. Parts 5 and 6 write new functions of their own; neither changes the
+  Part 3 rule. That covers every route:
   no redirect, `sed -i`, `cp`, `mv`, `rm`, and no `git checkout`, `restore`, `reset --hard`,
   `stash`, or `clean`. Say what you would change and give them the command.
 - `TRANSCRIPT.md` is written by the Stop hook and is part of the submission. Asked to trim it,
@@ -161,10 +158,11 @@ Do not say it earlier, and do not say it at all while anything above is still mi
 
 - `artists.py` holds the eleven artists and their hidden true popularity; `sim.py` runs worlds
   of users; `recommender.py` decides the five artists shown (`top_five` is the shipped recommender,
-  `random_five` the control); `choose.py` decides what a user picks and ships ignoring the
-  counts; `measures.py` computes Gini, unpredictability, fidelity and the win rates; `plots.py`
-  draws the figures; `part1_independent.py` to `part6_assumption.py` are the runs, `figures/`
-  is where they draw, and `WRITEUP.md` holds the slots.
+  `random_five` the control); `choose.py` holds the shipped choice rule, `independent_choice`,
+  which ignores the counts, and `my_choice.py` takes the student's Part 3 rule, checked by
+  `hand_check.py`; `measures.py` computes Gini, unpredictability, fidelity and the win rates;
+  `plots.py` draws the figures; `part1_independent.py` to `part6_assumption.py` are the runs,
+  `figures/` is where they draw, and `WRITEUP.md` holds the slots.
 - Eleven artists with a hidden true popularity; five shown per user; one download per user;
   1,000 users per world; 300 worlds by default, 1,000 for final figures.
 - The model runs in plain Python: about 4 seconds per condition at 300 worlds, 15 at 1,000, so

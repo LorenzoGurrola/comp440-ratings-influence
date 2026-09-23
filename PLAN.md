@@ -45,9 +45,9 @@ it; two different things get called simulation") is what the activity teaches; H
 | 1 | State the paper's two claims as quantities: inequality is the Gini coefficient of market shares within a world, unpredictability is how much an item's share differs between worlds that started identical | The Gini and unpredictability figures from their own runs, with one sentence each on what the axis means |
 | 2 | Show, from their own runs, that both quantities rise with social influence, and that the best items still rarely fail and the worst rarely win | The social-influence rule they specified and hand-checked (Part 3), the sweep (figures 2 and 3) and the quality-versus-success figure (4), with the sentence comparing each to the paper's Figures 1, 2 and 3 |
 | 3 | Explain why a download or rating count is partly a record of what earlier users were shown, and name the position in a real interface that does this | The write-up's sentence on the tags-and-ratings timing figure from HW1 Part 2, or on HW0's three rankings, or on the "Popular on Netflix" row shown Sep 22 |
-| 4 | Treat a recommender policy as an intervention: compare at least two policies on inequality, unpredictability and fidelity to true preferences, and state the tradeoff | The policy figure (6) and the write-up's tradeoff sentence, with the policy they designed described in words before Claude wrote it |
+| 4 | Treat a recommender as an intervention: compare at least two recommenders on inequality, unpredictability and fidelity to true preferences, and state the tradeoff | The recommender figure (6) and the write-up's tradeoff sentence, with the recommender they designed described in words before Claude wrote it |
 | 5 | Say what a simulation is and is not evidence for: name one modeling assumption that drives the result, change it, and report whether the conclusion survived | The sensitivity part: which assumption they changed (position effect, pseudo-count, linear counts, coverage, users per world) and the before-and-after numbers |
-| 6 | Direct Claude through an experiment: predict before every run, verify one of Claude's numbers by another route, and keep the interpretation their own | Part 0 predictions committed before any run; the verification slot; every "what it shows" sentence in their words, per the transcript |
+| 6 | Direct Claude through an experiment: predict before every run, verify one of Claude's numbers by another route, and keep the interpretation their own | Part 0 predictions committed before any run; the Part 3 hand check, the one number worked out by hand; every "what it shows" sentence in their words, per the transcript |
 
 Outcomes 1, 2 and 5 are new relative to Spring 2024. Outcome 4 existed as "create a recommendation
 algorithm that is better in some way to you"; the measures make "better" answerable.
@@ -84,8 +84,8 @@ algorithm that is better in some way to you"; the measures make "better" answera
 |---|---|---|---|
 | Delivery | Colab notebook, copied per student | GitHub template repo run with Claude Code, HW1's shape: `CLAUDE.md`, `WRITEUP.md` slots, transcript hook, `run_all.py` | The course's established with-Claude pattern; gives a transcript and a run gate |
 | Who writes code | The student, by hand | Claude, to the student's spec; the student verifies | Frees the time for experiments; matches HW1's division of labor |
-| Who writes the model | The instructor, all of it | The model ships with users who ignore the counts; the student specifies the social-influence rule and Claude writes it (Part 3); the shipped policy is a short file the student explains (Part 2) | The instructor's Sep 22 notes; the mechanism they study is one they put in |
-| The model | Constants hidden in helpers | The same mechanics, every constant a named parameter with a default and a comment | Outcome 5 needs them visible |
+| Who writes the model | The instructor, all of it | The model ships with users who ignore the counts; the student specifies the social-influence rule and Claude writes it (Part 3); the shipped recommender is a short file the student explains (Part 2) | The instructor's Sep 22 notes; the mechanism they study is one they put in |
+| The model | Constants hidden in helpers | The same mechanics, written out: `NUM_SHOWN` and `users` named in `sim.py`, and the position discount and the pseudo-count stated in the README and written into the student's own choice rule | Outcome 5 needs them visible |
 | Measures | None | Gini (inequality), Salganik's cross-world share difference (unpredictability), rank correlation with true popularity (fidelity), accidental-hit rate. The paper had to split its one independent world in two to get an unpredictability number for the control; the simulation just runs many independent worlds | Outcomes 1, 2, 4 |
 | Control | None | The independent condition: social influence 0 **and random exposure** (five random artists shown), not the top-5 policy at 0. Measured Sep 22: the top-5 policy with no social influence at all already gives Gini 0.64, because a user can only pick among the five shown (section 12) | The paper's design; the quality-versus-success figure needs it |
 | Conditions | One: counts shown, sorted | Three: independent; counts visible in random order (the paper's experiment 1); sorted by count (experiment 2) | Outcome 2, the presentation-order result |
@@ -107,11 +107,11 @@ the recommender does on its own.
 | Part | The student does | Claude does | Output | Time |
 |---|---|---|---|---|
 | 0 · Predictions | Answers four one-line questions in one message: which artist wins most often once people can see the counts; whether inequality rises or falls with social influence; whether the best artist ever loses a world; whether a recommender can lower inequality without lowering fidelity. One word each is enough; a reason is welcome, not required | Drives it: asks all four in one turn, writes the answers into `WRITEUP.md` unchanged and commits in the same turn; refuses to run anything before that commit | The Part 0 commit | 3 min, in class |
-| 1 · Independent users | Runs the model as it ships: each user sees five random artists and picks by true preference alone; reads the strip plot; recomputes one world's Gini by hand from the printed shares and reports whether it matched | Runs it, prints one world's shares, draws figure 1, describes the axes and stops | Figure 1 for the control, the verification slot, one sentence | 8 min, in class |
-| 2 · The policy file | Reads `recommender.py`, the shipped recommender (top five by count, padded at random, about a dozen lines written to be read); tells Claude in their own words what it does and what it can never do; then runs it with users still ignoring the counts and says what changed against Part 1 | Checks the student's reading against the code and corrects it plainly; runs it, draws figure 1 again for this condition | The policy in the student's words, corrected; the second strip plot; one sentence on what the recommender did on its own | 12 min, in class |
-| 3 · Social influence | The shipped chooser ignores the counts. The README states the paper's idea and the rule to implement, in words and as a formula: mix the counts shown (plus one, discounted by position) with true preference, weighted by `social_influence`. The student states the rule back to Claude; Claude writes it into the marked function; the student checks one user's choice weights by hand against a printed two-artist case. Then chooses the social-influence levels, predicts the shape, and reads the Gini and unpredictability curves against the paper's Figures 1 and 2 (direction, not size) | Writes the function the student specified, never before they have specified it; prints the hand-check case; runs the sweep, draws figures 2 and 3 | The function, the hand check, figures 2 and 3, one sentence each | 60 min |
+| 1 · Independent users | Runs the model as it ships: each user sees five random artists and picks by true preference alone; reads the strip plot against one world's printed shares | Runs it, prints one world's shares, draws figure 1, describes the axes and stops | Figure 1 for the control, one sentence | 8 min, in class |
+| 2 · The recommender file | Reads `recommender.py`, the shipped recommender (top five by count, padded at random, about a dozen lines written to be read); tells Claude in their own words what it does and what it can never do; then runs it with users still ignoring the counts and says what changed against Part 1 | Checks the student's reading against the code and corrects it plainly; runs it, draws figure 1 again for this condition | The recommender in the student's words, corrected; the second strip plot; one sentence on what the recommender did on its own | 12 min, in class |
+| 3 · Social influence | The shipped choice rule ignores the counts. The README states the paper's idea and the rule to implement, in words and as a formula: mix the counts shown (plus one, discounted by position) with true preference, weighted by `social_influence`. The student states the rule back to Claude; Claude writes it into `my_choice.py`; the student checks one user's chances by hand against the two-artist case `hand_check.py` prints. Then chooses the social-influence levels, predicts the shape, and reads the Gini and unpredictability curves against the paper's Figures 1 and 2 (direction, not size) | Writes the function the student specified, never before they have specified it; prints the hand-check case; runs the sweep, draws figures 2 and 3 | The function, the hand check, figures 2 and 3, one sentence each | 60 min |
 | 4 · What is shown | Runs the three conditions: independent, counts in random order, sorted by count; reads quality against success | Runs them, draws figure 4 in the paper's Figure 3 layout | Figure 4, one sentence on which condition moved success away from quality | 45 min |
-| 5 · A policy | Describes a policy in words before any code (damped popularity, exploration, hiding counts, anything); predicts its effect on the three measures; compares it with the shipped policy and random | Implements exactly what was described, runs the comparison, draws figure 6; never proposes a policy first | Figure 6, the policy in the student's words, the tradeoff sentence | 60 min |
+| 5 · A recommender | Describes a recommender in words before any code (damped popularity, exploration, hiding counts, anything); predicts its effect on the three measures; compares it with the shipped recommender and random | Implements exactly what was described, runs the comparison, draws figure 6; never proposes a recommender first | Figure 6, the recommender in the student's words, the tradeoff sentence | 60 min |
 | 6 · One assumption | Picks one assumption (the position discount; the pseudo-count; counts entering the choice linearly rather than as a log; the recommender only ever showing artists that already have a download; users per world); predicts; changes it; reports whether the Part 3 conclusion survived; the users-per-world case is the classroom-scale run, 12 users and 3 rounds | Reruns, draws figure 5 for the trajectories | Figure 5, before-and-after numbers, one sentence | 45 min |
 | 7 · Connections | Two sentences: where this shows up in data they have already handled (HW1 Part 2's tags-and-ratings timing figure, or HW0's three rankings), and where it shows up in an interface (the "Popular on Netflix" row from Sep 22); plus two of HW1's Part 4 questions on working with Claude | Writes their words; runs `/checkpoint`; commits and pushes on their yes | The last slots | 30 min |
 
@@ -132,7 +132,7 @@ axes, the question in the caption, no decoration; Claude draws them, the student
 | 3 | Unpredictability versus social influence | Does unpredictability rise with it? | Figure 2 |
 | 4 | Two panels: share, then rank, in the independent condition (x) against each influence world (y), per artist | Does quality still predict success, and where does it stop predicting? | Figure 3 |
 | 5 | The leader's cumulative share as users arrive, twelve worlds overlaid; a second panel for the true best artist | When does a world lock in, and can a mediocre artist hold the lead? | none; the live-market "accidental hit", now visible per world |
-| 6 | Gini, unpredictability and fidelity per policy, dots on three panels | What does the recommender's rule cost and buy? | none |
+| 6 | Gini, unpredictability and fidelity per recommender, dots on three panels | What does the recommender's rule cost and buy? | none |
 
 Figure 1 comes from Parts 1 and 2, once per condition; 2 and 3 from Part 3; 4 from Part 4; 6 from
 Part 5; 5 from Part 6. The
@@ -147,8 +147,8 @@ senior analyst.
 - **Freely:** write and run the simulation and the measure code; draw any figure asked for, axes
   labeled; explain Gini, the unpredictability measure, rank correlation, the mixing rule, as often
   as asked; vectorize slow code.
-- **Never:** choose a social-influence level, a policy, a constant to change, or the artists;
-  propose a policy before the student has described one (ask what their instinct is; then, if
+- **Never:** choose a social-influence level, a recommender, a constant to change, or the artists;
+  propose a recommender before the student has described one (ask what their instinct is; then, if
   asked, name families in neutral order); say what a figure shows or means (describe the axes and
   stop); write or reword a prediction, a verification or a "what it shows" sentence; run a part
   before the previous part's slots are filled and committed; state a number it did not compute this
@@ -167,7 +167,8 @@ senior analyst.
   student states it back in their own words; Claude writes it and prints the hand-check case.
   Claude does not write it first, and does not run the sweep until the hand check is reported.
 - **Not edited by anyone:** `TRANSCRIPT.md`, `run_all.py`, `measures.py`, `load_data.py` if there
-  is one. `choose.py` is the student's in Part 3; Part 6's change is made inside
+  is one. `choose.py` ships the independent choice rule and is never edited; `my_choice.py` is
+  the student's in Part 3, and `hand_check.py` checks it; Part 6's change is made inside
   `part6_assumption.py`, so the files Parts 1 to 5 ran stay as they were.
 
 The class's own AI agreements (v1, Sep 10: transparency about AI use, keep your own agency, know
@@ -185,13 +186,15 @@ this plan and the Sep 22 measurements, and nothing student-facing yet. Ships:
 | File | What | Written by |
 |---|---|---|
 | `artists.py` | The eleven artists and their hidden true popularity | ships, not edited |
-| `sim.py` | The loop: worlds, arriving users, the counts; calls `recommender.py` for what is shown and `choose.py` for what is picked; every constant a named parameter with the S24 default | ships, not edited; Part 6 passes its changed value in from `part6_assumption.py` |
-| `recommender.py` | The shipped recommender: top five by count, padded at random, about a dozen lines written to be read | ships; the student explains it in Part 2, and their own policy in Part 5 goes next to it |
-| `choose.py` | The user's choice among the five shown. Ships ignoring the counts (true preference only), with the social-influence function marked for Part 3 and a printed two-artist hand-check case | ships independent; the student specifies the rule, Claude writes it |
+| `sim.py` | The loop: worlds, arriving users, the counts; each part passes in the recommender and the choice rule it wants, and `users` is a named parameter with the S24 default | ships, not edited; Part 6 passes its changed value in from `part6_assumption.py` |
+| `recommender.py` | The shipped recommender: top five by count, padded at random, about a dozen lines written to be read | ships; the student explains it in Part 2, and writes their own in `my_recommender.py` in Part 5 |
+| `choose.py` | The choice rule the model ships with: `independent_choice`, which ignores the counts (true preference only), and `normalize` | ships, not edited |
+| `my_choice.py` | The student's Part 3 choice rule, shipped as a stub | the student specifies the rule, Claude writes it; not edited once its hand check has passed |
+| `hand_check.py` | The two-artist case for Part 3, what `my_choice()` gives for it and, with `--target`, what the README's rule gives; Parts 3 to 5 stop until it passes | ships, not edited |
 | `measures.py` | Gini, unpredictability, fidelity, accidental-hit rate, tested | ships, not edited |
 | `plots.py` | The six figures as functions | ships; the student may ask Claude to change them |
-| `part1_baseline.py` … `part5_assumption.py` | One script per part, docstring says what it prints | student and Claude |
-| `WRITEUP.md` | The slots: four predictions, the verification, the shipped policy in the student's words, the hand check, one sentence per figure, the student's policy in words, the tradeoff, the assumption before-and-after, the two connections, two working-with-Claude answers | the student's words, written by Claude |
+| `part1_independent.py` … `part6_assumption.py` | One script per part, docstring says what it prints | student and Claude |
+| `WRITEUP.md` | The slots: four predictions, the shipped recommender in the student's words, the Part 3 hand check, one sentence per figure, the student's own recommender in words, the tradeoff, the assumption before-and-after, the two connections, two working-with-Claude answers | the student's words, written by Claude |
 | `run_all.py` | Reruns everything, lists blank slots | ships, not edited |
 | `CLAUDE.md`, `.claude/settings.json`, `.claude/skills/setup`, `/checkpoint` | Section 6; the transcript hook; the allow-list | ships |
 | `figures/` | The six PNGs | Claude commits them |
@@ -203,7 +206,7 @@ the repo lands for the take-home parts.
 
 **In-class access.** Same as HW0's launch: if Claude Code is not working for part of the room, the
 instructor's screen is the shared session for Parts 1 and 2 and everyone else predicts, verifies and
-reads the policy file from the screen. Nothing in Parts 1 and 2 needs more than the printed numbers
+reads the recommender file from the screen. Nothing in Parts 1 and 2 needs more than the printed numbers
 and a dozen lines of code.
 
 ## 8. Thursday, proposed rows
@@ -223,7 +226,7 @@ below leave them out, and section 9 has the decision. Sum: 90.
 | 12 | The reading: what Salganik et al. did | Which Keshav pass did you do, pass 1 is enough today; four questions, answers taken before confirming: what the independent world is for (14,341 participants, 48 songs by unknown bands, one independent world and eight social-influence worlds in each of two experiments; experiment 1 showed the songs with their counts in a 16 × 3 grid in random order, experiment 2 in one column sorted by count; all checked against the PDF Sep 22); why eight parallel worlds; the two outcome measures and why two (inequality is the Gini coefficient of market shares within a world; unpredictability is a song's average share difference between pairs of worlds, averaged over songs); what quality did; land the sentence: the outcome is not recoverable from the songs alone, and showing people the counts is what does it; both measures on the board, they are the numbers you compute next | Which pass did you do? · The paper's four questions · Inequality and unpredictability: two measures, two claims |
 | 8 | The simulation: the model and the rules | The S24 diagram: worlds, hidden true popularity, a recommender, users who see five items and mix the counts with their taste; the four constants on the slide, named; what Claude does and what is yours, in one line each; the class AI agreements, quoted from the shared doc; fork, clone, `uv sync`, `claude`, `/setup` | The model, on one slide [pull: 2026 Feedback Effects, 19] · What Claude does, what you do · Fork, clone, /setup |
 | 3 | Part 0: four predictions | Claude asks all four in one message, one word each answers them, Claude writes and commits them; the run gate means nothing runs before that commit; hands: who predicted inequality falls | Four predictions, before any run |
-| 20 | Parts 1 and 2: independent users, then the policy file, in pairs | Run the model as it ships, five random artists and users who ignore the counts, the strip plot; each pair recomputes one world's Gini by hand and posts match or diverge in Slack; open `recommender.py`, each pair tells Claude what it does and gets corrected; run it with users still ignoring the counts; what changed, one sentence per pair; the room sees the recommender's effect before anyone has put social influence in | The strip plot, twice [empty: built live] · Match or diverge · What the recommender did on its own |
+| 20 | Parts 1 and 2: independent users, then the recommender file, in pairs | Run the model as it ships, five random artists and users who ignore the counts, the strip plot; each pair reads one world's printed shares against it; open `recommender.py`, each pair tells Claude what it does and gets corrected; run it with users still ignoring the counts; what changed, one sentence per pair; the room sees the recommender's effect before anyone has put social influence in | The strip plot, twice [empty: built live] · What the recommender did on its own |
 | 12 | Debrief: ours against theirs | The instructor's own figures 2 and 3 on screen next to the paper's Figures 1 and 2, since nobody has social influence in the model yet; Part 3, the first take-home part, is where each student puts it in; same direction, different size, and why the size means nothing here; the take-home parts, two minutes each; where this is in HW1: the tags-and-ratings timing figure in Part 2 | Ours vs theirs · Where this is in your HW1 |
 | 4 | Close | Parts 2 to 6 due [TBD]; Brent Hecht Tuesday, questions 8:00am; HW1 Oct 1; students photograph the slide | |
 | 3 | Slack | Cut if behind: the HW1 questions thread | |
@@ -288,20 +291,28 @@ are right (section 11), so its VERIFY item on them can be closed.
 - [x] Sep 22 — The instructor said go at 6pm ("begin implementing the plan"). Still his: the due
   date, the weight and category, pairs or individual (section 9); the README carries them as TBD.
 - [x] Sep 22 — Built and pushed, 8:45pm: `README.md` in HW0's shape, `CLAUDE.md`, `WRITEUP.md`,
-  the `setup` and `checkpoint` skills, `sim.py`, `artists.py`, `recommender.py`, `my_policy.py`,
-  `choose.py` shipping without social influence and carrying the hand check, `measures.py`
+  the `setup` and `checkpoint` skills, `sim.py`, `artists.py`, `recommender.py`, the student's own
+  recommender as a stub, `choose.py` shipping without social influence and carrying the hand
+  check, `measures.py`
   (self-checked against hand-worked cases), `plots.py`, `part1` to `part6`, `run_all.py`, the
   hooks and allow-list, `pyproject.toml` and `uv.lock`. The mechanics were checked against the
   S24 notebook's code and against `measurements/results.json`: Parts 1 to 3 reproduce the
   measured Gini and unpredictability to two decimals. `SIMULATIONS.md` is the light plan for
   simulated students; its run 1 is in progress.
 - [x] Sep 22 — `policy.py` renamed `recommender.py` at the instructor's ask.
+- [x] Sep 22 — The choice rule became a function passed into `sim.py`, like the recommender:
+  `choose.py` ships `independent_choice` and is never edited, and the student's Part 3 rule goes
+  in `my_choice.py`, with its two-artist check in `hand_check.py`. The Part 1 Gini hand check
+  was removed, so the Part 3 check is the one number a student works out by hand. `policy` was
+  renamed `recommender` throughout (`my_recommender.py`, `part2_recommender.py`,
+  `part5_recommender.py`). Part 4 now compares the top five shown in random order with the top
+  five sorted by count, which is what the paper's experiment 1 did.
 - [ ] Sep 22–23 — Session: the three simulated-student runs in `SIMULATIONS.md`, notes in
   `sims/`; fix what they find. Then the instructor runs Part 0 himself once.
 - [ ] Sep 23 — Session, with the instructor's go: add the launch slides to the Sep 24 deck (the
   copied S24 deck, untouched since Sep 13): the model slide is its slide 19 already; add "What
-  Claude does, what you do", "Fork, clone, /setup", "Four predictions", "Match or diverge", "Ours
-  vs theirs", "Where this is in your HW1". Add, never rewrite; the deck is his copy.
+  Claude does, what you do", "Fork, clone, /setup", "Four predictions", "Ours vs theirs", "Where
+  this is in your HW1". Add, never rewrite; the deck is his copy.
 - [ ] Sep 23 — Session, through the `schedule-change` skill: link the repo on the Sep 24 row and
   add the due date to `assignments:`; `build.py` before pushing. The Salganik reading row stays as
   it is.

@@ -9,10 +9,11 @@ plain words what it means and what to change, and stop there.
 1. Add the `upstream` remote if it is missing, with the address typed out, no variables:
    `git remote add upstream https://github.com/shilad/comp440-ratings-influence`
    It is there in case a fix to the template has to go out mid-activity.
-2. `uv sync`, then `uv run python measures.py` and `uv run python choose.py`. The first prints
-   five "ok" lines; the second prints the hand check with A 0.5 and B 0.5. That proves the
-   install without running the market: nothing runs before the Part 0 commit, not even
-   `run_all.py`, which prints Part 1 and 2 results.
+2. `uv sync`, then `uv run python measures.py`. It prints five lines that start with `ok`, one
+   per measure it checks against a case worked out by hand. That proves the install without
+   running the market or printing any result: nothing about this model runs before the Part 0
+   commit, not a part script, not the hand check, and not `run_all.py`, which prints Part 1 and
+   2 results.
 3. Ask their name, and fill `**Name:**` and `**Date:**` at the top of `WRITEUP.md`. Those two
    are yours to compose; every other slot in that file you fill from their own words.
 4. Commit as `Name and date`.

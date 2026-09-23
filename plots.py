@@ -127,23 +127,23 @@ def trajectories(picks_by_world, path, artist="Beatles"):
     return save(fig, path)
 
 
-def policy_bars(results_by_policy, path):
-    """Three panels: mean Gini, unpredictability and fidelity, one bar per policy, each value
-    printed at the end of its bar. `results_by_policy` maps a policy's name to the dict
+def recommender_bars(results_by_recommender, path):
+    """Three panels: mean Gini, unpredictability and fidelity, one bar per recommender, each value
+    printed at the end of its bar. `results_by_recommender` maps a recommender's name to the dict
     measures.summary() returns."""
-    names = list(results_by_policy)
+    names = list(results_by_recommender)
     panels = [("mean_gini", "mean Gini (inequality within a world)"),
               ("unpredictability", "unpredictability (difference between worlds)"),
               ("fidelity", "fidelity (rank correlation with true popularity)")]
     fig, axes = plt.subplots(1, 3, figsize=(14, 1.5 + 0.6 * len(names)))
     for ax, (key, label) in zip(axes, panels):
-        values = [results_by_policy[name][key] for name in names]
+        values = [results_by_recommender[name][key] for name in names]
         ax.barh(names, values, color="C0")
         for i, value in enumerate(values):
             ax.text(value, i, f" {value:.3f}", va="center")
         ax.margins(x=0.25)   # room for the numbers at the ends of the bars
-        ax.invert_yaxis()    # the first policy at the top
+        ax.invert_yaxis()    # the first recommender at the top
         ax.set_xlabel(label)
-    axes[0].set_ylabel("policy")
+    axes[0].set_ylabel("recommender")
     fig.suptitle("What does each recommender rule cost and buy?")
     return save(fig, path)

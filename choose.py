@@ -1,86 +1,25 @@
 """
-What a user picks from the artists shown.
+The choice rule the model ships with: what a user picks from the artists shown.
 
-    uv run python choose.py            the two-artist hand check for Part 3: the case, and
-                                       the chances choice_weights() gives for it
-    uv run python choose.py --target   the same, and the chances the README's Part 3 rule
-                                       gives: run it after you have worked them out by hand
+A choice rule is a function (shown, counts, social_influence) that returns a list of chances,
+one per shown artist in the same order, summing to 1. sim.py calls the rule once for each user
+and draws that user's download with those chances.
 
-choice_weights() gives each shown artist its chance of being picked, and choose() draws one
-artist with those chances. As shipped, users ignore the download counts and pick by true
-popularity alone. Part 3 adds social influence, in the marked block.
+independent_choice is the rule Parts 1 and 2 use: users ignore the download counts. Your Part 3
+rule goes in my_choice.py, and each part passes sim.py the recommender and the choice rule it
+needs. Nothing in this file changes.
 """
-
-import sys
 
 from artists import TRUE_POPULARITY
 
-# The hand check: two artists, A at the top of the list (position 0) and B below it
-# (position 1). A has 3 downloads, B has none, and both have true popularity 50.
-CHECK_SHOWN = ["A", "B"]
-CHECK_COUNTS = {"A": 3, "B": 0}
-CHECK_TRUE_POPULARITY = {"A": 50, "B": 50}
+
+def normalize(weights):
+    """Scale a list of weights so they sum to 1."""
+    total = sum(weights)
+    return [w / total for w in weights]
 
 
-def choice_weights(shown, counts, social_influence, position_discount=1.2, pseudo_count=1,
-                   true_popularity=TRUE_POPULARITY):
-    """The chance that a user picks each shown artist: a dict artist -> chance, summing to 1.
-
-    shown              the artists on the list, top first (positions 0, 1, 2, ...)
-    counts             downloads so far in this world, artist -> int; an artist with no
-                       downloads yet is missing, so read it as counts.get(artist, 0)
-    social_influence   from 0 (users ignore the counts) to 1 (users go by the counts alone)
-    position_discount  each step down the list divides an artist's social weight by this
-    pseudo_count       added to every count, so an artist with no downloads can still be picked
-    true_popularity    artist -> hidden true popularity; the model's own unless a check
-                       passes its own
-    """
-    # True preference: each shown artist's true popularity, as a share of the shown total.
-    total = sum(true_popularity[artist] for artist in shown)
-    true_weights = {artist: true_popularity[artist] / total for artist in shown}
-
-    # ---- Part 3: social influence goes here. ----
-    # As shipped, users ignore the counts. Describe the rule in README Part 3 to Claude
-    # in your own words; it writes the rule here; then run `uv run python choose.py`.
-
-    return true_weights
-
-
-def choose(shown, counts, social_influence, rng, position_discount=1.2, pseudo_count=1):
-    """One user's download: an artist from `shown`, drawn at random with the chances that
-    choice_weights() gives. `rng` is a numpy random generator."""
-    weights = choice_weights(shown, counts, social_influence, position_discount, pseudo_count)
-    artists = list(weights)
-    chances = [weights[artist] for artist in artists]
-    return artists[rng.choice(len(artists), p=chances)]
-
-
-# The chances the README's Part 3 rule gives for the hand-check case at social influence 0.5.
-# hand_check() prints them only when asked, so that the student works them out first.
-CHECK_TARGET = {"A": 0.6638, "B": 0.3362}
-
-
-def hand_check(social_influence=0.5, target=False):
-    """Print the hand-check case and the chances choice_weights() gives for it. With
-    target=True, also print the chances the README's Part 3 rule gives at social influence 0.5."""
-    got = choice_weights(CHECK_SHOWN, CHECK_COUNTS, social_influence, position_discount=1.2,
-                         pseudo_count=1, true_popularity=CHECK_TRUE_POPULARITY)
-    print("Hand check: A is shown at the top of the list (position 0) and B below it "
-          "(position 1),")
-    print(f"at social influence {social_influence}, position discount 1.2 and pseudo-count 1.")
-    print("A has 3 downloads, B has 0, and both have true popularity 50.")
-    print(f"  choice_weights() gives:           A {got['A']:.4f}   B {got['B']:.4f}")
-    if target:
-        print(f"  the README's Part 3 rule gives:   A {CHECK_TARGET['A']:.4f}"
-              f"   B {CHECK_TARGET['B']:.4f}   (at social influence 0.5)")
-
-
-def is_implemented():
-    """True once choice_weights() gives the README Part 3 rule's answer for the hand check."""
-    got = choice_weights(CHECK_SHOWN, CHECK_COUNTS, 0.5, position_discount=1.2,
-                         pseudo_count=1, true_popularity=CHECK_TRUE_POPULARITY)
-    return abs(got["A"] - CHECK_TARGET["A"]) < 0.001
-
-
-if __name__ == "__main__":
-    hand_check(target="--target" in sys.argv)
+def independent_choice(shown, counts, social_influence):
+    """Users ignore the counts: each shown artist's chance is its true popularity as a share of
+    the true popularity of the artists shown. `counts` and `social_influence` are not used."""
+    return normalize([TRUE_POPULARITY[artist] for artist in shown])

@@ -3,48 +3,57 @@ Part 4: what is shown.
 
     uv run python part4_shown.py
 
-Two markets at social influence 0.5, both with the top_five recommender, as in the paper's two
-experiments:
+Two markets at social influence 0.5. Both show the five most downloaded artists (top_five in
+recommender.py) and both use your Part 3 rule, as in the paper's two experiments:
 
-    "order does not matter"   position discount 1.0: an artist's place on the list does not
-                              change its social weight; only its downloads do
-    "sorted by count"         position discount 1.2, the model's default: each step down the
-                              list divides an artist's social weight by 1.2
+    "random order"      the five are shown in a random order, so where an artist sits on the
+                        list says nothing about its downloads (the paper's experiment 1)
+    "sorted by count"   the five are shown most downloaded first (the paper's experiment 2)
 
-Needs Part 3's rule in choose.py; without it, it says so and stops. Prints one table of the five
-measures, WORLDS worlds per row: the independent condition (Part 1's run: random_five at social
-influence 0, the same worlds), then each market. Saves figures/part4_quality_vs_success.png, the
-paper's Figure 3 for each market: an artist's share, and its rank, in the independent condition
-against the same in each world of the market.
+Needs Part 3's rule in my_choice.py; without it, it says so and stops. Prints one table of the five
+measures, WORLDS worlds per row: the independent condition (Part 1's run: random_five with the
+shipped choice rule at social influence 0, the same worlds), then each market. Saves
+figures/part4_quality_vs_success.png, the paper's Figure 3 for each market: an artist's share, and
+its rank, in the independent condition against the same in each world of the market.
 """
 
 import sys
 from pathlib import Path
 
-import choose
+import hand_check
 import measures
 import plots
+from choose import independent_choice
+from my_choice import my_choice
 from recommender import random_five, top_five
 from sim import simulate
 
 WORLDS = 300   # enough to see the pattern; use 1000 for your final figures
 SOCIAL_INFLUENCE = 0.5
-CONDITIONS = {"order does not matter": 1.0, "sorted by count": 1.2}   # label -> position discount
 FIGURES = Path(__file__).resolve().parent / "figures"
 
 
+def shuffled_top_five(counts, rng):
+    """The same five artists top_five shows, in a random order."""
+    shown = top_five(counts, rng)
+    rng.shuffle(shown)
+    return shown
+
+
+CONDITIONS = {"random order": shuffled_top_five, "sorted by count": top_five}
+
+
 def main():
-    if not choose.is_implemented():
-        print("Part 4 needs Part 3's rule in choose.py, and it is not in yet; "
-              "uv run python choose.py shows the hand check.")
+    if not hand_check.passes():
+        print("Part 4 needs Part 3's rule in my_choice.py, and the hand check does not pass yet; "
+              "uv run python hand_check.py shows the case.")
         return 1
 
-    independent = simulate(random_five, WORLDS, social_influence=0.0)
+    independent = simulate(random_five, independent_choice, WORLDS, social_influence=0.0)
     shares_by_condition = {}
-    for label, discount in CONDITIONS.items():
-        shares_by_condition[label] = simulate(top_five, WORLDS, SOCIAL_INFLUENCE,
-                                              position_discount=discount)
-    print(f"The independent condition, then the two markets (top_five, social influence "
+    for label, recommender in CONDITIONS.items():
+        shares_by_condition[label] = simulate(recommender, my_choice, WORLDS, SOCIAL_INFLUENCE)
+    print(f"The independent condition, then the two markets (the top five shown, social influence "
           f"{SOCIAL_INFLUENCE}); {WORLDS} worlds per row:")
     rows = [("independent condition", independent)] + list(shares_by_condition.items())
     measures.print_table(rows)

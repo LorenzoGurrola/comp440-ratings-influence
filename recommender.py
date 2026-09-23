@@ -1,5 +1,5 @@
 """
-A policy maps the world's download counts so far to the five artists a user is shown, in
+A recommender maps the world's download counts so far to the five artists a user is shown, in
 display order. Position 0 is the top of the list.
 """
 

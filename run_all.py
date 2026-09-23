@@ -9,7 +9,7 @@ Runs measures.py's self-check, then Parts 1 to 5, then Part 6 once the line endi
 line when you start" is gone from part6_assumption.py. With --part N it stops after Part N, so
 that a later part's results never appear before you have said what you expect from it. A part
 that stops, because it failed or because what it needs is not done yet (Part 3's rule in
-choose.py, your policy in my_policy.py), does not stop the others.
+my_choice.py, your recommender in my_recommender.py), does not stop the others.
 
 Each part gets one line: "ran" and how long it took; "stopped:" and the last line its script
 printed, which says why; "not started"; or "not run" after --part N. The scripts' own output is
@@ -41,10 +41,10 @@ SENTINEL = "# delete this line when you start"
 # part number -> (its script, the figures its docstring promises)
 PARTS = {
     1: ("part1_independent.py", ["part1_strip.png"]),
-    2: ("part2_policy.py", ["part2_strip.png"]),
+    2: ("part2_recommender.py", ["part2_strip.png"]),
     3: ("part3_influence.py", ["part3_gini.png", "part3_unpredictability.png"]),
     4: ("part4_shown.py", ["part4_quality_vs_success.png"]),
-    5: ("part5_policy.py", ["part5_policies.png"]),
+    5: ("part5_recommender.py", ["part5_recommenders.png"]),
     6: ("part6_assumption.py", ["part6_trajectories.png"]),
 }
 

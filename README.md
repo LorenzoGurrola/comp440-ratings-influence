@@ -53,13 +53,14 @@ what it can never show. Claude corrects you if you have the code wrong, and you 
 it corrected. 
 
 Then have Claude run
-`part2_policy.py`: the same users, still ignoring the counts, now see the five most downloaded
+`part2_recommender.py`: the same users, still ignoring the counts, now see the five most downloaded
 artists. What changed against Part 1, in one sentence?
 
 ### Part 3. Social influence
 
-`choose.py` decides what a user picks from the five shown. As shipped it ignores the counts. The
-rule to put in is the paper's idea, made specific:
+A choice rule decides what a user picks from the five shown. The one that ships, in `choose.py`,
+ignores the counts; yours goes in `my_choice.py`. The rule to put in is the paper's idea, made
+specific:
 
 * each artist shown gets a social weight of (its downloads + 1) × 1.2^−position, where the top
   of the list is position 0;
@@ -67,9 +68,10 @@ rule to put in is the paper's idea, made specific:
   shown, so each set sums to 1;
 * the chance of picking an artist is `social_influence` × social + (1 − `social_influence`) × true.
 
-Tell Claude the rule in your own words. Claude writes it into `choice_weights()` and runs the
-two-artist hand check, which prints what your code gives for the case; work out what the rule
-gives yourself, then Claude shows the rule's numbers and you say whether all three agreed. Then pick the
+Tell Claude the rule in your own words. Claude writes it into `my_choice.py` and runs
+`hand_check.py`, the two-artist hand check, which prints what your code gives for the case; work
+out what the rule gives yourself, then Claude shows the rule's numbers and you say whether all
+three agreed. Then pick the
 social-influence levels for `part3_influence.py` (it ships with 0, 0.25, 0.5, 0.75 and 1; keep
 them or change them), say what shape you expect, and read the two curves against the paper's
 Figures 1 and 2. One sentence each: direction, not size. Then go back to your Part 0
@@ -77,17 +79,19 @@ predictions: the last slot in Part 3 asks which were wrong.
 
 ### Part 4. What is shown
 
-Two markets at the same social influence: one where an artist's position on the list does not
-matter and one where it does, the paper's experiments 1 and 2. `part4_shown.py` draws the
-paper's Figure 3 for each: what an artist earned when nobody saw counts, against what it earned
-in each world. One sentence: which market moved success further from quality?
+Two markets at the same social influence, both showing the five most downloaded artists: one
+shows them in a random order and one shows them sorted by count, the paper's experiments 1 and 2.
+`part4_shown.py` draws the paper's Figure 3 for each: what an artist earned when nobody saw
+counts, against what it earned in each world. One sentence: which market moved success further
+from quality?
 
-### Part 5. Your policy
+### Part 5. Your recommender
 
 Describe a recommender rule in words before any code: damped counts, an exploration slot, hiding
 the counts, anything. Say what you expect it to do to inequality, unpredictability and fidelity
-to true taste. Claude writes `my_policy.py` from your description, and `part5_policy.py` compares
-it with the shipped rule and with random. Some rules will not move the numbers; that is a result.
+to true taste. Claude writes `my_recommender.py` from your description, and
+`part5_recommender.py` compares it with the shipped rule and with random. Some rules will not
+move the numbers; that is a result.
 One sentence: what your rule buys and what it costs.
 
 ### Part 6. One assumption
@@ -113,11 +117,12 @@ Tell Claude when you have. It will say **YOU ARE FINISHED!** Due **[TBD]**.
 ## AI guidelines
 
 **No AI**: every sentence in `WRITEUP.md` that says what you expect, what a figure shows, or why
-you chose something; the rule in Part 3 and the policy in Part 5 as you describe them. Claude
+you chose something; the rule in Part 3 and the recommender in Part 5 as you describe them. Claude
 writes down what you said, word for word.
 
 **Never edited by anyone**: `TRANSCRIPT.md`, `run_all.py`, `measures.py`, `recommender.py`,
-`sim.py` and `artists.py`; and `choose.py` once its hand check has passed.
+`sim.py`, `artists.py`, `choose.py` and `hand_check.py`; and `my_choice.py` once its hand check
+has passed. Parts 5 and 6 write new functions of their own; neither changes the Part 3 rule.
 
 **AI encouraged**: all the code, the figures, the hand-check arithmetic once you have done it
 yourself, and any extra experiment you want to run.
@@ -129,10 +134,10 @@ I grade your process (through your transcript), your code, and your answers.
 | Part | Weight | Full credit |
 |---|---|---|
 | 0. Predictions | 5 | Four predictions committed before any run, revisited when a result contradicts one |
-| 1–2. Users, then the recommender | 20 | The hand check reported honestly; `top_five` explained correctly in your words; the two sentences say what the figures show |
+| 1–2. Users, then the recommender | 20 | `top_five` explained correctly in your words; the two sentences say what the figures show |
 | 3. Social influence | 25 | The rule in your words; the hand check; the two curves read against the paper's, direction not size |
 | 4. What is shown | 10 | The sentence names the market and how far success moved |
-| 5. Your policy | 20 | A rule precise enough to code, a prediction, and the tradeoff you found, a null result included |
+| 5. Your recommender | 20 | A rule precise enough to code, a prediction, and the tradeoff you found, a null result included |
 | 6. One assumption | 10 | Before-and-after numbers and a verdict on whether the conclusion survived |
 | 7. Connections, working with Claude | 10 | A real connection, and candor about where Claude was wrong or overconfident |
 | | **100** | |
