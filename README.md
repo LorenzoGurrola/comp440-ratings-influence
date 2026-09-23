@@ -17,14 +17,18 @@ graded. Questions go to `#comp440-f26`.
 
 ## Overview
 
-Salganik, Dodds and Watts built an artificial music market: 14,341 people downloaded songs by
-unknown bands, in eight separate worlds where they could see each song's download count and one
-world where they could not. A song could be a hit in one world and a flop in another.
+Salganik, Dodds and Watts built an artificial music market: 14,341 people downloaded songs in
+eight separate worlds where they could see each song's download count and one world where they
+could not. A song could be a hit in one world and a flop in another.
 
-You will run a small version of that market hundreds of times. Eleven artists have a hidden **true
-popularity**. Each simulated user is shown five artists by a recommender and picks one. A world is
-1,000 users in a row; you run hundreds of worlds from the same start and measure how unequal each
-world ends up and how much the worlds differ from each other.
+You will run a small version of that market hundreds of times.
+
+* Eleven artists have a hidden **true popularity**. If users picked independently (without
+  social influence) the distribution of song plays would reflect that value.
+* Each simulated user is shown five artists by a recommender and then picks one.
+* A world is 1,000 users in a row.
+* You run hundreds of worlds from the same start and measure how unequal each world ends up and
+  how much the worlds differ from each other.
 
 The model ships with users who ignore the download counts (the independent world). You will add
 social influence.
@@ -70,27 +74,27 @@ runs; that is what they are for.
 
 ### Part 1. Users on their own · about 8 minutes
 
-Claude runs `part1_independent.py`, the market as it ships: each user sees five random artists
-and picks by taste with no social influence. It prints the five measures and one world's shares,
-and draws a strip plot: one column per artist, one dot per world. Claude then asks you two
-things: what Gini and unpredictability each measure, in your own words, and what the figure
-shows, in one sentence.
+Claude runs `part1_independent.py`. In this version of the simulation, each user sees five random
+artists and picks independently by taste with no social influence. The simulation prints the five
+measures and one world's shares, and draws a strip plot: one column per artist, one dot per world.
+Claude then asks you two things: what Gini and unpredictability each show, in your own words, and
+what the figure shows, in one sentence.
 
 ### Part 2. The recommender · about 10 minutes
 
 Claude shows you `recommender.py`, which is short. A recommender returns two things: the five
 artists to show, top of the list first, and the download counts shown with them. Claude asks
-what `top_five` shows each user and what it can never show. If you have the code wrong, Claude
-corrects you and asks what you want recorded about the correction.
+you about the capabilities and limitations of the `top_five` mechanisms. If you have the code
+wrong, Claude corrects you and asks what you want recorded about the correction.
 
 Claude then runs `part2_recommender.py`: the same users, still ignoring the counts, now see the
 five most downloaded artists. Claude asks what changed against Part 1, in one sentence.
 
 ### Part 3. Social influence · about 30 minutes
 
-A choice rule decides what a user picks from the five shown. The one that ships,
-`independent_choice` in `choose.py`, ignores the counts. In this part you decide how the counts
-should change what a user picks, and Claude writes your rule into `my_choice.py`.
+The simulation's choice rule decides what song a user picks from the five shown by the
+recommender. The one originally in this repo, `independent_choice` in `choose.py`, ignores the
+counts. You will design a choice rule, and Claude will implement it in `my_choice.py`.
 
 The paper's model is one answer, for reference. You may use it, change it, or write your own:
 
@@ -189,7 +193,7 @@ nothing is missing, the activity is complete.
 | Part | Complete when |
 |---|---|
 | 0. Predictions | Four predictions committed before anything runs |
-| 1. Users on their own | `part1_independent.py` has run; what the two measures measure and what the figure shows, in your words |
+| 1. Users on their own | `part1_independent.py` has run; what the two measures show and what the figure shows, in your words |
 | 2. The recommender | `part2_recommender.py` has run; `top_five` in your words, what Claude corrected, what changed |
 | 3. Social influence | Your rule in your words and in `my_choice.py`, the hand check reported, `part3_influence.py` has run, what the curves show, and the revisited predictions |
 | 4. Your recommender | Your rule described before any code, what you expected, `part4_recommender.py` has run, the tradeoff sentence |
