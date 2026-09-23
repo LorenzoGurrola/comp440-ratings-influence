@@ -96,7 +96,9 @@ The simulation's choice rule decides what song a user picks from the five shown 
 recommender. The one originally in this repo, `independent_choice` in `choose.py`, ignores the
 counts. You will design a choice rule, and Claude will implement it in `my_choice.py`.
 
-The paper's model is one answer, for reference. You may use it, change it, or write your own:
+One answer, for reference, is the rule this course has used since Spring 2024. It is our version
+of the paper's idea; the paper itself ran an experiment with people and has no such rule. You may
+use it, change it, or write your own:
 
 * each artist shown gets a social weight of (its downloads + 1) × 1.2^−position, where the top
   of the list is position 0;
