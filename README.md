@@ -51,12 +51,16 @@ exact formulas.
 
 1. Claude codes, runs the simulation, computes the measures and draws the figures.
 2. You determine approaches and strategies, hypothesize about what will happen, and interpret the results.
+3. Claude leads each step by asking you a question. You answer in a word or a sentence, and
+   Claude writes your answer into `WRITEUP.md` exactly as you said it. To have anything run,
+   shown or changed, ask Claude; you do not need to edit any file yourself.
 
 Claude records the transcript of your sessions to share with Shilad.
 
 ## The task
 
-Six parts, about 70 minutes together. The minutes are a guide, not a rule.
+Six parts, about 75 minutes together. Part 3 is the long one. The minutes are a guide, not a
+rule.
 
 ### Part 0. Predictions · about 5 minutes
 
@@ -66,21 +70,23 @@ runs; that is what they are for.
 
 ### Part 1. Users on their own · about 8 minutes
 
-`part1_independent.py` runs the market as it ships: each user sees five random artists and picks
-by taste with no social influence. Claude runs it, prints one world's shares, and draws a strip
-plot: one column per artist, one dot per world. Type one sentence: what does the figure show?
+Claude runs `part1_independent.py`, the market as it ships: each user sees five random artists
+and picks by taste with no social influence. It prints the five measures and one world's shares,
+and draws a strip plot: one column per artist, one dot per world. Claude then asks you two
+things: what Gini and unpredictability each measure, in your own words, and what the figure
+shows, in one sentence.
 
-### Part 2. The recommender · about 12 minutes
+### Part 2. The recommender · about 10 minutes
 
-Open `recommender.py`. It is short. A recommender returns two things: the five artists to show,
-top of the list first, and the download counts shown with them. Tell Claude, in your own words,
-what `top_five` shows each user and what it can never show. Claude corrects you if you have the
-code wrong, and you write down what it corrected.
+Claude shows you `recommender.py`, which is short. A recommender returns two things: the five
+artists to show, top of the list first, and the download counts shown with them. Claude asks
+what `top_five` shows each user and what it can never show. If you have the code wrong, Claude
+corrects you and asks what you want recorded about the correction.
 
-Then have Claude run `part2_recommender.py`: the same users, still ignoring the counts, now see
-the five most downloaded artists. What changed against Part 1, in one sentence?
+Claude then runs `part2_recommender.py`: the same users, still ignoring the counts, now see the
+five most downloaded artists. Claude asks what changed against Part 1, in one sentence.
 
-### Part 3. Social influence · about 25 minutes
+### Part 3. Social influence · about 30 minutes
 
 A choice rule decides what a user picks from the five shown. The one that ships,
 `independent_choice` in `choose.py`, ignores the counts. Yours goes in `my_choice.py`. The rule
@@ -92,41 +98,44 @@ to put in is the paper's idea, made specific:
   shown, so each set sums to 1 (`normalize()` in `choose.py` does this);
 * the chance of picking an artist is `social_influence` × social + (1 − `social_influence`) × true.
 
-1. Tell Claude the rule in your own words. Claude writes it into `my_choice.py` from what you
-   said.
-2. Claude runs `hand_check.py`, which prints what your code gives for a two-artist case. Work out
-   by hand what the rule gives for that case. Then Claude shows the rule's numbers, and you say
-   whether all three agree. Parts 3 and 4 do not run until your code gives the rule's numbers.
-3. Say what shape you expect the curves to have. Then Claude runs `part3_influence.py`, which
-   ships with social-influence levels 0, 0.25, 0.5, 0.75 and 1; you may change them, but you do
+1. Claude asks you to say the rule in your own words, and writes it into `my_choice.py` from
+   what you said.
+2. The hand check. Claude runs `hand_check.py`, which prints a two-artist case. Work out by hand
+   what the rule gives for it, and tell Claude your two numbers. Claude then runs
+   `hand_check.py --compare`, which prints what your code gives and what the rule gives, and
+   asks whether all three agree. If they do not, Claude asks what you want to change. Parts 3
+   and 4 do not run until your code gives the rule's numbers.
+3. Claude asks what shape you expect the curves to have, then runs `part3_influence.py` at
+   social-influence levels 0, 0.25, 0.5, 0.75 and 1. You may ask for other levels, but you do
    not have to.
-4. Read the two curves against the paper's Figures 1 and 2, one sentence each: direction, not
-   size.
-5. Go back to your Part 0 predictions: the last slot in Part 3 asks which were wrong.
+4. Claude asks what the two curves show against the paper's Figures 1 and 2, in one or two
+   sentences: direction, not size.
+5. Claude shows your four Part 0 predictions as you wrote them and asks which you would now
+   change, and why.
 
 ### Part 4. Your recommender · about 15 minutes
 
-A recommender sees only the download counts, never true popularity, and returns the five artists
-to show, in order, and the counts to show with them. Describe a rule of your own in words before
-any code: for example, keep one of the five spots for a random artist, mix the most and least
-downloaded, or show no counts at all. Say what you expect it to do to inequality,
-unpredictability and fidelity. Claude writes `my_recommender.py` from your description, and
-`part4_recommender.py` compares it with `top_five` and `random_five`, all three with your Part 3
-rule at social influence 0.5. Some rules will not move the numbers; that is a result. One
-sentence: what your rule buys and what it costs.
+A recommender sees only the download counts, never true popularity. It decides which five artists
+to show, in what order, and what counts to show with them. Claude asks for a rule of your own, in
+words, before any code: for example, show no counts at all, show every count divided by ten, or
+keep one of the five spots for a random artist. Claude asks what you expect your rule to do to
+inequality, unpredictability and fidelity, writes `my_recommender.py` from your description, and
+runs `part4_recommender.py`. It compares your rule with `top_five` and `random_five`, all three
+with your Part 3 rule at social influence 0.5. Some rules will not move the numbers; that is a
+result. Claude asks for one sentence: what your rule buys and what it costs.
 
 ### Part 5. Reflection · about 5 minutes
 
-Two sentences, in `WRITEUP.md`. Where does this show up in data you have already handled, or in
-an interface you use: HW1's figure of when a movie's tags and ratings arrived, HW0's three
-rankings, the "Popular on Netflix" row in the Sep 22 reading? Then one sentence on working with
-Claude: a moment it was wrong or overconfident, or a judgment you kept for yourself.
+Claude asks two questions and writes your answers into `WRITEUP.md`. First, where does this show
+up in data you have already handled, or in an interface you use: HW1's figure of when a movie's
+tags and ratings arrived, HW0's three rankings, the "Popular on Netflix" row in the Sep 22
+reading? Second, a moment Claude was wrong or overconfident, or a judgment you kept for yourself.
 
 ## Follow-ups
 
-Optional, and not graded. Do one if you want to; do none and you have still finished the
-activity. The slots for them are at the end of `WRITEUP.md`, and `run_all.py` never counts them
-as missing.
+Optional, and not graded. Claude offers them once, after Part 5. Ask for one if you want it; do
+none and you have still finished the activity. Their slots are at the end of `WRITEUP.md`, and
+`run_all.py` neither runs them nor counts them as missing.
 
 * **What is shown.** `followup_shown.py`: two markets at the same social influence, both showing
   the five most downloaded artists, one in a random order and one sorted by count — the paper's
@@ -136,15 +145,17 @@ as missing.
 * **One assumption.** `followup_assumption.py`: pick one thing the model assumes — the 1.2
   position discount, the +1 added to every count, that an artist's social weight grows in
   proportion to its downloads, that the recommender only ever shows artists that already have a
-  download, or 1,000 users per world. Change it there, so the files Parts 1 to 4 used stay as
-  they were, and rerun Part 3's levels without and with the change. Did the conclusion survive?
-* **More recommenders.** Write a second and a third rule in Part 4's shape and compare them.
-* **More worlds.** Every script runs 300 worlds. Set `WORLDS = 1000` in a copy and see which
-  numbers move and which only get steadier.
+  download, or 1,000 users per world. Claude makes the change there, so the files Parts 1 to 4
+  used stay as they were, and reruns Part 3's levels without and with the change. Did the
+  conclusion survive?
+* **More recommenders.** Ask Claude for a second and a third rule in Part 4's shape, and compare
+  them.
+* **More worlds.** Every script runs 300 worlds. Ask Claude to rerun a part with 1,000 and see
+  which numbers move and which only get steadier.
 
 ## Submitting
 
-When the six parts are done, have Claude run `/checkpoint`; it lists what is still missing. Then
+When the six parts are done, Claude runs `/checkpoint`, which lists anything still missing. Then
 ask Claude to commit and push, and fill in the form: https://forms.gle/mgKcnqzTGxNaGvteA. Tell
 Claude when you have. It will say **YOU ARE FINISHED!**
 
@@ -172,9 +183,9 @@ nothing is missing, the activity is complete.
 | Part | Complete when |
 |---|---|
 | 0. Predictions | Four predictions committed before anything runs |
-| 1. Users on their own | `part1_independent.py` has run, the figure is drawn, the sentence is yours |
+| 1. Users on their own | `part1_independent.py` has run; what the two measures measure and what the figure shows, in your words |
 | 2. The recommender | `part2_recommender.py` has run; `top_five` in your words, what Claude corrected, what changed |
-| 3. Social influence | Your rule in `my_choice.py`, the hand check reported, `part3_influence.py` has run, the two curve sentences and the revisited predictions |
+| 3. Social influence | Your rule in `my_choice.py`, the hand check reported, `part3_influence.py` has run, what the curves show, and the revisited predictions |
 | 4. Your recommender | Your rule described before any code, what you expected, `part4_recommender.py` has run, the tradeoff sentence |
 | 5. Reflection | Both sentences |
 | Follow-ups | Optional. Not graded, and never counted as missing |
