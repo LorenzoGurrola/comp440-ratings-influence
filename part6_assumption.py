@@ -15,7 +15,7 @@ Until you delete the line that ends "delete this line when you start", this scri
      simulate_with_picks() returns for top_five at social influence 0.75 with 12 worlds,
      your assumption changed.
 
-Make the change in this file, so that sim.py, choose.py and policy.py stay as Parts 1 to 5
+Make the change in this file, so that sim.py, choose.py and recommender.py stay as Parts 1 to 5
 ran them. Pass a changed number to simulate() (position_discount, pseudo_count or users), or
 write a changed policy here and pass it in. An assumption that lives in choose.py, such as
 counts entering the choice linearly, is changed the same way: write the changed rule here as
@@ -28,7 +28,7 @@ from pathlib import Path
 
 import measures
 import plots
-from policy import top_five
+from recommender import top_five
 from sim import simulate, simulate_with_picks
 
 WORLDS = 300   # enough to see the pattern; use 1000 for your final numbers

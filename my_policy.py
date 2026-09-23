@@ -2,7 +2,7 @@
 Your recommender, for Part 5.
 
 Describe your rule to Claude in words first. Claude writes it here, and part5_policy.py compares
-it with top_five and random_five from policy.py, which are written the same way.
+it with top_five and random_five from recommender.py, which are written the same way.
 """
 
 

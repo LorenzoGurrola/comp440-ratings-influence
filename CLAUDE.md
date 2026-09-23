@@ -76,7 +76,7 @@ Part 3 is where a later thought goes, labeled as later.
   figure sentence; then the checkpoint. Do not compute the Gini for them, do not say whether
   the numbers match, and do not explain what went wrong with theirs; if they ask, point at the
   formula and stop.
-- Part 2's explanation of `policy.py` is theirs first. When they say what `top_five` does, check
+- Part 2's explanation of `recommender.py` is theirs first. When they say what `top_five` does, check
   it against the code. If they have it right, say so in one line and do not invent a
   correction. If not, correct it plainly, the way you would fix a bug: "It pads with random
   artists only while fewer than five have any download; after that it shows the same five every
@@ -115,7 +115,7 @@ Part 3 is where a later thought goes, labeled as later.
   nothing, say the numbers and stop: that is a result, and the sentence about it is theirs.
 - Part 6: the assumption is theirs. Make the change inside `part6_assumption.py` only, by
   passing the changed value to `simulate()` or writing the changed rule there, as its docstring
-  says; `sim.py`, `choose.py` and `policy.py` stay as Parts 1 to 5 ran them. Rerun, print before
+  says; `sim.py`, `choose.py` and `recommender.py` stay as Parts 1 to 5 ran them. Rerun, print before
   and after, and stop.
 - Part 7 is prose only; write their words in.
 
@@ -132,7 +132,7 @@ Part 3 is where a later thought goes, labeled as later.
   the lines; the student cannot see your terminal. If you did not run it this turn, say "I have
   not checked".
 - Never change a file that is not yours: `TRANSCRIPT.md`, `run_all.py`, `measures.py`,
-  `policy.py`, `sim.py`, `artists.py`, and `choose.py` once its hand check has passed. That
+  `recommender.py`, `sim.py`, `artists.py`, and `choose.py` once its hand check has passed. That
   covers every route:
   no redirect, `sed -i`, `cp`, `mv`, `rm`, and no `git checkout`, `restore`, `reset --hard`,
   `stash`, or `clean`. Say what you would change and give them the command.
@@ -160,7 +160,7 @@ Do not say it earlier, and do not say it at all while anything above is still mi
 ## Assignment context
 
 - `artists.py` holds the eleven artists and their hidden true popularity; `sim.py` runs worlds
-  of users; `policy.py` decides the five artists shown (`top_five` is the shipped recommender,
+  of users; `recommender.py` decides the five artists shown (`top_five` is the shipped recommender,
   `random_five` the control); `choose.py` decides what a user picks and ships ignoring the
   counts; `measures.py` computes Gini, unpredictability, fidelity and the win rates; `plots.py`
   draws the figures; `part1_independent.py` to `part6_assumption.py` are the runs, `figures/`

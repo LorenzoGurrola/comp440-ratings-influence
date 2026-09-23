@@ -4,7 +4,7 @@ Part 1: users on their own.
     uv run python part1_independent.py
 
 Runs the market as it ships: every user is shown five artists picked at random (random_five in
-policy.py) and picks by true popularity alone, because choose.py ignores the counts (social
+recommender.py) and picks by true popularity alone, because choose.py ignores the counts (social
 influence 0). This is the independent condition, the control for the later parts.
 
 Prints the five measures over WORLDS worlds, then world 0's share for each artist. World 0's
@@ -18,7 +18,7 @@ from pathlib import Path
 
 import measures
 import plots
-from policy import random_five
+from recommender import random_five
 from sim import ARTISTS, simulate
 
 WORLDS = 300   # enough to see the pattern in a few seconds; use 1000 for your final figures

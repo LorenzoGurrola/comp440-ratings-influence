@@ -48,7 +48,7 @@ Type one sentence: what does the figure show?
 
 ### Part 2. The recommender (in class)
 
-Open `policy.py`. It is short. Tell Claude, in your own words, what `top_five` shows each user and
+Open `recommender.py`. It is short. Tell Claude, in your own words, what `top_five` shows each user and
 what it can never show. Claude corrects you if you have the code wrong, and you write down what
 it corrected. 
 
@@ -116,7 +116,7 @@ Tell Claude when you have. It will say **YOU ARE FINISHED!** Due **[TBD]**.
 you chose something; the rule in Part 3 and the policy in Part 5 as you describe them. Claude
 writes down what you said, word for word.
 
-**Never edited by anyone**: `TRANSCRIPT.md`, `run_all.py`, `measures.py`, `policy.py`,
+**Never edited by anyone**: `TRANSCRIPT.md`, `run_all.py`, `measures.py`, `recommender.py`,
 `sim.py` and `artists.py`; and `choose.py` once its hand check has passed.
 
 **AI encouraged**: all the code, the figures, the hand-check arithmetic once you have done it

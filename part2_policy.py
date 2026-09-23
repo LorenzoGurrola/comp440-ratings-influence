@@ -4,7 +4,7 @@ Part 2: the recommender on its own.
     uv run python part2_policy.py
 
 The same users as Part 1, still ignoring the counts (social influence 0), but now every user is
-shown the five most downloaded artists so far (top_five in policy.py) instead of five random
+shown the five most downloaded artists so far (top_five in recommender.py) instead of five random
 ones.
 
 Prints the five measures over WORLDS worlds and how many of the eleven artists have any
@@ -15,7 +15,7 @@ from pathlib import Path
 
 import measures
 import plots
-from policy import top_five
+from recommender import top_five
 from sim import ARTISTS, simulate
 
 WORLDS = 300   # enough to see the pattern in a few seconds; use 1000 for your final figures

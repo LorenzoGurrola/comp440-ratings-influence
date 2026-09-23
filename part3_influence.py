@@ -20,7 +20,7 @@ from pathlib import Path
 import choose
 import measures
 import plots
-from policy import random_five, top_five
+from recommender import random_five, top_five
 from sim import simulate
 
 WORLDS = 300   # enough to see the pattern; use 1000 for your final figures

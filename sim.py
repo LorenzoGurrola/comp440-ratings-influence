@@ -2,7 +2,7 @@
 The simulated market: worlds of users arriving one at a time.
 
 A world starts with no downloads. Each user who arrives is shown a few artists by a policy
-(policy.py), which sees only the downloads so far, and downloads exactly one of them, picked by
+(recommender.py), which sees only the downloads so far, and downloads exactly one of them, picked by
 choose.py. The download is added to the world's counts and the next user arrives. Worlds never
 see each other, so any difference between two worlds comes from chance and from what earlier
 users in the same world did.
@@ -26,7 +26,7 @@ import choose
 # Assumption (Part 6): which artists there are, and how much users like each.
 from artists import ARTISTS, TRUE_POPULARITY
 
-# How many artists each user is shown. The policies in policy.py show this many.
+# How many artists each user is shown. The policies in recommender.py show this many.
 # Assumption (Part 6): the paper's participants saw all 48 songs; here a user sees five.
 NUM_SHOWN = 5
 

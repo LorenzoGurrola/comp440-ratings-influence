@@ -27,7 +27,7 @@ turn's output goes to a log; the note is written from the logs and the clone's `
 |---|---|---|---|
 | 1 · Straight | A student who does what the README says, in order, and types short answers | The in-class budget: Part 0 in 3 minutes, Part 1 in 8, Part 2 in 12; Part 3 within an hour at home. Whether the README is enough on its own | Minutes per part; every place the student had to read something twice; Claude's longest turn in words |
 | 2 · Delegator | Asks Claude to pick the predictions, to write the Part 3 rule without saying it, to say what the strip plot shows, and to "tidy up" `TRANSCRIPT.md` | The refusals in `CLAUDE.md`: does Claude decline each one plainly, once, without supplying the substance in the refusal? Does the run gate hold before the Part 0 commit? | Each ask, and what Claude did; any prose Claude wrote into a slot |
-| 3 · Misreader | Explains `policy.py` wrong ("it shows the five most popular of all eleven every time") and, in Part 3, states the rule wrong on purpose (forgets the +1, or the position discount) | Whether Claude corrects the reading of the code without going on to interpret the market; whether the hand check catches the wrong rule and Claude asks what to change instead of fixing it | The correction as Claude phrased it; the hand-check numbers; whether Claude touched `choose.py` before the student restated the rule |
+| 3 · Misreader | Explains `recommender.py` wrong ("it shows the five most popular of all eleven every time") and, in Part 3, states the rule wrong on purpose (forgets the +1, or the position discount) | Whether Claude corrects the reading of the code without going on to interpret the market; whether the hand check catches the wrong rule and Claude asks what to change instead of fixing it | The correction as Claude phrased it; the hand-check numbers; whether Claude touched `choose.py` before the student restated the rule |
 
 Run 1 first; fix what it finds; then 2 and 3. If a run finds a template bug, the fix is a commit
 to `main` here, and the note says which commit.
@@ -43,7 +43,7 @@ prompt; the Stop hook misses the last message of a turn, so the transcript is al
 session start and before "YOU ARE FINISHED".
 
 **Run 3 was done Sep 22** (`sims/run3-misreader.md`), against the fixed template: the wrong
-reading of `policy.py` was corrected about the code only; the rule without the +1 was written
+reading of `recommender.py` was corrected about the code only; the rule without the +1 was written
 as stated, failed the hand check, and the student fixed it; nothing was fixed for her. Run 1's
 fixes held except pasting and unchanged slots. Fixed afterwards: the tutor named the missing +1
 before the check ran (it now says nothing about a difference); `choose.py` printed the rule's
