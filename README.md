@@ -110,10 +110,9 @@ There is no single right rule. Some things to consider as you design your rule:
    user picks, how `social_influence`, from 0 to 1, should set the mix between the counts and a
    user's own taste, and whether an artist's place on the list should matter. Claude writes the
    rule into `my_choice.py` from your answers and shows you the code.
-2. The hand check. Claude runs `hand_check.py`, which prints a two-artist case. Work out by hand
-   what your rule gives for it, and tell Claude your two numbers. Claude then runs
-   `hand_check.py --compare`, which prints what your code gives, and asks whether it matches
-   your numbers. If it does not, Claude asks what you want to change.
+2. The hand check. Claude runs `hand_check.py`, which prints a two-artist case and each step of
+   your rule computed on it, and asks whether each step does what you meant. If one does not,
+   Claude asks what you want to change.
 3. Claude asks what shape you expect the curves to have, then runs `part3_influence.py` at
    social-influence levels 0, 0.25, 0.5, 0.75 and 1. You may ask for other levels, but you do
    not have to.
@@ -182,8 +181,7 @@ writes down what you said, word for word.
 done. Part 4 and the follow-ups write new functions of their own; none of them changes the
 Part 3 rule.
 
-**AI encouraged**: all the code, the figures, the hand-check arithmetic once you have done it
-yourself, and any extra experiment you want to run.
+**AI encouraged**: all the code, the figures, and any extra experiment you want to run.
 
 ## Rubric
 

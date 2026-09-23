@@ -339,10 +339,12 @@ are right (section 11), so its VERIFY item on them can be closed.
 - [ ] Sep 22–23 — Session: the three simulated-student runs in `SIMULATIONS.md`, notes in
   `sims/`; fix what they find. Then the instructor runs Part 0 himself once.
 - [x] Sep 23 — Round 2 matched the code, `CLAUDE.md` and `WRITEUP.md` to the instructor's README:
-  the student designs the Part 3 rule through Claude's questions; `hand_check.py --compare`
-  replaces `--target`, and `passes()` checks only that the chances are 0 or more and sum to 1;
-  Claude asks questions about the rule after the run; `part3_influence.py` prints the Part 0
-  predictions; `run_all.py` never runs a follow-up; a hint policy replaces the refusal rules.
+  the student designs the Part 3 rule through Claude's questions; `hand_check.py` prints each
+  labeled step of the rule (`step()` in `choose.py`) on the two-artist case, the student says
+  whether each step is what they meant and does no arithmetic, and `passes()` checks only that
+  the chances are 0 or more and sum to 1 (`--target` removed); Claude asks questions about the
+  rule after the run; `part3_influence.py` prints the Part 0 predictions; `run_all.py` never runs
+  a follow-up; a hint policy replaces the refusal rules.
 - [ ] Sep 23 — Session, with the instructor's go: add the launch slides to the Sep 24 deck (the
   copied S24 deck, untouched since Sep 13): the model slide is its slide 19 already; add "What
   Claude does, what you do", "Fork, clone, /setup", "Four predictions", "Ours vs theirs", "Where

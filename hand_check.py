@@ -1,19 +1,21 @@
 """
 The two-artist hand check for Part 3.
 
-    uv run python hand_check.py             the case, and whether my_choice is written yet
-    uv run python hand_check.py --compare   the same, and the chances my_choice() gives for the
-                                            case: run it after you have worked them out by hand
+    uv run python hand_check.py
 
-There is no single right answer: the check is whether your code gives what you worked out
-for your own rule. passes() is the gate for Parts 3 and 4: my_choice is written, runs on the
-case, and returns two chances that are zero or more and sum to 1. problem() says in plain words
-why it does not pass. Nothing in this file changes.
+Prints the case, then each step of your rule computed on it, one row per step, with the label
+the rule gave that step (step() in choose.py), and last the chances my_choice() returns. You
+read the rows and say whether each step does what you meant. There is no single right answer
+and nothing to work out by hand: the check is whether the code does what you meant.
+
+passes() is the gate for Parts 3 and 4: my_choice is written, runs on the case, and returns two
+chances that are zero or more and sum to 1. problem() says in plain words why it does not pass.
+Nothing in this file changes.
 """
 
 import math
-import sys
 
+import choose
 from artists import TRUE_POPULARITY
 from my_choice import my_choice
 
@@ -25,6 +27,9 @@ CHECK_SOCIAL_INFLUENCE = 0.5
 
 NOT_WRITTEN = "my_choice is not written yet."
 NORMALIZE_HINT = "normalize() in choose.py scales a list of weights so they sum to 1."
+LAST_ROW = "chances my_choice returns"
+LABEL_WIDTH = 56   # a longer label goes on a line of its own, above its numbers
+COLUMN_WIDTH = 15
 
 
 def chances():
@@ -65,30 +70,61 @@ def passes():
     return problem() is None
 
 
-def hand_check(compare=False):
-    """Print the case and whether my_choice is written. With compare=True, also print the
-    chances my_choice() gives for the case, and a plain sentence if they do not pass."""
+def recorded_steps():
+    """Run my_choice on the case with its steps recorded. Returns (steps, chances, error): the
+    labeled steps in order, as (label, values); the chances, or None; and the error my_choice
+    stopped with, or None."""
+    choose._STEPS = []
+    try:
+        got, error = chances(), None
+    except Exception as stopped:   # the steps before the error are still worth showing
+        got, error = None, stopped
+    finally:
+        steps, choose._STEPS = choose._STEPS, None
+    return steps, got, error
+
+
+def row(label, values):
+    """One row of the table: the label, then one number per artist, 4 decimals."""
+    try:
+        cells = [f"{float(value):.4f}" for value in values]
+    except TypeError:             # a single number, not a list
+        try:
+            cells = [f"{float(values):.4f}"]
+        except (TypeError, ValueError):
+            cells = [repr(values)]
+    except ValueError:
+        cells = [repr(values)]
+    numbers = "".join(f"{cell:>{COLUMN_WIDTH}}" for cell in cells)
+    if len(label) > LABEL_WIDTH:
+        return f"  {label}\n  {'':<{LABEL_WIDTH}}{numbers}"
+    return f"  {label:<{LABEL_WIDTH}}{numbers}"
+
+
+def hand_check():
+    """Print the case, each labeled step of my_choice on it, and the chances it returns."""
     top, below = CHECK_SHOWN
     print(f"Hand check, at social influence {CHECK_SOCIAL_INFLUENCE}:")
     print(f"  {top:<14} at the top of the list (position 0), {CHECK_COUNTS.get(top, 0)} downloads, "
           f"true popularity {TRUE_POPULARITY[top]}")
     print(f"  {below:<14} below it (position 1), no downloads, "
           f"true popularity {TRUE_POPULARITY[below]}")
-    why = problem()
-    if not compare:
-        print(NOT_WRITTEN if why == NOT_WRITTEN else "my_choice is written.")
-        print("Work out by hand the chance your rule gives each artist. Then "
-              "`uv run python hand_check.py --compare` prints what your code gives.")
+    steps, got, error = recorded_steps()
+    if isinstance(error, NotImplementedError):
+        print(NOT_WRITTEN)
         return
-    try:
-        got = [float(chance) for chance in chances()]
-    except Exception:   # nothing printable came back; problem() says why
-        got = None
-    if got is not None and len(got) == len(CHECK_SHOWN):
-        print(f"  my_choice() gives:   {top} {got[0]:.4f}   {below} {got[1]:.4f}")
+    print("\nYour rule, step by step, on this case:")
+    print(f"  {'':<{LABEL_WIDTH}}" + "".join(f"{name:>{COLUMN_WIDTH}}" for name in CHECK_SHOWN))
+    for label, values in steps:
+        print(row(label, values))
+    if got is not None:
+        print(row(LAST_ROW, got))
+    if not steps:
+        print("my_choice has no labeled steps, so only the chances it returns are shown.")
+    why = problem()
     if why is not None:
         print(why)
 
 
 if __name__ == "__main__":
-    hand_check(compare="--compare" in sys.argv)
+    hand_check()

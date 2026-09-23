@@ -134,7 +134,11 @@ If their rule needs weights scaled so the chances sum to 1, explain it in one or
 sentences, for example: "Chances have to add up to 1, so I divide each weight by the total of
 the five. `normalize()` in `choose.py` does that." Then use `normalize()`.
 
-Write `my_choice()` from their answers and show the code in your message. Ask them to say the
+Write `my_choice()` from their answers and show the code in your message. Always label each
+stage of the rule with `step()` from `choose.py`, using a plain label that says what the stage
+computes in the student's terms, for example
+`social = step("social share: the weights scaled to sum to 1", normalize(weights))`. Make the
+labels plain strings, not f-strings, so they cost nothing in a run. Ask the student to say the
 rule in their own words for the "Your rule in your words" slot.
 
 If they ask you to design the rule, or are stuck, give hints: ask one of the questions again in a
@@ -142,13 +146,12 @@ narrower form, or point at the README's list of things to consider. Never propos
 
 ### Steps 2 to 6
 
-2. Run `uv run python hand_check.py` and paste it. It shows the two-artist case and no numbers
-   from the code. The student works out by hand what their rule gives and tells you both
-   numbers. Do not work them out for them; if they are stuck, hint, for example: "Start with the
-   counts. What weight does each artist get from its downloads?" Only after they have given both
-   numbers, run `uv run python hand_check.py --compare`, paste it, and ask whether it matches. If
-   it does not, ask what they want to change. Then ask for the hand-check slot: their numbers, what
-   the code gave, and whether they matched.
+2. Run `uv run python hand_check.py` and paste its table. It shows each labeled step of their
+   rule on a two-artist case, and last the chances `my_choice` returns. The student does no
+   arithmetic. Ask whether each step does what they meant. If they are unsure what a row means,
+   explain what the row computes, not whether it is right. If a step is not what they meant, ask
+   what to change, change the code, and run the hand check again. Then ask for the hand-check
+   slot: whether each step matched what they meant, and anything they changed.
 3. Ask what shape they expect the two curves to have. Then run `uv run python part3_influence.py`
    and paste the table; the predictions it prints last are for step 6. Say what the two figures
    plot: Gini, and unpredictability, against social influence, with a square for the independent
@@ -163,7 +166,8 @@ narrower form, or point at the README's list of things to consider. Never propos
    - Can a chance be negative, or fail to sum to 1?
 
    If you find none, say so in one line. Do not name a fix. The student may change the rule once:
-   change `my_choice.py` as they say, show the change, rerun `part3_influence.py` and paste it.
+   change `my_choice.py` as they say, keeping the step labels, show the change, run
+   `hand_check.py` and `part3_influence.py` again, and paste both.
    Ask what they changed, for the "What you changed" slot, or "nothing", and whether the rule slot
    should change too.
 5. Ask what the two curves show against the paper's Figures 1 and 2, in one or two sentences:
@@ -225,8 +229,9 @@ once more, commit, and push. Only then say exactly:
 
 - `artists.py`: the eleven artists and their hidden true popularity. `sim.py`: runs worlds of
   users. `recommender.py`: `top_five`, the shipped recommender, and `random_five`, the control.
-  `choose.py`: `independent_choice`, which ignores the counts, and `normalize()`. `my_choice.py`:
-  the student's Part 3 rule. `hand_check.py`: the two-artist case, and `passes()`, the gate for
+  `choose.py`: `independent_choice`, which ignores the counts, `normalize()`, and `step()`, which
+  labels a stage of a rule for the hand check. `my_choice.py`: the student's Part 3 rule.
+  `hand_check.py`: each step of the rule on a two-artist case, and `passes()`, the gate for
   Parts 3 and 4. `my_recommender.py`: the student's Part 4 recommender. `measures.py`: Gini,
   unpredictability, fidelity and the win rates. `plots.py`: the figures, saved in `figures/`.
   `run_all.py`: runs Parts 1 to 4 and lists what is missing; it never runs a follow-up.

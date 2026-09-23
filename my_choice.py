@@ -2,11 +2,12 @@
 Your choice rule, for Part 3.
 
 You design the rule. Claude asks you questions about it, writes it here from your answers, and
-shows you the code. Then `uv run python hand_check.py` shows the case you check by hand.
+shows you the code. Then `uv run python hand_check.py` shows each step of your rule on a
+two-artist case, so you can say whether each step does what you meant.
 """
 
 from artists import TRUE_POPULARITY
-from choose import normalize
+from choose import normalize, step
 
 
 def my_choice(shown, counts, social_influence):
@@ -19,6 +20,7 @@ def my_choice(shown, counts, social_influence):
     social_influence   from 0 (users ignore the counts) to 1 (users go by the counts alone)
 
     The rule may use `normalize`, which scales a list of weights so they sum to 1, and
-    TRUE_POPULARITY, which gives each artist its hidden true popularity.
+    TRUE_POPULARITY, which gives each artist its hidden true popularity. `step` labels each
+    stage of the rule, so that hand_check.py can show it.
     """
     raise NotImplementedError("Part 3: design your rule with Claude first")

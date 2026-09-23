@@ -9,10 +9,28 @@ chances.
 
 independent_choice is the rule Parts 1 and 2 use: users ignore the download counts. Your Part 3
 rule goes in my_choice.py, and each part passes sim.py the recommender and the choice rule it
-needs. Nothing in this file changes.
+needs. step() labels one stage of a choice rule so that hand_check.py can print it. Nothing in
+this file changes.
 """
 
 from artists import TRUE_POPULARITY
+
+# hand_check.py sets this to a list while it runs your rule on its case, so that step() records
+# each stage. During a simulation it stays None, and step() only hands its values back.
+_STEPS = None
+
+
+def step(label, values):
+    """Label one stage of a choice rule and return `values` unchanged, for example
+    `social = step("social share, scaled to sum to 1", normalize(weights))`. During the hand
+    check, hand_check.py prints each labeled stage as one row; during a simulation step() does
+    nothing else. Use a plain string as the label, not an f-string, so it costs nothing in a run."""
+    if _STEPS is not None:
+        try:
+            _STEPS.append((label, list(values)))
+        except TypeError:   # a single number, not a list
+            _STEPS.append((label, values))
+    return values
 
 
 def normalize(weights):

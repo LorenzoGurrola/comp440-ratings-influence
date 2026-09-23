@@ -44,7 +44,7 @@ Code: `my_choice.py`, `hand_check.py`, `part3_influence.py`. Figures: `figures/p
 
 **Your rule in your words:** XXXX
 
-**Hand check: your two numbers, what your code gave, and whether they matched:** XXXX
+**Hand check: whether each step matched what you meant, and anything you changed:** XXXX
 
 **The shape you expect the two curves to have, as you told Claude before the run:** XXXX
 
