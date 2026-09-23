@@ -3,14 +3,18 @@ Part 3: social influence.
 
     uv run python part3_influence.py
 
-First checks that my_choice.py holds Part 3's rule. If the hand check does not pass yet, it says
-so in one line and stops.
+First checks that my_choice.py holds a rule that passes the hand check: it runs, and it returns
+chances that are zero or more and sum to 1 (hand_check.passes()). If not, it says why in one
+line and stops.
 
 Then prints one table of the five measures, WORLDS worlds per row: first the independent control
 (Part 1's run: random_five with the shipped choice rule at social influence 0, the same worlds),
 then the top_five recommender with your rule at each social-influence level in LEVELS. Saves
 figures/part3_gini.png and figures/part3_unpredictability.png: each measure against social
 influence, with the independent control marked.
+
+Last, it prints your four Part 0 predictions as WRITEUP.md has them, for the step that asks which
+you would now change.
 """
 
 import sys
@@ -22,6 +26,7 @@ import plots
 from choose import independent_choice
 from my_choice import my_choice
 from recommender import random_five, top_five
+from run_all import slots
 from sim import simulate
 
 WORLDS = 300   # enough to see the pattern; use 1000 for steadier numbers
@@ -29,10 +34,21 @@ LEVELS = [0.0, 0.25, 0.5, 0.75, 1.0]   # social-influence levels, each from 0 to
 FIGURES = Path(__file__).resolve().parent / "figures"
 
 
+def print_predictions():
+    """Print the four Part 0 slots of WRITEUP.md, each label and then the answer as written."""
+    print("\nYour Part 0 predictions, as WRITEUP.md has them:")
+    predictions = [(label, answer) for part, label, answer in slots() if part == 0]
+    if not predictions:
+        print("  (no Part 0 slots found in WRITEUP.md)")
+    for label, answer in predictions:
+        print(f"  {label}")
+        print(f"      {answer}")
+
+
 def main():
-    if not hand_check.passes():
-        print("Part 3 needs your rule in my_choice.py, and the hand check does not pass yet; "
-              "uv run python hand_check.py shows the case.")
+    why = hand_check.problem()
+    if why is not None:
+        print(f"Part 3 needs a rule in my_choice.py that passes the hand check: {why}")
         return 1
 
     rows = [("independent control",
@@ -57,6 +73,7 @@ def main():
         "Does unpredictability rise with social influence?",
         labels=["top_five recommender"], control=(0.0, control["unpredictability"]))
     print(f"\nSaved figures/{gini_path.name} and figures/{unpredictability_path.name}")
+    print_predictions()
     return 0
 
 

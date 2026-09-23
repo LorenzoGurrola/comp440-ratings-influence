@@ -7,8 +7,8 @@ Runs three recommenders at social influence 0.5, WORLDS worlds each, all with yo
 rule: yours (my_recommender in my_recommender.py), the shipped top_five, and random_five, the
 control. Prints one table of the five measures, one row per recommender, and saves
 figures/part4_recommenders.png: mean Gini, unpredictability and fidelity, one bar per recommender.
-Stops with a message if my_recommender is not written yet, or if Part 3's rule is not in
-my_choice.py.
+Stops with a message if my_recommender is not written yet, or if your Part 3 rule in my_choice.py
+does not pass the hand check.
 """
 
 import sys
@@ -35,9 +35,9 @@ def main():
     except NotImplementedError as error:
         print(f"my_recommender is not written yet: {error}")
         return 1
-    if not hand_check.passes():
-        print("Part 4 needs Part 3's rule in my_choice.py, and the hand check does not pass yet; "
-              "uv run python hand_check.py shows the case.")
+    why = hand_check.problem()
+    if why is not None:
+        print(f"Part 4 needs your Part 3 rule in my_choice.py, passing the hand check: {why}")
         return 1
 
     rows = []

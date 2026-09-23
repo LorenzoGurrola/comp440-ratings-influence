@@ -1,8 +1,8 @@
 """
 Your choice rule, for Part 3.
 
-Describe the rule in README Part 3 to Claude in your own words. Claude writes it here, and then
-run `uv run python hand_check.py`.
+You design the rule. Claude asks you questions about it, writes it here from your answers, and
+shows you the code. Then `uv run python hand_check.py` shows the case you check by hand.
 """
 
 from artists import TRUE_POPULARITY
@@ -21,4 +21,4 @@ def my_choice(shown, counts, social_influence):
     The rule may use `normalize`, which scales a list of weights so they sum to 1, and
     TRUE_POPULARITY, which gives each artist its hidden true popularity.
     """
-    raise NotImplementedError("Part 3: describe the rule to Claude first")
+    raise NotImplementedError("Part 3: design your rule with Claude first")

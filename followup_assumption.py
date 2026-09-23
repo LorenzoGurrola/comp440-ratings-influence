@@ -3,28 +3,31 @@ Follow-up: one assumption. Optional, not graded.
 
     uv run python followup_assumption.py
 
-Until you delete the line that ends "delete this line when you start", this script prints
-"Follow-up not started" and does nothing else. Once you start, it must:
+Pick one thing your rule or the model assumes: how your rule treats list position or artists
+with no downloads, how fast the counts pull, that the recommender only ever shows artists that
+already have a download, or 1,000 users per world. Claude makes the change in this file.
+
+Until the line that ends "delete this line when you start" is deleted, this script prints
+"Follow-up not started" and does nothing else. Once started, it must:
 
   1. Rerun Part 3's sweep, top_five with your choice rule at each level in LEVELS with WORLDS
-     worlds, twice: once with the model as it shipped ("before") and once with the one assumption
-     you chose changed ("after").
+     worlds, twice: once as Part 3 ran it ("before") and once with the one assumption changed
+     ("after").
   2. Print one table of the five measures (measures.print_table), with a "before" row and an
      "after" row for each level.
   3. Save figures/followup_trajectories.png: plots.trajectories() on the picks that
      simulate_with_picks() returns for top_five at social influence 0.75 with 12 worlds,
-     your assumption changed.
+     the assumption changed.
 
-Make the change in this file, so that sim.py, choose.py, my_choice.py and recommender.py stay as
+The change goes in this file, so that sim.py, choose.py, my_choice.py and recommender.py stay as
 Parts 1 to 4 ran them. Where the change goes depends on the assumption:
 
   * users per world: pass users= to simulate(), as the example below does.
   * something about what the recommender shows, including which counts it shows: write a changed
     recommender in this file, and pass it to simulate() for the "after" runs.
-  * something inside your choice rule, such as the 1.2 position discount, the +1, counts
-    entering the choice linearly, or the true popularities: copy my_choice() into this file
-    under a new name, make the one change in the copy, and pass the copy to simulate() for the
-    "after" runs. my_choice.py itself keeps the rule Part 3 checked.
+  * something inside your choice rule: copy my_choice() into this file under a new name, make the
+    one change in the copy, and pass the copy to simulate() for the "after" runs. my_choice.py
+    itself keeps the rule Part 3 ran.
 """
 
 import sys

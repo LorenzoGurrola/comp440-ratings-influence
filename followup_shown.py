@@ -10,8 +10,8 @@ recommender.py) and both use your Part 3 rule, as in the paper's two experiments
                         list says nothing about its downloads (the paper's experiment 1)
     "sorted by count"   the five are shown most downloaded first (the paper's experiment 2)
 
-Needs Part 3's rule in my_choice.py; without it, it says so and stops. Prints one table of the five
-measures, WORLDS worlds per row: the independent condition (Part 1's run: random_five with the
+Needs your Part 3 rule in my_choice.py; without it, it says so and stops. Prints one table of the
+five measures, WORLDS worlds per row: the independent condition (Part 1's run: random_five with the
 shipped choice rule at social influence 0, the same worlds), then each market. Saves
 figures/followup_quality_vs_success.png, the paper's Figure 3 for each market: an artist's share,
 and its rank, in the independent condition against the same in each world of the market.
@@ -44,9 +44,10 @@ CONDITIONS = {"random order": shuffled_top_five, "sorted by count": top_five}
 
 
 def main():
-    if not hand_check.passes():
-        print("This follow-up needs Part 3's rule in my_choice.py, and the hand check does not "
-              "pass yet; uv run python hand_check.py shows the case.")
+    why = hand_check.problem()
+    if why is not None:
+        print(f"This follow-up needs your Part 3 rule in my_choice.py, passing the hand check: "
+              f"{why}")
         return 1
 
     independent = simulate(random_five, independent_choice, WORLDS, social_influence=0.0)

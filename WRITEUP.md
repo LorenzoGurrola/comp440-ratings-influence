@@ -3,12 +3,13 @@
 **Name:** XXXX
 **Date:** XXXX
 
-Replace every `XXXX` with your answer. Every number here comes from a script in this repo; say
-which one. One sentence means one sentence.
+Claude writes your answers into the slots below as you say them. You may ask it to change any of
+your answers at any time, except the Part 0 predictions. Every `XXXX` in Parts 0 to 5 needs an
+answer; the follow-up slots at the end are optional.
 
 ## Part 0. Predictions
 
-Answered before anything runs. Claude writes them in as you said them.
+Answered before anything runs. Claude writes them in as you said them, and they stay as written.
 
 **1. Once people can see the counts, which artist wins most often?** XXXX
 
@@ -22,13 +23,15 @@ Answered before anything runs. Claude writes them in as you said them.
 
 Code: `part1_independent.py`. Figure: `figures/part1_strip.png`.
 
+**What Gini and unpredictability each show, in your own words:** XXXX
+
 **What the figure shows, one sentence:** XXXX
 
 ## Part 2. The recommender
 
-Code: `part2_recommender.py`. Figure: `figures/part2_strip.png`.
+Code: `recommender.py`, `part2_recommender.py`. Figure: `figures/part2_strip.png`.
 
-**`top_five` in your words: what it shows each user, and what it can never show:** XXXX
+**The capabilities and limitations of `top_five`, in your words:** XXXX
 
 **What Claude corrected in your reading, in your words, or "nothing":** XXXX
 
@@ -39,17 +42,17 @@ Code: `part2_recommender.py`. Figure: `figures/part2_strip.png`.
 Code: `my_choice.py`, `hand_check.py`, `part3_influence.py`. Figures: `figures/part3_gini.png`,
 `figures/part3_unpredictability.png`.
 
-**The rule in your words:** XXXX
+**Your rule in your words:** XXXX
 
-**Hand check, in your words: your numbers for Bruno Mars and Justin Bieber, what your code printed, what the rule gives, and whether they matched:** XXXX
+**Hand check: your two numbers, what your code gave, and whether they matched:** XXXX
 
 **The shape you expect the two curves to have, as you told Claude before the run:** XXXX
 
-**The Gini curve against the paper's Figure 1, one sentence:** XXXX
+**What you changed in your rule after Claude's questions, or "nothing":** XXXX
 
-**The unpredictability curve against the paper's Figure 2, one sentence:** XXXX
+**What the two curves show against the paper's Figures 1 and 2, in one or two sentences:** XXXX
 
-**Revisited: which of your Part 0 predictions were wrong, and what you now think:** XXXX
+**Revisited: which of your Part 0 predictions you would now change, and why:** XXXX
 
 ## Part 4. Your recommender
 
@@ -65,7 +68,7 @@ Code: `my_recommender.py`, `part4_recommender.py`. Figure: `figures/part4_recomm
 
 **Where this shows up in data you have already handled, or in an interface you use, one sentence:** XXXX
 
-**One sentence on working with Claude: a moment it was wrong or overconfident, or a judgment you kept for yourself:** XXXX
+**A moment Claude was wrong or overconfident, or a judgment you kept for yourself, one sentence:** XXXX
 
 ## Follow-ups
 

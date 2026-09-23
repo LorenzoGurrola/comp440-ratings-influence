@@ -22,9 +22,8 @@ below are two of the model's assumptions, and the optional follow-up asks you to
 assumption. For users per world, pass users= to simulate() in followup_assumption.py, which
 changes that follow-up alone; editing a value here would change every part the next time it
 runs, including the Part 3 figures you have already written about. The assumptions inside the
-choice, the 1.2 position discount and the +1 among them, live in your own rule in my_choice.py,
-and the follow-up changes one of those by copying my_choice() into followup_assumption.py and
-making the change in the copy.
+choice live in your own rule in my_choice.py, and the follow-up changes one of those by copying
+my_choice() into followup_assumption.py and making the change in the copy.
 """
 
 import numpy as np
@@ -68,11 +67,14 @@ def check_chances(shown, chances):
         raise ValueError(f"a choice rule must return one chance per shown artist, in the same "
                          f"order; {len(shown)} artists were shown and it returned "
                          f"{len(chances)} chances: {chances}")
+    if not all(np.isfinite(chance) for chance in chances):
+        raise ValueError(f"a choice rule must return numbers; got {chances}")
     if any(chance < 0 for chance in chances):
         raise ValueError(f"a choice rule must not return a negative chance; got {chances}")
     if abs(sum(chances) - 1) > 1e-6:
         raise ValueError(f"a choice rule must return chances that sum to 1; got {chances}, "
-                         f"which sum to {sum(chances)}")
+                         f"which sum to {sum(chances)}. normalize() in choose.py scales a list "
+                         f"of weights so they sum to 1")
 
 
 def simulate_world(recommender, choice, social_influence, users=USERS, rng=None, record=False):

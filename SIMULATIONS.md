@@ -1,3 +1,6 @@
+> **Not part of the activity.** These are the instructor's testing notes from Sep 22, written for an
+> earlier take-home version of the activity, and they are out of date. You can ignore this file.
+
 # Simulated students: a light plan
 
 **Draft, Sep 22.** For the instructor. The point is to find template problems before Thursday

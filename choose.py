@@ -16,8 +16,11 @@ from artists import TRUE_POPULARITY
 
 
 def normalize(weights):
-    """Scale a list of weights so they sum to 1."""
+    """Scale a list of weights so they sum to 1. The weights must not all be 0."""
     total = sum(weights)
+    if total == 0:
+        raise ValueError(f"normalize() was given weights that sum to 0, {weights}, so it cannot "
+                         f"scale them to sum to 1")
     return [w / total for w in weights]
 
 
