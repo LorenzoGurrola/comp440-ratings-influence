@@ -2,11 +2,13 @@
 The simulated market: worlds of users arriving one at a time.
 
 A world starts with no downloads. Each user who arrives is shown a few artists by a recommender
-(recommender.py), which sees only the downloads so far, and downloads exactly one of them, picked
-by a choice rule (independent_choice in choose.py, or your own rule in my_choice.py from Part 3
-on). The download is added to the world's counts and the next user arrives. Worlds never see each
-other, so any difference between two worlds comes from chance and from what earlier users in the
-same world did.
+(recommender.py), which sees only the downloads so far and returns both the artists to show and
+the download counts to show with them. The user downloads exactly one of them, picked by a choice
+rule (independent_choice in choose.py, or your own rule in my_choice.py from Part 3 on). The
+choice rule is given the counts the recommender showed, not the world's real counts, so a user's
+choice depends only on what that user saw. The download is added to the world's counts and the
+next user arrives. Worlds never see each other, so any difference between two worlds comes from
+chance and from what earlier users in the same world did.
 
     simulate(recommender, choice, worlds, social_influence)     final market shares, one per world
     simulate_with_picks(recommender, choice, worlds, ...)       the same, and every world's picks
@@ -48,6 +50,16 @@ def check_shown(shown):
                          f"got {shown}")
 
 
+def check_counts(counts):
+    """Stop with a clear message if a recommender returned something other than a dict of counts
+    to show, none of them negative."""
+    if not isinstance(counts, dict) or any(
+            isinstance(value, bool) or not isinstance(value, (int, float)) or value < 0
+            for value in counts.values()):
+        raise ValueError(f"a recommender must return the counts to show as a dict of "
+                         f"artist -> a number that is not negative; got {counts}")
+
+
 def check_chances(shown, chances):
     """Stop with a clear message if a choice rule returned something other than one chance per
     shown artist, none of them negative, adding up to 1."""
@@ -65,9 +77,11 @@ def check_chances(shown, chances):
 def simulate_world(recommender, choice, social_influence, users=USERS, rng=None, record=False):
     """Run one world. Returns its final download counts, artist -> int, every artist listed.
 
-    recommender        a function (counts, rng) -> the artists shown, top of the list first
+    recommender        a function (counts, rng) -> (the artists shown, top of the list first;
+                       the download counts shown with them, artist -> number)
     choice             a function (shown, counts, social_influence) -> each shown artist's
-                       chance of being picked, one per artist in `shown` order, summing to 1
+                       chance of being picked, one per artist in `shown` order, summing to 1.
+                       `counts` is what the recommender showed, not the world's real counts
     social_influence   from 0 (users ignore the counts) to 1 (users go by the counts alone)
     users              how many users arrive; each downloads exactly one artist
     rng                a numpy random generator; a fresh one if not given
@@ -79,9 +93,10 @@ def simulate_world(recommender, choice, social_influence, users=USERS, rng=None,
     counts = {}   # artist -> downloads so far; an artist enters at its first download
     picks = []
     for _ in range(users):
-        shown = recommender(dict(counts), rng)   # a copy, so it cannot change the counts
+        shown, shown_counts = recommender(dict(counts), rng)   # a copy, so it cannot change them
         check_shown(shown)
-        chances = choice(shown, counts, social_influence)
+        check_counts(shown_counts)
+        chances = choice(shown, shown_counts, social_influence)
         check_chances(shown, chances)
         pick = shown[rng.choice(len(shown), p=chances)]
         counts[pick] = counts.get(pick, 0) + 1

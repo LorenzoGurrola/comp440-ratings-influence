@@ -14,8 +14,8 @@ def my_choice(shown, counts, social_influence):
     in `shown` and in the same order, summing to 1.
 
     shown              the artists on the list, top first (positions 0, 1, 2, ...)
-    counts             downloads so far in this world, artist -> int; an artist with no
-                       downloads yet is missing, so read it as counts.get(artist, 0)
+    counts             the download counts shown with the artists, artist -> number; an artist
+                       shown without a count is missing, so read it as counts.get(artist, 0)
     social_influence   from 0 (users ignore the counts) to 1 (users go by the counts alone)
 
     The rule may use `normalize`, which scales a list of weights so they sum to 1, and

@@ -34,10 +34,10 @@ FIGURES = Path(__file__).resolve().parent / "figures"
 
 
 def shuffled_top_five(counts, rng):
-    """The same five artists top_five shows, in a random order."""
-    shown = top_five(counts, rng)
+    """The same five artists top_five shows, in a random order, with the same counts."""
+    shown, shown_counts = top_five(counts, rng)
     rng.shuffle(shown)
-    return shown
+    return shown, shown_counts
 
 
 CONDITIONS = {"random order": shuffled_top_five, "sorted by count": top_five}
