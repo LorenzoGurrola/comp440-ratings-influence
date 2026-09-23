@@ -96,20 +96,15 @@ five most downloaded artists. Claude asks what changed against Part 1, in one se
 
 The simulation's choice rule decides what song a user picks from the five shown by the
 recommender. The one originally in this repo, `independent_choice` in `choose.py`, ignores the
-counts. You will design a choice rule, and Claude will implement it in `my_choice.py`.
+counts. In other words, social influence plays no role in a user's choice. You will design a
+choice rule, and Claude will implement it in `my_choice.py`.
 
-There is no single right rule; the paper ran an experiment with people and does not give one.
-Some things to decide, in any combination:
+There is no single right rule. Some things to consider as you design your rule:
 
-* **How the counts pull.** A user might favor artists in proportion to their downloads, or to
-  some other function of them, such as the square root or the rank.
-* **Artists with no downloads yet.** Whether they can still be picked, and how.
-* **Place on the list.** Whether artists nearer the top are more likely to be picked, and by how
-  much.
-* **Taste.** How a user's own taste, the artist's true popularity, combines with the counts, and
-  how `social_influence`, from 0 to 1, sets the mix.
-* **Chances.** The chances over the five shown must be zero or more and sum to 1. `normalize()`
-  in `choose.py` scales a list of weights so they do.
+* Whether a user favors artists that have more downloads.
+* Whether an artist with no downloads can be selected.
+* Whether artists nearer the top of the recommendation list are more likely to be picked.
+* How `social_influence`, which ranges from 0 to 1, affects the above.
 
 1. Claude asks you a few questions to pin down your rule: how the counts should change what a
    user picks, how `social_influence`, from 0 to 1, should set the mix between the counts and a
