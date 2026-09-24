@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 | 2026-09-24T18:55:40.727Z -->
 ## Session `a228bd0a` — 2026-09-24 18:55:40
 
-*26 user turns. Tool outputs and reasoning omitted.*
+*27 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 How do I get started
@@ -280,5 +280,11 @@ Two more open choices, both about position weighting.
 How strong should it be: should the top of the five be picked about twice as often as the bottom (all else equal), or only a little more often?
 
 And should that position effect scale with `social_influence` too — weaker at low social influence, full strength at 1 — or should it apply the same regardless of `social_influence`?
+
+**User:**
+Use a combination of the squared rule I answered in the previous question, plus the linear blend based on social influence
+
+**Claude:**
+So: position weight uses the same squared form (e.g. weight falls off with position², favoring the top strongly), and the whole position effect scales by `social_influence` the same linear way as the download weight — at `social_influence` 0 it has no effect, like Part 2's users. Is that right?
 
 <!-- end-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 -->
