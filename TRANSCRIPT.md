@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 | 2026-09-24T18:55:40.727Z -->
 ## Session `a228bd0a` — 2026-09-24 18:55:40
 
-*27 user turns. Tool outputs and reasoning omitted.*
+*28 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 How do I get started
@@ -286,5 +286,13 @@ Use a combination of the squared rule I answered in the previous question, plus 
 
 **Claude:**
 So: position weight uses the same squared form (e.g. weight falls off with position², favoring the top strongly), and the whole position effect scales by `social_influence` the same linear way as the download weight — at `social_influence` 0 it has no effect, like Part 2's users. Is that right?
+
+**User:**
+Oh, so this position effect you are asking me about now is different than the download effect we discussed earlier?
+
+**Claude:**
+Right, two separate signals. Download effect: weight by the artist's download count (you chose squared — count²). Position effect: weight by where the artist sits in the shown list of five, independent of the count value itself — literally slot 0 vs slot 1 vs slot 4. `top_five` sorts by count, so they usually line up, but `random_five`/early worlds can break that link.
+
+So: should position have its own separate weighting on top of the download weighting, or should downloads be the only thing that matters (with position just following from that)?
 
 <!-- end-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 -->
