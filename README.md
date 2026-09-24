@@ -64,7 +64,7 @@ exact formulas.
 
 Claude records the transcript of your sessions to share with Shilad.
 
-## The task
+## The task 
 
 Six parts, about 85 minutes together. Part 3 is the long one. The minutes are a guide (and Claude's prediction).
 

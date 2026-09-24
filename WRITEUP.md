@@ -23,9 +23,9 @@ Answered before anything runs. Claude writes them in as you said them, and they 
 
 Code: `part1_independent.py`. Figure: `figures/part1_strip.png`.
 
-**What Gini and unpredictability each show, in your own words:** XXXX
+**What Gini and unpredictability each show, in your own words:** Gini shows how unequal the distribution is, unpredictability shows how the much difference there is between worlds that start the same way
 
-**What the figure shows, one sentence:** XXXX
+**What the figure shows, one sentence:** How dominant each artist is when it comes to the share of a world's downloads
 
 ## Part 2. The recommender
 
