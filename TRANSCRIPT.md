@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 | 2026-09-24T18:55:40.727Z -->
 ## Session `a228bd0a` — 2026-09-24 18:55:40
 
-*25 user turns. Tool outputs and reasoning omitted.*
+*26 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 How do I get started
@@ -270,5 +270,15 @@ Two things to pin down before I write the code.
 First, the strength for question 1: when your rule does weigh downloads, should an artist with twice the downloads of another be about twice as likely to be picked, or more strongly than that (like squared), or only a little more likely?
 
 Second, an edge case for question 2: what about the very first user in a world, when none of the five shown artists have any downloads yet? All five would have zero.
+
+**User:**
+Oh, I didn't realize you were writing code from my answers. Let's use a squared rule. And for the second, don't weight it by download count at all then
+
+**Claude:**
+Two more open choices, both about position weighting.
+
+How strong should it be: should the top of the five be picked about twice as often as the bottom (all else equal), or only a little more often?
+
+And should that position effect scale with `social_influence` too — weaker at low social influence, full strength at 1 — or should it apply the same regardless of `social_influence`?
 
 <!-- end-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 -->
