@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 | 2026-09-24T18:55:40.727Z -->
 ## Session `a228bd0a` — 2026-09-24 18:55:40
 
-*35 user turns. Tool outputs and reasoning omitted.*
+*36 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 How do I get started
@@ -380,5 +380,17 @@ Bruno Mars, by a lot
 
 **Claude:**
 - 🔧 `Edit` — /Users/lorenzogurrola/Desktop/Files/COMP440/comp440-ratings-influence/WRITEUP.md
+I wrote this into the Part 3 hand check slot: Bruno Mars, by a lot
+- 🔧 `Bash` — Run the hand check table
+Does that table match what you said?
+
+**User:**
+yeah
+
+**Claude:**
+- 🔧 `Edit` — /Users/lorenzogurrola/Desktop/Files/COMP440/comp440-ratings-influence/WRITEUP.md
+I wrote this into the Part 3 hand check slot: yeah
+
+Before we run the sweep: `part3_influence.py` plots Gini and unpredictability against social influence (0 to 1), with a square marking the independent control. What shape do you expect the two curves to have?
 
 <!-- end-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 -->
