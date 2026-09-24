@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 | 2026-09-24T18:55:40.727Z -->
 ## Session `a228bd0a` — 2026-09-24 18:55:40
 
-*24 user turns. Tool outputs and reasoning omitted.*
+*25 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 How do I get started
@@ -260,5 +260,15 @@ See above answer
 
 **Claude:**
 Their above answer was musing about whether popularity signals quality — it didn't say how the number itself should combine the two. For the code: should `social_influence` at 0.5 mean an equal blend of taste-based and download-based weight, or does it work some other way?
+
+**User:**
+Yeah, I don't see a problem with the linear-blend way of doing it
+
+**Claude:**
+Two things to pin down before I write the code.
+
+First, the strength for question 1: when your rule does weigh downloads, should an artist with twice the downloads of another be about twice as likely to be picked, or more strongly than that (like squared), or only a little more likely?
+
+Second, an edge case for question 2: what about the very first user in a world, when none of the five shown artists have any downloads yet? All five would have zero.
 
 <!-- end-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 -->
