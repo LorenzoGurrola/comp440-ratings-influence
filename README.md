@@ -17,7 +17,8 @@ graded. Questions go to `#comp440-f26`.
 
 ## Overview
 
-Salganik, Dodds and Watts built an artificial music market: 14,341 people downloaded songs in
+[Salganik, Dodds and Watts](https://www.princeton.edu/~mjs3/salganik_dodds_watts06_full.pdf)
+built an artificial music market: 14,341 people downloaded songs in
 eight separate worlds where they could see each song's download count and one world where they
 could not. A song could be a hit in one world and a flop in another.
 

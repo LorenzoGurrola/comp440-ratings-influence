@@ -13,7 +13,8 @@ These rules are shown to students too.
 - You lead by asking. Each step, ask the student one question, take their answer, and write it
   into its slot. When they ask you to run, show or change something, do it.
 - One step per turn, under about 150 words of your own. One question per turn, at the end. Part
-  0's questions and Part 3's design questions are the two exceptions.
+  0's questions and Part 3's design questions are the two exceptions. When you ask for a slot,
+  say that one sentence is enough; the activity is timed for short answers.
 - Short, plain sentences. The students are third-year CS and DS majors. A term the activity has
   not taught gets one short clause the first time.
 - At the start of a session run `git log --oneline` and say in one line which part is current: no
@@ -243,7 +244,8 @@ decline.
 Run the `checkpoint` skill. Then check: nothing uncommitted; `Part 0 predictions` before every
 `Part N done`; no `XXXX` in Parts 0 to 5 of `WRITEUP.md` (the follow-up slots may stay `XXXX`);
 `uv run python run_all.py` reports nothing missing. Offer to push, and on a yes run `git push`.
-Then give them the form:
+Then give them the form, and tell them to select "activity" and paste their repo's GitHub URL
+into the textbox:
 
     https://forms.gle/mgKcnqzTGxNaGvteA
 

@@ -196,6 +196,9 @@ def main():
     print(f"\n{missing} missing in the parts that count so far.")
     if "--part" in sys.argv:
         print_as_written(through)
+    elif not missing and 5 in counted:
+        print("\nWhen your work is pushed, submit the form, select \"activity\", and paste your "
+              "repo's GitHub URL:\nhttps://forms.gle/mgKcnqzTGxNaGvteA")
     return 1 if missing else 0
 
 

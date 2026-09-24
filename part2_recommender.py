@@ -25,6 +25,8 @@ FIGURES = Path(__file__).resolve().parent / "figures"
 
 def main():
     shares = simulate(top_five, independent_choice, WORLDS, social_influence=0.0)
+    print("The users are the same as in Part 1: they ignore the download counts and pick by true")
+    print("popularity alone. Only the artists they are shown changed.\n")
     measures.print_summary(f"top_five, social influence 0, {WORLDS} worlds:", shares)
 
     downloaded = sum(1 for share in shares[0] if share > 0)
