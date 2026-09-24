@@ -31,11 +31,11 @@ Code: `part1_independent.py`. Figure: `figures/part1_strip.png`.
 
 Code: `recommender.py`, `part2_recommender.py`. Figure: `figures/part2_strip.png`.
 
-**The capabilities and limitations of `top_five`, in your words:** XXXX
+**The capabilities and limitations of `top_five`, in your words:** It sorts them by download count, and if there's less than 5 artists with any downloads, it picks random artists. It can never show artists with 0 downloads once there are at least 5 artists with 1 download eac
 
-**What Claude corrected in your reading, in your words, or "nothing":** XXXX
+**What Claude corrected in your reading, in your words, or "nothing":** Helped me with thinking about what top_five does
 
-**What changed against Part 1, one sentence:** XXXX
+**What changed against Part 1, one sentence:** the inequality and unpredictability goes up, and fidelity go down from experiment 1 -> 2
 
 ## Part 3. Social influence
 
