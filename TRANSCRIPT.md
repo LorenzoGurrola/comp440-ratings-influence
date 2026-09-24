@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 | 2026-09-24T18:55:40.727Z -->
 ## Session `a228bd0a` — 2026-09-24 18:55:40
 
-*17 user turns. Tool outputs and reasoning omitted.*
+*18 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 How do I get started
@@ -198,5 +198,22 @@ Part 2 is complete: `part2_recommender.py` ran, `figures/part2_strip.png` drawn,
 
 **User:**
 yes
+
+**Claude:**
+- 🔧 `Bash` — Commit Part 2 done
+Part 2 done and committed. Part 3 is current — you'll design the choice rule here, so there's no single right answer.
+
+Four design questions, a line each is enough:
+
+- Should a user favor artists with more downloads? How strongly?
+- Can an artist with no downloads be picked?
+- Should an artist nearer the top of the list be more likely to be picked?
+- How should `social_influence`, from 0 to 1, set the mix between the counts and the user's own taste?
+
+**User:**
+In what context am I answering these questions? In an ideal world? What I personally think?
+
+**Claude:**
+These are your design choices for the choice rule you'll write in `my_choice.py` — how you think a user should weigh download counts against their own taste when picking an artist. There's no single right rule; it's your call.
 
 <!-- end-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 -->
