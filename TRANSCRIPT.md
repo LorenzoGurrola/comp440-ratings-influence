@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 | 2026-09-24T18:55:40.727Z -->
 ## Session `a228bd0a` — 2026-09-24 18:55:40
 
-*2 user turns. Tool outputs and reasoning omitted.*
+*3 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 How do I get started
@@ -36,5 +36,11 @@ Four questions, a word or a line each is enough:
 2. As people pay more attention to the counts, does inequality between the artists rise or fall?
 3. Does the best artist (true popularity 100) ever lose a world?
 4. Can a recommender rule lower inequality without making the outcome track true taste less well?
+
+**User:**
+Do I run simulations before answers these questions? Or do my best guess
+
+**Claude:**
+Best guess — these are predictions, made before anything runs. A guess is fine.
 
 <!-- end-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 -->
