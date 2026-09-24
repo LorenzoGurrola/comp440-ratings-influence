@@ -65,7 +65,7 @@ Claude records the transcript of your sessions to share with Shilad.
 
 ## The task
 
-Six parts, about 75 minutes together. Part 3 is the long one. The minutes are a guide, not a
+Six parts, about 85 minutes together. Part 3 is the long one. The minutes are a guide, not a
 rule.
 
 ### Part 0. Predictions · about 5 minutes
@@ -92,7 +92,7 @@ wrong, Claude corrects you and asks what you want recorded about the correction.
 Claude then runs `part2_recommender.py`: the same users, still ignoring the counts, now see the
 five most downloaded artists. Claude asks what changed against Part 1, in one sentence.
 
-### Part 3. Social influence · about 30 minutes
+### Part 3. Social influence · about 40 minutes
 
 The simulation's choice rule decides what song a user picks from the five shown by the
 recommender. The one originally in this repo, `independent_choice` in `choose.py`, ignores the

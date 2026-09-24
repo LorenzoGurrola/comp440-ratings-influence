@@ -24,6 +24,18 @@
     ]
   },
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "input=$(cat); case \"$input\" in *commit*Part*) cd \"${CLAUDE_PROJECT_DIR:-.}\" 2>/dev/null; printf '%s' \"$input\" | uv run python commit_check.py; exit $? ;; esac; exit 0",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
     "SessionStart": [
       {
         "hooks": [

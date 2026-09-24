@@ -354,6 +354,14 @@ are right (section 11), so its VERIFY item on them can be closed.
   student's idea before any option; a question when a Part 2 answer credits users seeing the
   counts; a hint when a result row repeats an earlier one; pastes copied exactly; steps taken in
   order; the follow-ups described plainly; this plan's stale lines and `sims/README.md`.
+- [x] Sep 23 — Fixed what the third simulated-student test found, at the instructor's go: a hook
+  (`commit_check.py`) stops a `Part N done` commit while a slot of that part reads `XXXX`, and
+  Claude reads `WRITEUP.md` back after each slot it writes; one rule that Claude pastes every
+  output in full and never states a number from it or what the results show; the student chooses
+  any number or form an answer leaves open, and at a hand-check mismatch Claude asks what to
+  change and lists no fixes; "change your rule?" and "what did you change?" are asked
+  separately; Claude does not say whether an answer is right; an answer of several paragraphs is
+  read whole; Part 3's budget is 40 minutes, the total 85.
 - [ ] Sep 23 — Session, with the instructor's go: add the launch slides to the Sep 24 deck (the
   copied S24 deck, untouched since Sep 13): the model slide is its slide 19 already; add "What
   Claude does, what you do", "Fork, clone, /setup", "Four predictions", "Ours vs theirs", "Where

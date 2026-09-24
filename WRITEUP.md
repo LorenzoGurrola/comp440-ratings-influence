@@ -1,11 +1,11 @@
 # Ratings and social influence: writeup
 
-**Name:** XXXX
-**Date:** XXXX
-
 Claude writes your answers into the slots below as you say them. You may ask it to change any of
 your answers at any time, except the Part 0 predictions. Every `XXXX` in Parts 0 to 5 needs an
 answer; the follow-up slots at the end are optional.
+
+**Name:** XXXX
+**Date:** XXXX
 
 ## Part 0. Predictions
 

@@ -76,11 +76,12 @@ def run(script, verbose):
 def slots():
     """Every slot in WRITEUP.md, in order, as [part, label, answer]. Part None is the lines above
     the first heading; part FOLLOWUPS_KEY is the lines under "## Follow-ups". The answer is the
-    rest of the label's line and the lines under it, up to a blank line; when nothing follows the
-    label, the next paragraph. A label may wrap over lines."""
+    rest of the label's line and every line under it up to the next slot label or heading, blank
+    lines included, so an answer of several paragraphs is read whole; its lines are joined by
+    spaces. A label may wrap over lines."""
     found, part, pending, reading = [], None, "", False
     for line in WRITEUP.read_text(encoding="utf-8").splitlines():
-        if line.startswith("#"):
+        if re.match(r"#+\s", line):   # a heading; "#3 for sure" is an answer, not a heading
             heading = re.match(r"##\s+Part\s+(\d+)", line)
             if heading:
                 part = int(heading.group(1))
@@ -89,9 +90,7 @@ def slots():
             pending, reading = "", False
             continue
         if not line.strip():
-            pending = ""
-            if found and found[-1][2]:   # a blank line ends an answer that has begun
-                reading = False
+            pending = ""   # a blank line ends a wrapped label, never an answer
             continue
         text = f"{pending} {line}" if pending else line
         label = LABEL.match(text)
