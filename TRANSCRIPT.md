@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 | 2026-09-24T18:55:40.727Z -->
 ## Session `a228bd0a` — 2026-09-24 18:55:40
 
-*4 user turns. Tool outputs and reasoning omitted.*
+*5 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 How do I get started
@@ -55,5 +55,18 @@ I wrote these into the Part 0 slots: 1. Beatles, 2. Rise, 3. Yes, sometimes, 4. 
 - 🔧 `Bash` — Commit Part 0 predictions
 Part 0 predictions committed. Part 1 is current.
 - 🔧 `Bash` — Run Part 1 independent users script
+The strip plot in `figures/part1_strip.png` has one column per artist, one dot per world, and a diamond at the artist's true share.
+
+In your own words, what do Gini and unpredictability each show? (The measures are defined in the README.)
+
+**User:**
+Gini shows how unequal the distribution is, unpredictability shows how the much difference there is between worlds that start the same way
+
+**Claude:**
+- 🔧 `Read` — /Users/lorenzogurrola/Desktop/Files/COMP440/comp440-ratings-influence/WRITEUP.md
+- 🔧 `Edit` — /Users/lorenzogurrola/Desktop/Files/COMP440/comp440-ratings-influence/WRITEUP.md
+I wrote this into the Part 1 "What Gini and unpredictability each show" slot: Gini shows how unequal the distribution is, unpredictability shows how the much difference there is between worlds that start the same way
+
+What does the figure show, in one sentence?
 
 <!-- end-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 -->
