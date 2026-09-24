@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 | 2026-09-24T18:55:40.727Z -->
 ## Session `a228bd0a` — 2026-09-24 18:55:40
 
-*1 user turns. Tool outputs and reasoning omitted.*
+*2 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 How do I get started
@@ -20,5 +20,21 @@ Upstream remote is already there. Next, dependency install and the install check
 - 🔧 `Bash` — Sync project dependencies with uv
 - 🔧 `Bash` — Run measures.py install check
 Install verified. What's your name, for the WRITEUP.md header?
+
+**User:**
+Lorenzo Gurrola
+
+**Claude:**
+- 🔧 `Read` — /Users/lorenzogurrola/Desktop/Files/COMP440/comp440-ratings-influence/WRITEUP.md
+- 🔧 `Edit` — /Users/lorenzogurrola/Desktop/Files/COMP440/comp440-ratings-influence/WRITEUP.md
+- 🔧 `Bash` — Commit name and date
+Setup is done. Part 0 is current.
+
+Four questions, a word or a line each is enough:
+
+1. Once people can see the download counts, which artist ends up with the most downloads in most worlds?
+2. As people pay more attention to the counts, does inequality between the artists rise or fall?
+3. Does the best artist (true popularity 100) ever lose a world?
+4. Can a recommender rule lower inequality without making the outcome track true taste less well?
 
 <!-- end-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 -->
