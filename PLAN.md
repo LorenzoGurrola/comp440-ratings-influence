@@ -358,9 +358,12 @@ are right (section 11), so its VERIFY item on them can be closed.
   copied S24 deck, untouched since Sep 13): the model slide is its slide 19 already; add "What
   Claude does, what you do", "Fork, clone, /setup", "Four predictions", "Ours vs theirs", "Where
   this is in your HW1". Add, never rewrite; the deck is his copy.
-- [ ] Sep 23 — Session, through the `schedule-change` skill: link the repo on the Sep 24 row and
-  add the due date to `assignments:`; `build.py` before pushing. The Salganik reading row stays as
-  it is.
+- [x] Sep 23, 10:55pm — Session: the repo is linked on the Sep 24 row as a material, at the
+  instructor's ask ("make the activity live for tomorrow by linking to the github repo"); build
+  passed and pushed. **Not** added to `assignments:`, because the due date above is still
+  unchecked and the build would derive a "due" entry from it; when he settles it, move the link
+  into an `assignments:` entry with `launch: 2026-09-24` and drop the material line, so the
+  launch and the due entry are declared once. The Salganik reading row is unchanged.
 - [ ] Sep 23 — Instructor: the form option, if a new one is wanted; announce in `#comp440-f26`
   that Thursday needs a laptop with Claude Code working, as HW0's launch did.
 - [ ] Sep 24, morning — Session: process the Salganik reflections per the `process-reflections`
