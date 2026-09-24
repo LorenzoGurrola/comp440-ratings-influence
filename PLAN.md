@@ -259,18 +259,21 @@ are right (section 11), so its VERIFY item on them can be closed.
 - [ ] **Go or no go on the repo build**, and by when. The repo holds the plan and the measurements
   and no code yet. Section 10 is the work; it is a session's day plus a dry run, and Thursday is in two days. If no go, the S24 Colab
   runs Parts 0 and 1 on Thursday and the repo follows for the take-home parts.
-- [ ] **Due date.** Proposed Tue Oct 6, 8:00am: twelve days, as S24 gave, and after both HW1 (Oct
-  1) and Brent Hecht's questions (Sep 29). Thu Oct 8 is Frank Schilder's tentative visit and the
+- [x] **Due date.** Settled by the instructor in the README, Sep 23 night: **Tue Oct 6, 8:00am**.
+  Proposed as twelve days, as S24 gave, and after both HW1 (Oct 1) and Brent Hecht's questions (Sep 29). Thu Oct 8 is Frank Schilder's tentative visit and the
   Retrieval module's last day. Earlier than Oct 1 stacks it on HW1.
-- [ ] **Weight and category.** S24's weight is not recorded in the repo. The live syllabus has
+- [x] **Weight and category.** Settled in the README, Sep 23 night: "counts as one reading
+  reflection or activity", graded for completion. S24's weight is not recorded in the repo. The live syllabus has
   "reading reflections and activities" at 25% and homework at 30% with 6% each; this is more than
   a reflection and less than a homework. Two options: a fixed number of points in the 25% bucket,
   or an unweighted 0/1/2 like a reflection with the figures as the evidence.
-- [ ] **Individual or pairs.** Parts 0 and 1 run in pairs in class; the take-home parts as one
+- [x] **Individual or pairs.** README, Sep 23 night: Individual. Parts 0 and 1 still run in pairs in class; the take-home parts as one
   repo per pair or one per student. HW1 is individual.
-- [ ] **Submission.** The assignment form's homework branch takes a repo URL; either that branch
-  as is, or a new first-question option for activities. A Forms edit is the instructor's to make:
-  <https://docs.google.com/forms/d/1nNjZ4z584ODWb8N-p2TLJAorHEqZTXHnfdR_MUJ1P88/edit>.
+- [x] **Submission.** Settled Sep 23, 11:25pm, at the instructor's ask: the form has a fifth
+  first-question option, **Activity submission**, leading to one required free-text box ("What the
+  activity asks you to submit"); the section says each activity states what goes in the box. So the
+  README's Submitting section should say: choose "Activity submission" and paste your repo URL. The
+  README is the instructor's to edit. Form: <https://docs.google.com/forms/d/1nNjZ4z584ODWb8N-p2TLJAorHEqZTXHnfdR_MUJ1P88/edit>.
 - [ ] **Generative Agents on Thursday, or later.** Section 8's rows leave it out; the second shape
   keeps it and cuts the launch to ten minutes. It can open the Agents module Nov 10 without loss.
 - [ ] **The items.** Keep the eleven artists, or switch to obscure MovieLens titles for continuity
