@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 | 2026-09-24T18:55:40.727Z -->
 ## Session `a228bd0a` — 2026-09-24 18:55:40
 
-*9 user turns. Tool outputs and reasoning omitted.*
+*10 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 How do I get started
@@ -100,5 +100,13 @@ It sorts them by download count, and if there's less than 5 artists with any dow
 That's right, as far as it goes: it sorts by download count, and pads with random artists only while fewer than five have any downloads.
 
 The question also asked what it can never show. Given that mechanic, once five artists already have downloads, can `top_five` ever bring in an artist that currently has zero downloads?
+
+**User:**
+no
+
+**Claude:**
+That's right — once five artists already have downloads, it can never bring in one that has zero.
+
+Nothing to correct there. For the "capabilities and limitations" slot, put both parts together in a sentence or two, in your own words: what it shows each user, and what it can never show.
 
 <!-- end-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 -->
