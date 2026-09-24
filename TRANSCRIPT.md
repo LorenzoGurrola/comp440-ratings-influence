@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 | 2026-09-24T18:55:40.727Z -->
 ## Session `a228bd0a` — 2026-09-24 18:55:40
 
-*21 user turns. Tool outputs and reasoning omitted.*
+*22 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 How do I get started
@@ -240,5 +240,13 @@ Got it. Two more:
 
 - Should an artist nearer the top of the list be more likely to be picked?
 - How should `social_influence`, from 0 to 1, set the mix between the counts and the user's own taste?
+
+**User:**
+Yes, because they have more social proof. (I guess my answer is inconsistent with the first question, where a user "should not" be influenced, yet a higher ranked artist "should be" recommended more often. There's some inconsistency of logic there...)
+
+**Claude:**
+That tension is worth sitting with, but it's yours to resolve, not mine to referee.
+
+Last one: how should `social_influence`, from 0 to 1, set the mix between the counts and the user's own taste?
 
 <!-- end-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 -->
