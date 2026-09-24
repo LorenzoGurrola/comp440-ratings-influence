@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 | 2026-09-24T18:55:40.727Z -->
 ## Session `a228bd0a` — 2026-09-24 18:55:40
 
-*20 user turns. Tool outputs and reasoning omitted.*
+*21 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 How do I get started
@@ -228,5 +228,17 @@ Got it. I still need answers to the other three:
 
 **User:**
 For question 2 what do you mean "be picked"
+
+**Claude:**
+"Picked" means chosen as the one download for that user — the choice rule's output. So: when a user is shown five artists and one of them has zero downloads so far, can your rule ever choose that one, or does it rule it out?
+
+**User:**
+Oh, I guess no, as long as there are more than 5 artists with at least 1 download
+
+**Claude:**
+Got it. Two more:
+
+- Should an artist nearer the top of the list be more likely to be picked?
+- How should `social_influence`, from 0 to 1, set the mix between the counts and the user's own taste?
 
 <!-- end-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 -->
