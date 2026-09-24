@@ -6,6 +6,8 @@
 This is graded for completion of parts 0-5. The follow-ups at the end are optional and are not
 graded. Questions go to `#comp440-f26`.
 
+**When you are finished, complete the [Work Submission Form](https://forms.gle/mgKcnqzTGxNaGvteA), select "activity" and share the URL to your GitHub repo in the textbox.**
+
 ## Goals
 
 * To have you compute numbers behind the paper's two claims: inequality and unpredictability.
