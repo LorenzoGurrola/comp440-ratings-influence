@@ -1,11 +1,9 @@
 # COMP 440: Ratings and Social Influence, a simulated market with Claude
 
-**Fall 2026 · Individual · [TBD: weight] of the course grade · graded for completion**
-**Due [TBD: Tue Oct 6, 8:00am Central]**
+**Fall 2026 · Individual · Counts as one reading reflection or activity · graded for completion**
+**Due Tue Oct 6, 8:00am Central**
 
-One class period, Thu Sep 24: about 60 to 90 minutes from forking this repo to submitting. It is
-graded for completion, not for being right. A part is complete when its script has run and its
-slots in `WRITEUP.md` hold your own words. The follow-ups at the end are optional and are not
+This is graded for completion of parts 0-5. The follow-ups at the end are optional and are not
 graded. Questions go to `#comp440-f26`.
 
 ## Goals
@@ -24,7 +22,7 @@ could not. A song could be a hit in one world and a flop in another.
 You will run a small version of that market hundreds of times.
 
 * Eleven artists have a hidden **true popularity**. If users picked independently (without
-  social influence) the distribution of song plays would reflect that value.
+  social influence) the distribution of artist downloads would reflect that value.
 * Each simulated user is shown five artists by a recommender and then picks one.
 * A world is 1,000 users in a row.
 * You run hundreds of worlds from the same start and measure how unequal each world ends up and
@@ -65,8 +63,7 @@ Claude records the transcript of your sessions to share with Shilad.
 
 ## The task
 
-Six parts, about 85 minutes together. Part 3 is the long one. The minutes are a guide, not a
-rule.
+Six parts, about 85 minutes together. Part 3 is the long one. The minutes are a guide (and Claude's prediction).
 
 ### Part 0. Predictions · about 5 minutes
 
