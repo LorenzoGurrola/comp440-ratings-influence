@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 | 2026-09-24T18:55:40.727Z -->
 ## Session `a228bd0a` — 2026-09-24 18:55:40
 
-*12 user turns. Tool outputs and reasoning omitted.*
+*13 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 How do I get started
@@ -125,5 +125,12 @@ Helped me with thinking about what top_five does
 - 🔧 `Edit` — /Users/lorenzogurrola/Desktop/Files/COMP440/comp440-ratings-influence/WRITEUP.md
 I wrote this into the Part 2 "What Claude corrected" slot: Helped me with thinking about what top_five does
 - 🔧 `Bash` — Run Part 2 recommender script
+What changed against Part 1, in one sentence?
+
+**User:**
+Can you explain what you mean by that
+
+**Claude:**
+Compare the two runs' output: the numbers in Part 1's `random_five` block versus Part 2's `top_five` block above, plus the new "Artists with any download" line. What's different between them?
 
 <!-- end-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 -->
