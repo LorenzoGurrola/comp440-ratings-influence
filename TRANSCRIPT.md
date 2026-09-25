@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 | 2026-09-24T18:55:40.727Z -->
 ## Session `a228bd0a` — 2026-09-24 18:55:40
 
-*39 user turns. Tool outputs and reasoning omitted.*
+*40 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 How do I get started
@@ -429,5 +429,31 @@ no
 
 **Claude:**
 - 🔧 `Edit` — /Users/lorenzogurrola/Desktop/Files/COMP440/comp440-ratings-influence/WRITEUP.md
+I wrote this into the Part 3 "What you changed" slot: nothing
+
+What do the two curves show against the paper's Figures 1 and 2 — direction, not size — in one or two sentences?
+
+**User:**
+They both go up
+
+**Claude:**
+- 🔧 `Edit` — /Users/lorenzogurrola/Desktop/Files/COMP440/comp440-ratings-influence/WRITEUP.md
+I wrote this into the Part 3 "curves against the paper" slot: They both go up
+
+Your Part 0 predictions, as printed by the run:
+
+```
+Your Part 0 predictions, as WRITEUP.md has them:
+  1. Once people can see the counts, which artist wins most often?
+      Beatles
+  2. Does inequality rise or fall with social influence?
+      Rise
+  3. Does the best artist ever lose a world?
+      Yes, sometimes
+  4. Can a recommender lower inequality without lowering fidelity to true taste?
+      yes
+```
+
+Which would you now change, and why?
 
 <!-- end-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 -->
