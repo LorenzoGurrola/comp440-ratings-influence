@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 | 2026-09-24T18:55:40.727Z -->
 ## Session `a228bd0a` — 2026-09-24 18:55:40
 
-*43 user turns. Tool outputs and reasoning omitted.*
+*44 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 How do I get started
@@ -479,5 +479,13 @@ One that tries to match true taste as much as possible
 
 **Claude:**
 That's a goal, but I need something for the code to do. What would you change about which artists `top_five` shows, or about the counts it shows alongside them?
+
+**User:**
+ok, let's try to make a system that promotes equality and gives songs with fewer downloads a boost. It's goal is to have each song have the same number of downloads, regardness of true taste
+
+**Claude:**
+Two mechanics decisions for the code:
+
+Should it show the five artists with the fewest downloads so far (the opposite sort from `top_five`), so underdogs get seen? And what counts should it show alongside them — the real counts, no counts at all, or changed numbers?
 
 <!-- end-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 -->
