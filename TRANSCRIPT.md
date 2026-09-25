@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 | 2026-09-24T18:55:40.727Z -->
 ## Session `a228bd0a` — 2026-09-24 18:55:40
 
-*54 user turns. Tool outputs and reasoning omitted.*
+*55 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 How do I get started
@@ -594,5 +594,21 @@ Yes
 
 **Claude:**
 - 🔧 `Bash` — Commit Part 5 done
+Part 5 done and committed. That's the graded activity finished.
+
+There are also some optional, ungraded follow-ups, if you want any:
+- **What is shown** (`followup_shown.py`): compare a random-order vs. sorted-by-count market at the same social influence.
+- **One assumption** (`followup_assumption.py`): change one assumption your rule or the model makes.
+- **More recommenders**: design a second and third rule like Part 4's, and compare.
+- **More worlds**: rerun a part with 1,000 worlds instead of 300.
+
+Want to try any of these, or move on to submitting?
+
+**User:**
+Move on
+
+**Claude:**
+- 🔧 `Skill` — checkpoint
+- 🔧 `Bash` — Run run_all.py checkpoint check
 
 <!-- end-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 -->
