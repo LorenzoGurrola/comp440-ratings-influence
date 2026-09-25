@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 | 2026-09-24T18:55:40.727Z -->
 ## Session `a228bd0a` — 2026-09-24 18:55:40
 
-*49 user turns. Tool outputs and reasoning omitted.*
+*50 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 How do I get started
@@ -552,5 +552,16 @@ Can you rephrase that question
 
 **Claude:**
 Where have you seen this same effect — download counts shaping what people pick — before, in something you've worked with? Some examples: HW1's figure of when a movie's tags and ratings arrived, HW0's three rankings, or the "Popular on Netflix" row from the Sep 22 reading.
+
+**User:**
+Remind me what HW0s three rankings were again
+
+**Claude:**
+- 🔧 `Bash` — List HW0 directory contents
+- 🔧 `Bash` — Search HW0 files for ranking references
+- 🔧 `Bash` — Search HW0 python and markdown files for ranking references
+- 🔧 `Bash` — Search HW0 questions.md for ranking question details
+- 🔧 `Read` — /Users/lorenzogurrola/Desktop/Files/COMP440/comp440-hw0/questions.md
+That was HW0's questions 1(c), 1(d), and 2: ranking movies by number of ratings, by raw mean rating, and then by a Bayesian-adjusted score for "best movie" — each a different way of turning the same raw ratings into a ranking.
 
 <!-- end-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 -->
