@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 | 2026-09-24T18:55:40.727Z -->
 ## Session `a228bd0a` — 2026-09-24 18:55:40
 
-*55 user turns. Tool outputs and reasoning omitted.*
+*56 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 How do I get started
@@ -610,5 +610,47 @@ Move on
 **Claude:**
 - 🔧 `Skill` — checkpoint
 - 🔧 `Bash` — Run run_all.py checkpoint check
+Here's the full output:
+
+```
+measures.py self-check: passed
+part 1: ran, 3.9 s
+part 2: ran, 3.6 s
+part 3: ran, 20.1 s
+part 4: ran, 10.4 s
+follow-ups: optional, and not run here; ask Claude for one if you want it
+
+== what is missing ==
+  follow-up slot, not counted: What is shown (`followup_shown.py`): which market moved success further from quality
+  follow-up slot, not counted: One assumption (`followup_assumption.py`): the assumption you changed
+  follow-up slot, not counted: One assumption: whether the Part 3 conclusion survived
+  follow-up slot, not counted: Anything else you tried
+  follow-up slot, not counted: Anything else: what it showed
+  nothing, in the parts that count so far.
+
+0 missing in the parts that count so far.
+
+When your work is pushed, submit the form, select "activity", and paste your repo's GitHub URL:
+https://forms.gle/mgKcnqzTGxNaGvteA
+```
+
+Nothing missing in the parts that count — the follow-up slots stay `XXXX` since you didn't do those. Next, let's check the transcript.
+- 🔧 `Bash` — Dump session transcript
+`Wrote TRANSCRIPT.md: 1 session(s). 1 session(s) found; this session in TRANSCRIPT.md: yes.`
+
+Everything is committed and in order. Ready to push?
+
+**User:**
+yes
+
+**Claude:**
+- 🔧 `Bash` — Check for uncommitted changes
+Nothing uncommitted. Pushing now.
+- 🔧 `Bash` — Push commits to origin
+Pushed. Now submit the form: select "activity" and paste your repo's GitHub URL.
+
+https://forms.gle/mgKcnqzTGxNaGvteA
+
+Have you submitted it?
 
 <!-- end-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 -->
