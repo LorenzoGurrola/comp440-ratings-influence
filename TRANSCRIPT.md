@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 | 2026-09-24T18:55:40.727Z -->
 ## Session `a228bd0a` — 2026-09-24 18:55:40
 
-*50 user turns. Tool outputs and reasoning omitted.*
+*51 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 How do I get started
@@ -563,5 +563,15 @@ Remind me what HW0s three rankings were again
 - 🔧 `Bash` — Search HW0 questions.md for ranking question details
 - 🔧 `Read` — /Users/lorenzogurrola/Desktop/Files/COMP440/comp440-hw0/questions.md
 That was HW0's questions 1(c), 1(d), and 2: ranking movies by number of ratings, by raw mean rating, and then by a Bayesian-adjusted score for "best movie" — each a different way of turning the same raw ratings into a ranking.
+
+**User:**
+Yes, I guess with movies with fewer ratings, that could have influenced people beyond what "1" rating should have, since it would have a bigger affect on the mean rating
+
+**Claude:**
+- 🔧 `Read` — /Users/lorenzogurrola/Desktop/Files/COMP440/comp440-ratings-influence/WRITEUP.md
+- 🔧 `Edit` — /Users/lorenzogurrola/Desktop/Files/COMP440/comp440-ratings-influence/WRITEUP.md
+I wrote this into the Part 5 first slot: Yes, I guess with movies with fewer ratings, that could have influenced people beyond what "1" rating should have, since it would have a bigger affect on the mean rating
+
+Second question: a moment I was wrong or overconfident, or a judgment you kept for yourself?
 
 <!-- end-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 -->
