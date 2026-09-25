@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 | 2026-09-24T18:55:40.727Z -->
 ## Session `a228bd0a` — 2026-09-24 18:55:40
 
-*52 user turns. Tool outputs and reasoning omitted.*
+*53 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 How do I get started
@@ -576,5 +576,14 @@ Second question: a moment I was wrong or overconfident, or a judgment you kept f
 
 **User:**
 You as in claude?
+
+**Claude:**
+Yes — a moment during this session where I (Claude) was wrong or overconfident, or a moment where you kept a judgment call for yourself instead of letting me make it.
+
+**User:**
+I think your phrasing of certain questions was confusing. Or I didn't have the background knowledge to interpret it smoothly. Either way, that would be my biggest suggestion for improvement.
+
+**Claude:**
+- 🔧 `Edit` — /Users/lorenzogurrola/Desktop/Files/COMP440/comp440-ratings-influence/WRITEUP.md
 
 <!-- end-session: a228bd0a-3dd9-4fe9-afa3-b87024d3bc54 -->
