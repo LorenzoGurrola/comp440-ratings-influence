@@ -68,9 +68,9 @@ Code: `my_recommender.py`, `part4_recommender.py`. Figure: `figures/part4_recomm
 
 ## Part 5. Reflection
 
-**Where this shows up in data you have already handled, or in an interface you use, one sentence:** XXXX
+**Where this shows up in data you have already handled, or in an interface you use, one sentence:** Yes, I guess with movies with fewer ratings, that could have influenced people beyond what "1" rating should have, since it would have a bigger affect on the mean rating
 
-**A moment Claude was wrong or overconfident, or a judgment you kept for yourself, one sentence:** XXXX
+**A moment Claude was wrong or overconfident, or a judgment you kept for yourself, one sentence:** I think your phrasing of certain questions was confusing. Or I didn't have the background knowledge to interpret it smoothly. Either way, that would be my biggest suggestion for improvement.
 
 ## Follow-ups
 
