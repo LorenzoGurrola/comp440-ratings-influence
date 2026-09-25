@@ -60,11 +60,11 @@ Code: `my_choice.py`, `hand_check.py`, `part3_influence.py`. Figures: `figures/p
 
 Code: `my_recommender.py`, `part4_recommender.py`. Figure: `figures/part4_recommenders.png`.
 
-**Your rule in words, before any code:** XXXX
+**Your rule in words, before any code:** ok, let's try to make a system that promotes equality and gives songs with fewer downloads a boost. It's goal is to have each song have the same number of downloads, regardness of true taste
 
-**What you expect it to do to inequality, unpredictability and fidelity, as you told Claude before the run:** XXXX
+**What you expect it to do to inequality, unpredictability and fidelity, as you told Claude before the run:** Lower inequality, unpredictability, and fidelity
 
-**What it bought and what it cost, one sentence:** XXXX
+**What it bought and what it cost, one sentence:** It lowered gini and unpredictability, but actaully raised fidelity a lot from the top_five
 
 ## Part 5. Reflection
 

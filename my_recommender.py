@@ -5,6 +5,8 @@ Describe your rule to Claude in words first. Claude writes it here, and part4_re
 compares it with top_five and random_five from recommender.py, which are written the same way.
 """
 
+from sim import ARTISTS, NUM_SHOWN
+
 
 def my_recommender(counts, rng):
     """Return two things: five different artist names in display order (position 0 is the top of
@@ -21,4 +23,5 @@ def my_recommender(counts, rng):
     A recommender may use the counts and the list of artists (sim.ARTISTS). It must never use
     TRUE_POPULARITY: a real recommender cannot see how much users truly like each artist.
     """
-    raise NotImplementedError("Part 4: describe your rule to Claude first")
+    shown = sorted(ARTISTS, key=lambda artist: counts.get(artist, 0))[:NUM_SHOWN]
+    return shown, {}
